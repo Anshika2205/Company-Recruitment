@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechVarsity | Career Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="glass-nav">
+        <div class="logo">TV<span>.</span>HUB</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#vision">Vision</a>
+            <a href="#companies">Recruiters</a>
+            <button class="login-trigger" onclick="openLogin()">Student Access</button>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-text">
+            <span class="badge">Next-Gen Placement Cell</span>
+            <h1>Where Talent Meets <br><span class="gradient-text">Future Excellence.</span></h1>
+            <p>Elevate your career with the world's most innovative tech giants.</p>
+            <div class="hero-btns">
+                <a href="#companies" class="btn-primary">Explore Jobs</a>
+                <a href="#about" class="btn-secondary">College Life</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="about-section">
+        <div class="about-container">
+            <div class="about-img">
+                <img src=" https://admissionwala.in/storage/productimages/KIET-Group-of-Institutions-Ghaziabad-Campus-View-1.jpg" alt="Campus">
+            </div>
+            <div class="about-info">
+                <h2>Our Prestigious Institution</h2>
+                <p>Kiet Group Of Instutions is not just a college; it's an ecosystem of innovation. With state-of-the-art labs and industry mentors, we ensure every student is industry-ready from Day 1.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="vision" class="vision-section">
+        <h2 class="section-title">Visionary Leadership</h2>
+        <div class="vision-grid">
+            <div class="vision-card">
+                <i class="fas fa-rocket"></i>
+                <h3>Innovation</h3>
+                <p>Driving students towards cutting-edge R&D and product building.</p>
+            </div>
+            <div class="vision-card">
+                <i class="fas fa-globe"></i>
+                <h3>Global Reach</h3>
+                <p>Placing students in Fortune 500 companies across 15+ countries.</p>
+            </div>
+            <div class="vision-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Ethics</h3>
+                <p>Nurturing leaders who value integrity and social responsibility.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="companies" class="company-section">
+        <h2 class="section-title">Strategic Tech Partners</h2>
+         <div class="comp-grid">
+    <a href="google.html" class="comp-item"><img src=" https://static.dezeen.com/uploads/2025/05/sq-google-g-logo-update_dezeen_2364_col_0.jpg"></a>
+    <a href="amazon.html" class="comp-item"><img src=" https://thumbs.dreamstime.com/b/amazon-logo-amazon-logo-white-background-vector-format-avaliable-124289859.jpg"></a>
+    <a href="microsoft.html" class="comp-item"><img src="https://blogs.microsoft.com/wp-content/uploads/2012/08/8867.Microsoft_5F00_Logo_2D00_for_2D00_screen.jpg"></a>
+    <a href="meta.html" class="comp-item"><img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqN9acsgIQGM2FqL39jPpdnvqW9kRedjVpDw&s"></a>
+    <a href="netflix.html" class="comp-item"><img src=" https://images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a07288746ddf3bd3943fbc76/BrandAssets_Logos_01-Wordmark.jpg?w=940"></a>
+    <a href="apple.html" class="comp-item"><img src="https://fabrikbrands.com/wp-content/uploads/Apple-Logo-History-1.png"></a>
+    <a href="tcs.html" class="comp-item"><img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgdN5uaq0RMWIAydcXeyqdkm4dtErZs3sw0w&s"></a>
+    <a href="capgemini.html" class="comp-item"><img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDH3D_sFxInIWvLdh8-BK-xaKw7YpUcwhDaA&s"></a>
+</div>
+        </div>
+    </section>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content glass">
+            <span class="close" onclick="closeLogin()">&times;</span>
+            <h2>Secure Portal Login</h2>
+            <input type="email" id="email" placeholder="student_id@yourcollege.edu">
+            <button class="btn-primary" onclick="login()">Enter Dashboard</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

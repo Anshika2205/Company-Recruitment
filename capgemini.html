@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Capgemini Recruitment</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+        body { background: white; }
+        header { background: #0070ad; padding: 100px 10%; color: white; }
+        .container { padding: 60px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+        .box { padding: 30px; border: 1px solid #eee; border-radius: 12px; }
+        .step-circle { width: 30px; height: 30px; background: #0070ad; color: white; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; margin-right: 15px; }
+        .apply-now { grid-column: 1 / span 2; background: #f0f7ff; padding: 60px; text-align: center; border-radius: 20px; }
+        .btn-cap { background: #0070ad; color: white; padding: 15px 50px; border: none; font-weight: bold; cursor: pointer; font-size: 18px; }
+    </style>
+</head>
+<body>
+    <header>
+        <p style="text-transform: uppercase; letter-spacing: 2px;">Campus Hiring 2026</p>
+        <h1 style="font-size: 54px; margin-top: 10px;">Capgemini Excellence</h1>
+    </header>
+    <div class="container">
+        <div>
+            <h2>Selection Procedure</h2>
+            <div style="margin-top: 30px;">
+                <p style="margin-bottom: 20px;"><span class="step-circle">1</span> Pseudo-Code Assessment</p>
+                <p style="margin-bottom: 20px;"><span class="step-circle">2</span> English Communication Test</p>
+                <p style="margin-bottom: 20px;"><span class="step-circle">3</span> Game-based Aptitude</p>
+                <p style="margin-bottom: 20px;"><span class="step-circle">4</span> Final Technical & HR Round</p>
+            </div>
+        </div>
+        <div>
+            <h2>Candidate Perks</h2>
+            <div class="box" style="margin-top: 30px;">
+                <p><strong>Package:</strong> 4.5 - 9.0 LPA</p>
+                <p style="margin-top: 15px; color: #666;">Access to over 200,000+ courses on Coursera and internal learning platforms. Global mobility and vibrant work culture.</p>
+            </div>
+        </div>
+        <div class="apply-now">
+            <h2>Get the future you want</h2>
+            <p style="margin: 20px 0;">Submit your CV today for the upcoming drive.</p>
+            <input type="file"><br><br>
+            <button class="btn-cap" onclick="alert('Capgemini Application Received!')">APPLY TO CAPGEMINI</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Google Recruitment | TechVarsity</title>
+    <style>
+        body { font-family: sans-serif; padding: 50px; background: #fafafa; }
+        .back-link { text-decoration: none; color: #3498db; font-weight: bold; }
+        .job-container { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); max-width: 800px; margin: 20px auto; }
+        .header { border-bottom: 2px solid #eee; padding-bottom: 20px; margin-bottom: 20px; }
+        .package { font-size: 24px; color: #27ae60; font-weight: bold; }
+        .upload-sec { background: #f9f9f9; padding: 20px; border: 2px dashed #ccc; margin-top: 30px; text-align: center; }
+        button { background: #4285F4; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← Back to Main Portal</a>
+
+    <div class="job-container">
+        <div class="header">
+            <h1>Google Recruitment 2026</h1>
+            <p>Role: Associate Software Engineer</p>
+            <p class="package">Package: 45.5 LPA</p>
+        </div>
+
+        <h3>Selection Criteria:</h3>
+        <ul>
+            <li>CGPA: 8.5 and above</li>
+            <li>Strong Knowledge of DS & Algo</li>
+            <li>No active backlogs</li>
+        </ul>
+
+        <h3>Selection Process:</h3>
+        <p>1. Online Coding Round -> 2. Technical Interview -> 3. HR Round</p>
+
+        <div class="upload-sec">
+            <h3>Upload Resume to Apply</h3>
+            <input type="file" id="resume">
+            <br>
+            <button onclick="apply()">Submit Application</button>
+        </div>
+    </div>
+
+    <script>
+        function apply() {
+            if(localStorage.getItem("isLoggedIn") === "true") {
+                alert("Application sent to Google HR team successfully!");
+            } else {
+                alert("Please login on the main page first!");
+                window.location.href = "index.html";
+            }
+        }
+    </script>
+</body>
+</html>
