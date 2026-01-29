@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,14 +10,17 @@
 <body>
 
     <nav class="glass-nav">
-        <div class="logo">TV<span>.</span>HUB</div>
-        <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#vision">Vision</a>
-            <a href="#companies">Recruiters</a>
-            <button class="login-trigger" onclick="openLogin()">Student Access</button>
-        </div>
-    </nav>
+    <div class="logo">TV<span>.</span>HUB</div>
+    <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#vision">Vision</a>
+        <a href="#companies">Recruiters</a>
+        <a href="dashboard.html" class="user-profile-nav" id="navProfile" style="display: none; align-items: center; gap: 10px; text-decoration: none;">
+            <span id="navUserName" style="color: #fff; font-weight: 600; font-size: 14px;">Student Name</span>
+            <img id="navUserImg" src="https://xsgames.co/randomusers/avatar.php?g=male" style="width: 35px; height: 35px; border-radius: 50%; border: 2px solid #1a73e8;">
+        </a>
+    </div>
+</nav>
 
     <header class="hero">
         <div class="hero-text">
@@ -78,6 +81,70 @@
 </div>
         </div>
     </section>
+    <section class="batch-history" id="archive">
+    <h2 class="section-title">The Legacy Timeline</h2>
+    <p style="text-align: center; color: #94a3b8; margin-top: -30px; margin-bottom: 50px;">Explore the journey of our prestigious alumni through the years.</p>
+    
+    <div class="timeline-container">
+        <div class="batch-row">
+            <a href="2010-2014.html" class="batch-link">
+                <div class="batch-node">
+                    <span class="year-label">2010 - 2014</span>
+                    <div class="batch-preview">
+                        <p><i class="fas fa-users"></i> 480+ Placed</p>
+                        <p><i class="fas fa-trophy"></i> Star Recruiter: Google</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="2014-2018.html" class="batch-link">
+                <div class="batch-node highlight">
+                    <span class="year-label">2014 - 2018</span>
+                    <div class="batch-preview">
+                        <p><i class="fas fa-users"></i> 520+ Placed</p>
+                        <p><i class="fas fa-trophy"></i> Star Recruiter: Amazon</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="2018-2022.html" class="batch-link">
+                <div class="batch-node">
+                    <span class="year-label">2018 - 2022</span>
+                    <div class="batch-preview">
+                        <p><i class="fas fa-users"></i> 600+ Placed</p>
+                        <p><i class="fas fa-trophy"></i> Star Recruiter: Microsoft</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="2022-2026.html" class="batch-link">
+                <div class="batch-node current">
+                    <span class="year-label">2022 - 2026 (Live)</span>
+                    <div class="batch-preview">
+                        <p><i class="fas fa-bolt"></i> Ongoing Drives</p>
+                        <p><i class="fas fa-chart-line"></i> Highest: 52 LPA</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+.batch-history { padding: 100px 8%; background: #0f172a; }
+.timeline-container { position: relative; padding: 20px 0; }
+.batch-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+.batch-link { text-decoration: none; }
+.batch-node { 
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); 
+    padding: 30px; border-radius: 20px; transition: 0.4s; position: relative;
+}
+.batch-node:hover { background: rgba(59, 130, 246, 0.1); transform: translateY(-10px); border-color: #3b82f6; }
+.year-label { font-size: 22px; font-weight: 900; color: #fff; display: block; margin-bottom: 15px; }
+.batch-preview p { color: #94a3b8; font-size: 14px; margin-bottom: 5px; }
+.current { border: 2px solid #3b82f6; box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+.highlight { border-left: 5px solid #10b981; }
+</style>
 
     <div id="loginModal" class="modal">
         <div class="modal-content glass">
@@ -87,7 +154,155 @@
             <button class="btn-primary" onclick="login()">Enter Dashboard</button>
         </div>
     </div>
+    <div id="loginGate" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.95)), url('https://admissionwala.in/storage/productimages/KIET-Group-of-Institutions-Ghaziabad-Campus-View-1.jpg'); background-size: cover; z-index: 9999; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif;">
+    
+    <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); padding: 50px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.2); width: 400px; text-align: center; color: white; box-shadow: 0 25px 50px rgba(0,0,0,0.5);">
+        
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" style="width: 80px; filter: brightness(0) invert(1); margin-bottom: 20px;">
+        <h2 style="font-size: 28px; margin-bottom: 10px;">Byte Busters Portal</h2>
+        <p style="opacity: 0.8; font-size: 14px; margin-bottom: 30px;">Access restricted to <span style="background: #34A853; padding: 2px 8px; border-radius: 4px; font-size: 10px;">OFFICIAL KIET ID</span></p>
+
+        <form id="gateForm">
+            <div style="margin-bottom: 20px; text-align: left;">
+                <input type="email" id="userEmail" placeholder="your.name@kiet.edu" required style="width: 100%; padding: 15px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; color: white; outline: none; font-size: 16px; box-sizing: border-box;">
+            </div>
+            <div style="margin-bottom: 20px;">
+                <input type="password" placeholder="College Portal Password" required style="width: 100%; padding: 15px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; color: white; outline: none; font-size: 16px; box-sizing: border-box;">
+            </div>
+            <button type="submit" style="width: 100%; padding: 15px; background: #1a73e8; color: white; border: none; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s;">Verify & Explore</button>
+        </form>
+
+        <p id="gateError" style="color: #EA4335; font-size: 13px; margin-top: 15px; display: none;">⚠️ Access Denied: Use @kiet.edu ID only!</p>
+    </div>
+</div>
+
+
+<script>
+    // Check if user is already verified (so they don't login every time they refresh)
+    if (localStorage.getItem('kietVerified') === 'true') {
+        document.getElementById('loginGate').style.display = 'none';
+    }
+
+    document.getElementById('gateForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = document.getElementById('userEmail').value;
+        const error = document.getElementById('gateError');
+
+        if (email.toLowerCase().endsWith('@kiet.edu')) {
+            // Success Logic
+            localStorage.setItem('kietVerified', 'true'); // Save login status
+            document.getElementById('loginGate').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('loginGate').style.display = 'none';
+            }, 500);
+            alert("Welcome Byte Buster! Website is now unlocked.");
+        } else {
+            // Fail Logic
+            error.style.display = 'block';
+            document.getElementById('userEmail').style.borderColor = '#EA4335';
+        }
+    });
+</script>
+
+<script>
+    // Function to update Nav UI if already logged in
+    function updateNavUI() {
+        const email = localStorage.getItem('userEmail');
+        if (email) {
+            const name = email.split('@')[0].split('.').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+            document.getElementById('navProfile').style.display = 'flex';
+            document.getElementById('navUserName').innerText = name;
+            // Agar login successful hai toh loginGate ko hamesha ke liye gayab rakho
+            document.getElementById('loginGate').style.display = 'none';
+        }
+    }
+
+    // Check on page load
+    if (localStorage.getItem('kietVerified') === 'true') {
+        updateNavUI();
+    }
+
+    document.getElementById('gateForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = document.getElementById('userEmail').value;
+        const error = document.getElementById('gateError');
+
+        if (email.toLowerCase().endsWith('@kiet.edu')) {
+            localStorage.setItem('kietVerified', 'true');
+            localStorage.setItem('userEmail', email); // Bache ki ID save ki
+            
+            // UI Update
+            updateNavUI();
+            
+            document.getElementById('loginGate').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('loginGate').style.display = 'none';
+                // Success ke baad seedha dashboard par bhej sakte hain agar aap chahein
+                window.location.href = 'dashboard.html'; 
+            }, 500);
+        } else {
+            error.style.display = 'block';
+            document.getElementById('userEmail').style.borderColor = '#EA4335';
+        }
+    });
+</script>
+ 
+
+<nav class="glass-nav">
+    <div class="logo">TV<span>.</span>HUB</div>
+    <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#companies">Recruiters</a>
+        
+        <div id="userProfileNode" style="display: none; align-items: center; gap: 12px; margin-left: 20px; cursor: pointer; background: rgba(255,255,255,0.1); padding: 5px 15px; border-radius: 50px;" onclick="window.location.href='dashboard.html'">
+            <div style="text-align: right;">
+                <span id="userNameDisplay" style="display: block; font-size: 14px; font-weight: bold; color: white;">Student Name</span>
+                <small style="color: #34A853; font-size: 10px;">● Online</small>
+            </div>
+            <img id="userAvatar" src="https://xsgames.co/randomusers/avatar.php?g=male" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid #1a73e8;">
+        </div>
+    </div>
+</nav>
+
+       
+<script>
+    // Security: Agar bacha bina login ke aaya, toh wapas bhagao
+    if (localStorage.getItem('isLoggedIn') !== 'true') {
+        window.location.href = 'login.html';
+    }
+</script>
+
+<nav class="glass-nav">
+    <div class="logo">TV<span>.</span>HUB</div>
+    <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#companies">Recruiters</a>
+        
+        <a href="dashboard.html" class="nav-profile" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+            <div style="text-align: right;">
+                <span id="navName" style="color: white; font-weight: bold; font-size: 14px;">Student</span>
+                <small style="display: block; color: #34A853; font-size: 10px;">View Profile</small>
+            </div>
+            <img src="image.png" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid #1a73e8;">
+        </a>
+    </div>
+</nav>
+
+<script>
+    // Naam update karne ke liye
+    window.onload = function() {
+        const email = localStorage.getItem('userEmail');
+        if (email) {
+            const name = email.split('@')[0].split('.').map(w => w.toUpperCase()).join(' ');
+            document.getElementById('navName').innerText = name;
+        }
+    }
+</script>
+
+
+
+
 
     <script src="script.js"></script>
 </body>
-</html>
+</html> 

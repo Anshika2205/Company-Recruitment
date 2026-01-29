@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Placement Journey | KIET</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --kiet-blue: #1a73e8; --bg: #f8fafc; }
+        body { background: var(--bg); font-family: 'Inter', sans-serif; margin: 0; }
+        .dashboard-container { display: grid; grid-template-columns: 350px 1fr; min-height: 100vh; }
+        
+        /* Left: Personal Info Card */
+        .side-profile { background: white; padding: 40px; border-right: 1px solid #e2e8f0; text-align: center; }
+        .main-avatar { width: 150px; height: 150px; border-radius: 50%; border: 5px solid var(--kiet-blue); margin-bottom: 20px; }
+        .data-point { text-align: left; background: #f1f5f9; padding: 15px; border-radius: 12px; margin-bottom: 10px; font-size: 14px; }
+        
+        /* Right: Application Tracker */
+        .content-area { padding: 60px; }
+        .tracker-card { background: white; padding: 30px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .track-row { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid #f1f5f9; }
+        .status-pill { padding: 6px 16px; border-radius: 50px; font-size: 12px; font-weight: bold; }
+        .status-ongoing { background: #fef9c3; color: #854d0e; }
+        .status-hired { background: #dcfce7; color: #166534; }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="side-profile">
+            <img src="image.png" class="main-avatar">
+            <h2 id="uName">Student Name</h2>
+            <p style="color: #64748b; margin-bottom: 30px;">Batch of 2022-2026</p>
+            
+            <div class="data-point"><b>Roll No:</b> <span id="uRoll">220029010XXXX</span></div>
+            <div class="data-point"><b>Branch:</b> CSE (Spec.)</div>
+            <div class="data-point"><b>CGPA:</b> 8.92</div>
+            <div class="data-point"><b>Current Year:</b> 4th Year (Final)</div>
+            
+            <a href="index.html" style="display: block; margin-top: 40px; color: var(--kiet-blue); text-decoration: none; font-weight: bold;">← Back to Main Hub</a>
+        </aside>
+
+        <main class="content-area">
+            <h1>Your Placement Tracker</h1>
+            <p style="color: #64748b; margin-bottom: 40px;">Tracking your applications across top tech giants.</p>
+
+            <div class="tracker-card">
+                <h3>Application Status (04 Companies)</h3>
+                <div class="track-row">
+                    <div><b>Google</b><br><small>SDE Intern</small></div>
+                    <div class="status-pill status-ongoing">Round 3: System Design</div>
+                </div>
+                <div class="track-row">
+                    <div><b>Amazon</b><br><small>AWS Associate</small></div>
+                    <div class="status-pill status-ongoing">Round 2: OA Completed</div>
+                </div>
+                <div class="track-row">
+                    <div><b>Microsoft</b><br><small>Azure Engineer</small></div>
+                    <div class="status-pill status-hired">Hired 🏆</div>
+                </div>
+                <div class="track-row">
+                    <div><b>TCS</b><br><small>Digital Profile</small></div>
+                    <div class="status-pill status-ongoing">Shortlisted for NQT</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const email = localStorage.getItem('loggedUser') || 'student@kiet.edu';
+        const name = email.split('@')[0].split('.').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+        document.getElementById('uName').innerText = name;
+        // Seeded random roll number
+        document.getElementById('uRoll').innerText = "2201970100" + Math.floor(Math.random() * 900 + 100);
+    </script>
+
+function logout() {
+    localStorage.clear(); // Saara data saaf
+    window.location.href = 'login.html'; // Wapas login page par
+}
+
+
+
+
+
+
+
+
+</body>
+</html>

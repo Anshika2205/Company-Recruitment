@@ -1,0 +1,153 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Batch 2014-2018 | KIET Placement Archive</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root { --kiet-blue: #1a73e8; --dark: #0f172a; --light: #f8fafc; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: white; color: var(--dark); line-height: 1.6; }
+
+        /* Full Height Hero with KIET Campus Photo */
+        .mega-hero { 
+            height: 85vh; 
+            background: linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.85)), url('https://admissionwala.in/storage/productimages/KIET-Group-of-Institutions-Ghaziabad-Campus-View-1.jpg'); 
+            background-size: cover; background-attachment: fixed; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; 
+        }
+        .mega-hero h1 { font-size: 100px; font-weight: 900; letter-spacing: -4px; }
+
+        .container { width: 90%; margin: auto; }
+
+        /* Stats Bar */
+        .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--kiet-blue); color: white; padding: 60px 0; margin-top: -60px; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.2); }
+        .stat-item { text-align: center; border-right: 1px solid rgba(255,255,255,0.2); }
+        .stat-item h2 { font-size: 45px; }
+
+        /* Company Grid - 15+ Companies */
+        .section-title { font-size: 45px; font-weight: 900; margin: 100px 0 50px; text-align: center; }
+        .company-mega-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .comp-card { background: var(--light); padding: 35px; border-radius: 20px; border: 1px solid #e2e8f0; transition: 0.3s; }
+        .comp-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-color: var(--kiet-blue); }
+        .comp-card img { height: 45px; margin-bottom: 25px; }
+        .pkg-tag { color: var(--kiet-blue); font-weight: 800; font-size: 22px; display: block; margin-bottom: 10px; }
+
+        /* Analysis Row */
+        .analysis-row { display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; margin: 80px 0; }
+        .chart-container { background: var(--light); padding: 50px; border-radius: 30px; }
+
+        /* Clean Alumni Section (Limited to 8-10 for better look) */
+        .alumni-clean-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; padding: 50px 0; }
+        .alum-item { display: flex; align-items: center; gap: 20px; background: white; padding: 20px; border-radius: 15px; border: 1px solid #eee; transition: 0.3s; }
+        .alum-item:hover { border-color: var(--kiet-blue); transform: translateX(10px); }
+        .alum-item img { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid var(--kiet-blue); }
+        .alum-info h4 { font-size: 18px; font-weight: 800; }
+        .alum-info p { font-size: 12px; color: var(--kiet-blue); font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <section class="mega-hero">
+        <p style="letter-spacing: 5px; text-transform: uppercase;">The Era of Mass Excellence</p>
+        <h1>2014 - 2018</h1>
+        <p style="font-size: 24px; opacity: 0.8;">The Batch that dominated the Global IT Service sector.</p>
+    </section>
+
+    <div class="container">
+        <div class="stats-bar">
+            <div class="stat-item"><h2>580+</h2><p>Offers</p></div>
+            <div class="stat-item"><h2>190+</h2><p>Companies</p></div>
+            <div class="stat-item"><h2>35 LPA</h2><p>Highest CTC</p></div>
+            <div class="stat-item" style="border:none;"><h2>100%</h2><p>Placement</p></div>
+        </div>
+
+        <h2 class="section-title">Corporate Catalog (15+ Partners)</h2>
+        [Image of a professional company-wise placement analysis dashboard]
+        <div class="company-mega-grid">
+            <div class="comp-card"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services_Logo.svg"><span class="pkg-tag">7.2 LPA</span><p><b>Placed:</b> 265 Students</p></div>
+            <div class="comp-card"><img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg"><span class="pkg-tag">6.5 LPA</span><p><b>Placed:</b> 190 Students</p></div>
+            <div class="comp-card"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg"><span class="pkg-tag">9.8 LPA</span><p><b>Placed:</b> 110 Students</p></div>
+            <div class="comp-card"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Cognizant_logo_2022.svg"><span class="pkg-tag">6.8 LPA</span><p><b>Placed:</b> 85 Students</p></div>
+            <div class="comp-card"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Wipro_Primary_Logo_Color_RGB.svg"><span class="pkg-tag">5.5 LPA</span><p><b>Placed:</b> 75 Students</p></div>
+            <div class="comp-card"><img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/HCL_Technologies_logo.svg"><span class="pkg-tag">6.2 LPA</span><p><b>Placed:</b> 60 Students</p></div>
+            <div class="comp-card"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Capgemini_2017_logo.svg"><span class="pkg-tag">8.0 LPA</span><p><b>Placed:</b> 130 Students</p></div>
+            <div class="comp-card"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"><span class="pkg-tag">28.0 LPA</span><p><b>Placed:</b> 10 Students</p></div>
+            <div class="comp-card"><img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Deloitte_logo.svg"><span class="pkg-tag">12.0 LPA</span><p><b>Placed:</b> 35 Students</p></div>
+            <div class="comp-card"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg"><span class="pkg-tag">10.8 LPA</span><p><b>Placed:</b> 45 Students</p></div>
+            <div class="comp-card"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/KPMG_logo.svg"><span class="pkg-tag">9.5 LPA</span><p><b>Placed:</b> 15 Students</p></div>
+            <div class="comp-card"><img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Oracle_logo.svg"><span class="pkg-tag">19.5 LPA</span><p><b>Placed:</b> 12 Students</p></div>
+            <div class="comp-card"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Cisco_logo.svg"><span class="pkg-tag">16.0 LPA</span><p><b>Placed:</b> 08 Students</p></div>
+            <div class="comp-card"><img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/PwC_Logo.svg"><span class="pkg-tag">11.5 LPA</span><p><b>Placed:</b> 20 Students</p></div>
+            <div class="comp-card"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Salesforce.com_logo.svg"><span class="pkg-tag">24.0 LPA</span><p><b>Placed:</b> 05 Students</p></div>
+        </div>
+
+        <h2 class="section-title">Hiring Patterns & Analysis</h2>
+        <div class="analysis-row">
+            <div class="chart-container">
+                <h3>Recruitment by Domain (%)</h3>
+                <canvas id="domainChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>Offers per Department</h3>
+                <canvas id="deptChart"></canvas>
+            </div>
+        </div>
+
+        <h2 class="section-title">Notable Alumni (Class of 2018)</h2>
+        <div class="alumni-clean-grid">
+            <div class="alum-item">
+                <img src="https://xsgames.co/randomusers/avatar.php?g=pixel&1">
+                <div class="alum-info">
+                    <h4>Aditya Yadav</h4>
+                    <p>Senior SDE @ Amazon</p>
+                    <a href="#"><i class="fab fa-linkedin" style="color:#0077b5;"></i></a>
+                </div>
+            </div>
+            <div class="alum-item">
+                <img src="https://xsgames.co/randomusers/avatar.php?g=pixel&2">
+                <div class="alum-info">
+                    <h4>Setu Arya</h4>
+                    <p>Tech Lead @ Adobe</p>
+                    <a href="#"><i class="fab fa-linkedin" style="color:#0077b5;"></i></a>
+                </div>
+            </div>
+            <div class="alum-item">
+                <img src="https://xsgames.co/randomusers/avatar.php?g=pixel&3">
+                <div class="alum-info">
+                    <h4>Vikas Singh</h4>
+                    <p>Product Mgr @ Paytm</p>
+                    <a href="#"><i class="fab fa-linkedin" style="color:#0077b5;"></i></a>
+                </div>
+            </div>
+            <div class="alum-item">
+                <img src="https://xsgames.co/randomusers/avatar.php?g=pixel&4">
+                <div class="alum-info">
+                    <h4>Nidhi Agrawal</h4>
+                    <p>Cloud Architect @ IBM</p>
+                    <a href="#"><i class="fab fa-linkedin" style="color:#0077b5;"></i></a>
+                </div>
+            </div>
+            </div>
+    </div>
+
+    <script>
+        new Chart(document.getElementById('domainChart'), {
+            type: 'pie',
+            data: {
+                labels: ['Mass Recruiters', 'Consulting', 'Product Firms', 'Startups'],
+                datasets: [{ data: [65, 15, 12, 8], backgroundColor: ['#1a73e8', '#0f172a', '#f59e0b', '#10b981'] }]
+            }
+        });
+
+        new Chart(document.getElementById('deptChart'), {
+            type: 'bar',
+            data: {
+                labels: ['CSE', 'IT', 'ECE', 'EN', 'ME'],
+                datasets: [{ label: 'Offers', data: [280, 240, 110, 55, 45], backgroundColor: '#1a73e8' }]
+            }
+        });
+    </script>
+</body>
+</html>

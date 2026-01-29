@@ -2,53 +2,108 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>TCS Recruitment</title>
+    <title>TCS Global Hub | TechVarsity</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
-        body { background: white; }
-        .blue-header { background: #003399; color: white; padding: 80px 10%; }
-        .container { padding: 60px 10%; }
-        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: -120px; }
-        .card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; }
-        .section { margin-top: 60px; }
-        .apply-panel { background: #f4f8ff; padding: 50px; text-align: center; border-radius: 20px; margin-top: 50px; border: 2px solid #003399; }
-        .btn-tcs { background: #003399; color: white; padding: 15px 40px; border: none; font-weight: bold; cursor: pointer; }
+        :root { --tcs-blue: #003399; --tcs-cyan: #00d2ff; --text: #1a1a1a; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background: white; color: var(--text); line-height: 1.6; }
+
+        .top-nav { padding: 20px 8%; display: flex; justify-content: space-between; border-bottom: 2px solid var(--tcs-blue); position: sticky; top: 0; background: white; z-index: 100; }
+        
+        /* Glorify Section */
+        .hero-glory { padding: 120px 8%; background: linear-gradient(135deg, #f0f4f8 0%, #ffffff 100%); display: flex; align-items: center; gap: 60px; }
+        .hero-text h1 { font-size: 85px; font-weight: 900; color: var(--tcs-blue); letter-spacing: -3px; }
+        .glory-stats { display: flex; gap: 40px; margin-top: 50px; }
+        .g-card { border-left: 6px solid var(--tcs-cyan); padding-left: 25px; }
+
+        /* Visit Alert */
+        .visit-alert { background: var(--tcs-blue); color: white; padding: 50px 8%; text-align: center; }
+        .alert-box { display: inline-block; background: var(--tcs-cyan); color: var(--tcs-blue); padding: 12px 30px; border-radius: 50px; font-weight: 900; margin-bottom: 20px; }
+
+        /* Analysis */
+        .container { padding: 100px 8%; }
+        .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-top: 60px; }
+        .chart-card { background: white; padding: 45px; border-radius: 30px; border: 1px solid #eee; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+
+        /* Massive Alumni Wall */
+        .alumni-sec { padding: 100px 8%; background: #001a4d; color: white; }
+        .alumni-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; margin-top: 60px; }
+        .alum-card { background: rgba(255,255,255,0.05); padding: 35px; border-radius: 25px; text-align: center; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
+        .alum-card:hover { transform: translateY(-15px); border-color: var(--tcs-cyan); background: rgba(0,210,255,0.1); }
+        .alum-card img { width: 110px; height: 110px; border-radius: 50%; border: 4px solid var(--tcs-cyan); margin-bottom: 20px; }
     </style>
 </head>
 <body>
-    <div class="blue-header">
-        <h1>Tata Consultancy Services</h1>
-        <p>A global leader in IT Services, Consulting & Business Solutions.</p>
-    </div>
-    <div class="container">
-        <div class="grid">
-            <div class="card"><h3>Ninja</h3><p>3.6 LPA</p></div>
-            <div class="card" style="border-top: 5px solid #003399;"><h3>Digital</h3><p>7.2 LPA</p></div>
-            <div class="card"><h3>Prime</h3><p>11.5 LPA</p></div>
-        </div>
+    <nav class="top-nav"><a href="index.html" style="text-decoration:none; color:var(--tcs-blue); font-weight:bold;"><i class="fas fa-arrow-left"></i> BACK TO HUB</a><div class="logo"><b>TCS</b> GLOBAL DRIVE 2026</div></nav>
 
-        <div class="section">
-            <h2>Selection Criteria & Facility</h2>
-            <div style="display:flex; gap: 50px; margin-top: 30px;">
-                <div style="flex:1;">
-                    <p>Selection is based on the National Qualifier Test (NQT). Candidates with high coding scores are moved to Digital and Prime roles.</p>
-                </div>
-                <div style="flex:1;">
-                    <ul style="line-height: 2;">
-                        <li>Health Insurance for Employee & Family</li>
-                        <li>Soft Skill Training & Certifications</li>
-                        <li>Global Rotation Program</li>
-                    </ul>
-                </div>
+    <section class="hero-glory">
+        <div class="hero-text">
+            <h1>Experience <br><span style="color:var(--tcs-cyan)">Certainty.</span></h1>
+            <p style="font-size: 26px; color: #444; margin-top: 20px;">TCS isn't just a company; it's a global ecosystem. Join the <b>TCS Prime</b> track to work on high-impact R&D and Digital Transformation.</p>
+            <div class="glory-stats">
+                <div class="g-card"><h2>11.5 LPA</h2><p>Prime Package</p></div>
+                <div class="g-card"><h2>$27.9B</h2><p>Annual Revenue</p></div>
             </div>
         </div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services_Logo.svg" style="width: 280px;">
+    </section>
 
-        <div class="apply-panel">
-            <h2>Start Your Journey with TCS</h2>
-            <p style="margin-bottom: 20px;">Upload your Resume / NQT Scorecard</p>
-            <input type="file"><br><br>
-            <button class="btn-tcs" onclick="alert('Application Sent to TCS!')">SUBMIT RESUME</button>
-        </div>
+    <div class="visit-alert">
+        <div class="alert-box">LIVE NQT DRIVE: OCT 25, 2026</div>
+        <h2>Target: 450 Byte Busters for Digital & Prime Roles</h2>
     </div>
+
+    <section class="container">
+        <h2 style="font-size: 45px; text-align: center;">Hiring Intelligence</h2>
+        [Image of a comparative bar chart showing placement count and average package of 15 major tech companies]
+        <div class="charts-grid">
+            <div class="chart-card"><h3>Package Distribution</h3><canvas id="tcsPie"></canvas></div>
+            <div class="chart-card"><h3>Preparation Priority</h3><canvas id="tcsRadar"></canvas></div>
+        </div>
+    </section>
+
+
+    <section class="alumni-sec">
+        <h2 style="font-size: 40px; text-align: center;">The Global Wall: 20+ Alumni at TCS</h2>
+        <div class="alumni-grid">
+            <script>
+                for(let i=1; i<=4; i++) {
+                    document.write(`
+                        <div class="alum-card">
+                            <img src="https://xsgames.co/randomusers/avatar.php?g=pixel&${i+80}">
+                            <h4>TCS Leader ${i}</h4>
+                            <p style="color:var(--tcs-cyan); font-weight:bold;">Project Lead @ TCS UK</p>
+                            <a href="#" style="color:white; font-size:12px; margin-top:10px; display:block;"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                        </div>
+                    `);
+                }
+            </script>
+        </div>
+    </section>
+
+    <section class="apply-section-fixed" style="text-align: center; padding: 100px 0; background: #f8f9fa;">
+    <h2 style="font-size: 36px; margin-bottom: 20px;">Ready to join the force?</h2>
+    <p style="color: #666; margin-bottom: 40px;">Please complete the official recruitment form to be considered for this role.</p>
+    
+    <a href="registration.html" class="btn-google" style="padding: 20px 60px; background: #4285F4; color: white; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 20px; box-shadow: 0 10px 20px rgba(66,133,244,0.3);">
+        APPLY FOR THIS ROLE
+    </a>
+</section>
+
+    <script>
+        new Chart(document.getElementById('tcsPie'), {
+            type: 'doughnut',
+            data: { labels: ['Ninja', 'Digital', 'Prime'], datasets: [{ data: [400, 150, 45], backgroundColor: ['#eee', '#00d2ff', '#003399'] }] }
+        });
+        new Chart(document.getElementById('tcsRadar'), {
+            type: 'radar',
+            data: {
+                labels: ['Coding', 'Aptitude', 'Psychometric', 'Communication', 'Technical'],
+                datasets: [{ label: 'Score Needed', data: [90, 85, 70, 95, 88], backgroundColor: 'rgba(0, 210, 255, 0.2)', borderColor: '#00d2ff' }]
+            }
+        });
+    </script>
 </body>
 </html>

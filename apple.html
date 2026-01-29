@@ -2,43 +2,122 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Apple Careers | TechVarsity</title>
+    <title>Apple Careers | TechVarsity Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        body { background: #fff; color: #1d1d1f; text-align: center; }
-        .container { padding: 100px 15%; }
-        h1 { font-size: 64px; font-weight: 600; letter-spacing: -2px; margin-bottom: 10px; }
-        .subtitle { font-size: 28px; color: #86868b; margin-bottom: 60px; }
-        .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; text-align: left; }
-        .feature-box { padding: 40px; background: #f5f5f7; border-radius: 20px; }
-        .pkg-text { font-size: 40px; font-weight: bold; color: #000; margin-top: 20px; }
-        .upload-area { border-top: 1px solid #d2d2d7; margin-top: 80px; padding-top: 60px; }
-        .btn-apple { background: #0071e3; color: white; padding: 18px 45px; border-radius: 40px; border: none; font-size: 17px; cursor: pointer; }
+        :root { --apple-black: #1d1d1f; --apple-grey: #86868b; --apple-blue: #0066cc; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+        body { background: white; color: var(--apple-black); line-height: 1.5; }
+
+        .top-nav { padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; position: sticky; top: 0; background: rgba(255,255,255,0.8); backdrop-filter: blur(10px); z-index: 100; }
+        
+        /* Glorification */
+        .hero-glory { padding: 120px 8%; text-align: center; background: #f5f5f7; }
+        .hero-glory h1 { font-size: 80px; font-weight: 600; letter-spacing: -3px; }
+        .hero-glory p { font-size: 26px; color: var(--apple-grey); margin-top: 20px; max-width: 800px; margin-left: auto; margin-right: auto; }
+
+        .container { padding: 80px 8%; }
+
+        /* Visit Alert */
+        .visit-alert { background: var(--apple-black); color: white; padding: 40px 8%; text-align: center; border-radius: 30px; margin: 40px 8%; }
+        .alert-box { background: var(--apple-blue); padding: 8px 20px; border-radius: 50px; font-size: 14px; font-weight: bold; margin-bottom: 20px; display: inline-block; }
+
+        /* Analysis */
+        .charts-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 50px; margin: 60px 0; }
+        .chart-card { background: #fff; padding: 40px; border-radius: 30px; border: 1px solid #f2f2f2; box-shadow: 0 10px 40px rgba(0,0,0,0.03); }
+
+        /* Massive Alumni */
+        .alumni-sec { background: #f5f5f7; padding: 100px 8%; }
+        .alumni-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; margin-top: 50px; }
+        .alum-card { background: white; padding: 30px; border-radius: 20px; text-align: center; transition: 0.3s; }
+        .alum-card:hover { transform: translateY(-10px); }
+        .alum-card img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; }
+
+        .btn-apple { background: var(--apple-blue); color: white; padding: 18px 50px; border: none; border-radius: 30px; font-size: 18px; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
-    <div class="container">
+
+    <nav class="top-nav">
+        <a href="index.html" style="text-decoration: none; color: black; font-weight: bold;"><i class="fas fa-chevron-left"></i> Main Portal</a>
+        <i class="fab fa-apple fa-2x"></i>
+        <div style="width: 100px;"></div>
+    </nav>
+
+    <section class="hero-glory">
         <h1>Think Different.</h1>
-        <p class="subtitle">Join Apple's Engineering Team.</p>
-
-        <div class="feature-grid">
-            <div class="feature-box">
-                <h3>The Package</h3>
-                <p class="pkg-text">56.0 LPA</p>
-                <p style="color:#86868b; margin-top:10px;">Including Stocks and Bonuses</p>
-            </div>
-            <div class="feature-box">
-                <h3>The Selection</h3>
-                <p style="margin-top:20px; line-height: 1.6;">Our interview process focuses on your ability to innovate and your attention to the smallest details of code quality and privacy.</p>
-            </div>
+        <p>Innovation at Apple is about creating products that redefine what's possible. Join a culture that values perfection and privacy.</p>
+        <div style="display: flex; justify-content: center; gap: 60px; margin-top: 50px;">
+            <div><h2 style="font-size: 40px;">48.0 LPA</h2><p>Average Package</p></div>
+            <div><h2 style="font-size: 40px;">Top 3</h2><p>Global Ranking</p></div>
         </div>
+    </section>
 
-        <div class="upload-area">
-            <h2>Start your application</h2>
-            <p style="color:#86868b; margin: 20px 0;">Share your resume and portfolio.</p>
-            <input type="file" style="margin-bottom: 30px;"><br>
-            <button class="btn-apple" onclick="alert('Sent to Apple Recruitment.')">Submit Application</button>
-        </div>
+    <div class="visit-alert">
+        <div class="alert-box">CAMPUS RECRUITMENT: OCT 12, 2026</div>
+        <h2>Target: 15 Design-Focused SDEs</h2>
+        <p style="opacity: 0.7; margin-top: 10px;">Selection Focus: Attention to Detail, Swift/C++, and Core Engineering.</p>
     </div>
+
+    <section class="container">
+        <h2 style="font-size: 40px; margin-bottom: 40px;">Selection Analysis</h2>
+        [Image of a professional company-wise placement analysis dashboard showing interview performance metrics]
+        <div class="charts-grid">
+            <div class="chart-card">
+                <h3>Interview Weightage Pattern</h3>
+                <canvas id="appleRadar"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3>Hiring Status</h3>
+                <canvas id="appleDoughnut"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <section class="alumni-sec">
+        <h2>Byte Busters at Apple</h2>
+        <p>Learn from 20+ seniors who are building the next iOS and Mac experiences.</p>
+        <div class="alumni-grid">
+            <script>
+                for(let i=1; i<=5; i++) {
+                    document.write(`
+                        <div class="alum-card">
+                            <img src="https://xsgames.co/randomusers/avatar.php?g=pixel&${i+20}">
+                            <h4>Apple Alum ${i}</h4>
+                            <p style="color:var(--apple-blue); font-weight:bold; font-size:12px;">iOS Engineer @ Cupertino</p>
+                            <a href="#" style="color:#0077b5; text-decoration:none; font-size:12px;"><i class="fab fa-linkedin"></i> Connect</a>
+                        </div>
+                    `);
+                }
+            </script>
+        </div>
+    </section>
+
+    <section class="apply-section-fixed" style="text-align: center; padding: 100px 0; background: #f8f9fa;">
+    <h2 style="font-size: 36px; margin-bottom: 20px;">Ready to join the force?</h2>
+    <p style="color: #666; margin-bottom: 40px;">Please complete the official recruitment form to be considered for this role.</p>
+    
+    <a href="registration.html" class="btn-google" style="padding: 20px 60px; background: #4285F4; color: white; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 20px; box-shadow: 0 10px 20px rgba(66,133,244,0.3);">
+        APPLY FOR THIS ROLE
+    </a>
+</section>
+
+    <script>
+        new Chart(document.getElementById('appleRadar'), {
+            type: 'radar',
+            data: {
+                labels: ['Attention to Detail', 'Core C++', 'Operating Systems', 'System Design', 'Behavioral'],
+                datasets: [{ label: 'Score Required', data: [100, 90, 85, 80, 95], backgroundColor: 'rgba(0, 102, 204, 0.2)', borderColor: '#0066cc' }]
+            }
+        });
+        new Chart(document.getElementById('appleDoughnut'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Applied', 'Technical Test', 'Interviews', 'Selected'],
+                datasets: [{ data: [400, 60, 15, 5], backgroundColor: ['#1d1d1f', '#86868b', '#0066cc', '#555555'] }]
+            }
+        });
+    </script>
 </body>
 </html>

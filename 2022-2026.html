@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Batch 2022-2026 | The AI & FinTech Frontier</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root { --primary: #10b981; --dark: #020617; --slate: #1e293b; --neon: #00ff88; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: white; color: var(--dark); line-height: 1.6; overflow-x: hidden; }
+
+        /* Full Height Futuristic Hero */
+        .mega-hero { 
+            height: 90vh; 
+            background: linear-gradient(rgba(2, 6, 23, 0.8), rgba(2, 6, 23, 0.9)), url('https://images.unsplash.com/photo-1620712943543-bcc4638d9980?auto=format&fit=crop&w=1200&q=80'); 
+            background-size: cover; background-attachment: fixed; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; 
+        }
+        .mega-hero h1 { font-size: 110px; font-weight: 900; letter-spacing: -5px; text-shadow: 0 0 20px rgba(16, 185, 129, 0.5); }
+        .live-pulse { width: 15px; height: 15px; background: var(--neon); border-radius: 50%; display: inline-block; margin-right: 10px; box-shadow: 0 0 10px var(--neon); animation: blink 1.5s infinite; }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+
+        .container { width: 90%; margin: auto; }
+
+        /* Stats Bar */
+        .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--primary); color: white; padding: 60px 0; margin-top: -60px; border-radius: 30px; }
+        .stat-item { text-align: center; border-right: 1px solid rgba(255,255,255,0.2); }
+        .stat-item h2 { font-size: 45px; }
+
+        /* Company Grid - 15+ Companies */
+        .section-title { font-size: 50px; font-weight: 900; margin: 120px 0 60px; text-align: center; position: relative; }
+        .section-title::after { content: ''; width: 100px; height: 6px; background: var(--primary); position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); }
+
+        .company-mega-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .comp-card { background: #f8fafc; padding: 40px; border-radius: 25px; border: 1px solid #e2e8f0; transition: 0.4s; position: relative; overflow: hidden; }
+        .comp-card:hover { transform: translateY(-15px); box-shadow: 0 25px 50px rgba(16, 185, 129, 0.15); border-color: var(--primary); }
+        .comp-card img { height: 50px; margin-bottom: 25px; filter: grayscale(20%); }
+        .pkg-tag { color: var(--primary); font-weight: 800; font-size: 24px; display: block; margin-bottom: 15px; }
+        .live-status { position: absolute; top: 20px; right: 20px; font-size: 11px; font-weight: bold; padding: 5px 12px; border-radius: 50px; background: #dcfce7; color: #166534; }
+
+        /* Analysis & Patterns */
+        .analysis-row { display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; margin: 80px 0; }
+        .chart-container { background: #f1f5f9; padding: 50px; border-radius: 40px; }
+
+        /* Massive Alumni Wall */
+        .alumni-wall { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 25px; padding: 60px 0; }
+        .alum-card { text-align: center; padding: 35px; background: white; border: 1px solid #eee; border-radius: 24px; transition: 0.3s; position: relative; }
+        .alum-card:hover { border-color: var(--primary); transform: scale(1.03); background: #f0fdf4; }
+        .alum-card img { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 4px solid var(--primary); }
+
+        /* Study Material Section */
+        .study-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 100px; }
+        .study-card { padding: 40px; background: var(--dark); color: white; border-radius: 30px; }
+        .study-card i { font-size: 40px; color: var(--primary); margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+    <div style="background: var(--dark); color: white; text-align: center; padding: 12px; font-weight: bold; letter-spacing: 2px;">
+        <span class="live-pulse"></span> SYSTEM STATUS: PLACEMENT DRIVE 2026 ACTIVE
+    </div>
+
+    <section class="mega-hero">
+        <p style="letter-spacing: 8px; text-transform: uppercase; color: var(--primary);">The Architects of AI</p>
+        <h1>2022 - 2026</h1>
+        <p style="font-size: 28px; opacity: 0.9;">Leading the Digital Sovereignty with Innovation & Grit.</p>
+        <a href="#companies" style="margin-top: 40px; color: white; font-size: 30px;"><i class="fas fa-chevron-down"></i></a>
+    </section>
+
+    <div class="container">
+        <div class="stats-bar">
+            <div class="stat-item"><h2>850+</h2><p>Registered</p></div>
+            <div class="stat-item"><h2>220+</h2><p>Offers Today</p></div>
+            <div class="stat-item"><h2>58 LPA</h2><p>Max Package</p></div>
+            <div class="stat-item" style="border:none;"><h2>LIVE</h2><p>Portal Status</p></div>
+        </div>
+
+        <h2 class="section-title" id="companies">The 2026 Hiring Landscape (15+ Partners)</h2>
+        
+        <div class="company-mega-grid">
+            <div class="comp-card">
+                <span class="live-status">ONGOING</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg">
+                <span class="pkg-tag">54.0 LPA</span>
+                <p><b>Role:</b> AI Infrastructure Eng.</p>
+                <p><b>Shortlisted:</b> 25 Students</p>
+            </div>
+            <div class="comp-card">
+                <span class="live-status">COMPLETED</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/OpenAI_Logo.svg">
+                <span class="pkg-tag">62.5 LPA</span>
+                <p><b>Placed:</b> 04 Students</p>
+                <p><b>Focus:</b> LLM Fine-tuning</p>
+            </div>
+            <div class="comp-card">
+                <span class="live-status">LIVE</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Oracle_logo.svg">
+                <span class="pkg-tag">22.0 LPA</span>
+                <p><b>Status:</b> Round 2 Pending</p>
+                <p><b>Target:</b> 35 Students</p>
+            </div>
+            <div class="comp-card"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Goldman_Sachs_Logo.svg"><span class="pkg-tag">32.0 LPA</span><p><b>Placed:</b> 12 Students</p></div>
+            <div class="comp-card"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/ServiceNow_logo.svg"><span class="pkg-tag">28.5 LPA</span><p><b>Placed:</b> 22 Students</p></div>
+            <div class="comp-card"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Atlassian_logo.svg"><span class="pkg-tag">45.0 LPA</span><p><b>Placed:</b> 06 Students</p></div>
+            <div class="comp-card"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Paytm_Logo.svg"><span class="pkg-tag">18.0 LPA</span><p><b>Target:</b> 40 Students</p></div>
+            <div class="comp-card"><img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Zomato_logo.png"><span class="pkg-tag">25.0 LPA</span><p><b>Shortlisted:</b> 15</p></div>
+            <div class="comp-card"><img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Infosys_logo.svg"><span class="pkg-tag">9.5 LPA (Power)</span><p><b>Placed:</b> 85 Students</p></div>
+            <div class="comp-card"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services_Logo.svg"><span class="pkg-tag">11.2 LPA (Prime)</span><p><b>Placed:</b> 110 Students</p></div>
+            <div class="comp-card"><img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Intel_logo_%282020%2C_light_blue%29.svg"><span class="pkg-tag">30.0 LPA</span><p><b>Role:</b> Core Hardware</p></div>
+            <div class="comp-card"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Salesforce.com_logo.svg"><span class="pkg-tag">22.0 LPA</span><p><b>Status:</b> PPT Done</p></div>
+            <div class="comp-card"><img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/HCL_Technologies_logo.svg"><span class="pkg-tag">8.5 LPA</span><p><b>Target:</b> 150 Students</p></div>
+            <div class="comp-card"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Byju%27s_logo.svg"><span class="pkg-tag">12.0 LPA</span><p><b>Placed:</b> 45 Students</p></div>
+            <div class="comp-card"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg"><span class="pkg-tag">10.5 LPA</span><p><b>Status:</b> Assessment Week</p></div>
+        </div>
+
+        <h2 class="section-title">Preparation Vault (Special Batch 2026)</h2>
+        <div class="study-grid">
+            <div class="study-card">
+                <i class="fas fa-microchip"></i>
+                <h3>AI & ML Roadmap</h3>
+                <p>Complete guide for LLMs, PyTorch, and CUDA optimization.</p>
+            </div>
+            <div class="study-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Cyber Security Kit</h3>
+                <p>Encryption basics and Network security for Palo Alto rounds.</p>
+            </div>
+            <div class="study-card">
+                <i class="fas fa-coins"></i>
+                <h3>FinTech Prep</h3>
+                <p>Quantitative Aptitude and HFT coding patterns.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Batch Analysis & Trends</h2>
+        
+        <div class="analysis-row">
+            <div class="chart-container">
+                <h3>Department Performance</h3>
+                <canvas id="liveBar"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>Hiring Domain Split</h3>
+                <canvas id="livePie"></canvas>
+            </div>
+        </div>
+
+        <h2 class="section-title">The Hall of Fame (10+ Notable Students)</h2>
+        <div class="alumni-wall">
+            <script>
+                const students = [
+                    {n: "Aryan Sharma", c: "NVIDIA", r: "AI Engineer"},
+                    {n: "Ishita Verma", c: "OpenAI", r: "NLP Specialist"},
+                    {n: "Kabir Singh", c: "Goldman Sachs", r: "Quant Intern"},
+                    {n: "Mehak Jain", c: "Microsoft", r: "SDE Intern"},
+                    {n: "Rohan Das", c: "Amazon", r: "Cloud Associate"},
+                    {n: "Sanya Gupta", c: "Google", r: "STEP Intern"},
+                    {n: "Arjun Pal", c: "Atlassian", r: "Product Dev"},
+                    {n: "Simran Kaur", c: "Zomato", r: "Full Stack"},
+                    {n: "Abhay Negi", c: "Paytm", r: "Security Analyst"},
+                     
+                ];
+                students.forEach(s => {
+                    document.write(`
+                        <div class="alum-card">
+                            <img src="https://xsgames.co/randomusers/avatar.php?g=pixel&${Math.random()}">
+                            <h3>${s.n}</h3>
+                            <p style="color:var(--primary); font-weight:bold;">${s.c}</p>
+                            <p style="font-size:12px;">${s.r}</p>
+                            <div style="margin-top:15px;">
+                                <i class="fab fa-linkedin" style="color:#0077b5; font-size:20px; cursor:pointer;"></i>
+                                <i class="fas fa-envelope" style="margin-left:15px; cursor:pointer; color:#ef4444;"></i>
+                            </div>
+                        </div>
+                    `);
+                });
+            </script>
+        </div>
+    </div>
+
+    <script>
+        new Chart(document.getElementById('liveBar'), {
+            type: 'bar',
+            data: {
+                labels: ['CSE', 'IT', 'ECE', 'ME', 'CE'],
+                datasets: [{ label: 'Offers Secured', data: [320, 280, 150, 45, 30], backgroundColor: '#10b981' }]
+            }
+        });
+
+        new Chart(document.getElementById('livePie'), {
+            type: 'pie',
+            data: {
+                labels: ['AI/ML', 'Cloud', 'Core SDE', 'Hardware', 'Finance'],
+                datasets: [{ data: [35, 25, 20, 10, 10], backgroundColor: ['#020617', '#10b981', '#3b82f6', '#f59e0b', '#ef4444'] }]
+            }
+        });
+    </script>
+
+</body>
+</html>

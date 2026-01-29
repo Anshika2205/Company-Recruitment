@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | KIET Career Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { 
+            margin: 0; height: 100vh; display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(rgba(15,23,42,0.9), rgba(15,23,42,0.9)), url('https://admissionwala.in/storage/productimages/KIET-Group-of-Institutions-Ghaziabad-Campus-View-1.jpg');
+            background-size: cover; font-family: 'Inter', sans-serif; overflow: hidden;
+        }
+        .login-box {
+            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px);
+            padding: 50px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.2);
+            width: 380px; text-align: center; color: white; box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            transition: 0.5s;
+        }
+        input {
+            width: 100%; padding: 15px; margin: 10px 0; background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; color: white; outline: none; box-sizing: border-box;
+        }
+        button {
+            width: 100%; padding: 15px; background: #1a73e8; border: none; color: white;
+            border-radius: 10px; font-weight: bold; cursor: pointer; margin-top: 20px; font-size: 16px;
+        }
+        button:hover { background: #1557b0; }
+        .error { color: #ff4d4d; font-size: 13px; display: none; margin-top: 10px; font-weight: bold; }
+
+        /* Success Popup Style */
+        #successPopup {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center;
+            flex-direction: column; color: white; transition: 0.5s;
+        }
+        .success-card {
+            background: white; color: #1e293b; padding: 40px; border-radius: 20px; text-align: center;
+            animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+        @keyframes popIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <div class="login-box" id="mainBox">
+        <h2>KIET Student Login</h2>
+        <p style="opacity: 0.7; font-size: 14px;">Enter your official credentials</p>
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="student_name@kiet.edu" required>
+            <input type="password" id="password" placeholder="Password (Min. 6 chars)" required>
+            <button type="submit">Verify & Enter Hub</button>
+            <p id="errorMsg" class="error"></p>
+        </form>
+    </div>
+
+    <div id="successPopup">
+        <div class="success-card">
+            <i class="fas fa-check-circle" style="font-size: 60px; color: #34A853; margin-bottom: 20px;"></i>
+            <h1 style="margin: 0;">Login Successful!</h1>
+            <p style="color: #64748b;">Redirecting to KIET Career Hub...</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorElement = document.getElementById('errorMsg');
+
+            // 1. Email Validation
+            if (!email.toLowerCase().endsWith('@kiet.edu')) {
+                errorElement.innerText = "⚠️ Error: Use official @kiet.edu ID!";
+                errorElement.style.display = 'block';
+                return;
+            }
+
+            // 2. Password Validation
+            if (password.length < 6) {
+                errorElement.innerText = "⚠️ Error: Password must be at least 6 characters!";
+                errorElement.style.display = 'block';
+                return;
+            }
+
+            // Sab sahi hai toh Success dikhao
+            errorElement.style.display = 'none';
+            document.getElementById('mainBox').style.opacity = '0';
+            
+            setTimeout(() => {
+                // Show Success Popup
+                document.getElementById('successPopup').style.display = 'flex';
+                
+                // Session data save karo
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('userEmail', email);
+
+                // 2 seconds baad redirect karo
+                setTimeout(() => {
+                    window.location.href = 'index.html'; 
+                }, 2000);
+            }, 300);
+        });
+    </script>
+</body>
+</html>

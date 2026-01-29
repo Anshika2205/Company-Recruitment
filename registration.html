@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recruitment Portal | KIET Placement Cell</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --primary: #1a73e8; --dark: #1e293b; --bg: #f4f7fe; }
+        * { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background: var(--bg); margin: 0; padding: 40px 20px; display: flex; justify-content: center; }
+
+        .reg-card { 
+            background: white; max-width: 900px; width: 100%; padding: 50px; 
+            border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
+        }
+
+        .header { border-bottom: 2px solid #eee; margin-bottom: 40px; padding-bottom: 20px; }
+        .header h1 { font-size: 32px; color: var(--dark); margin: 0; }
+        .header p { color: #64748b; margin-top: 5px; }
+
+        .section-header { 
+            font-size: 18px; font-weight: 700; color: var(--primary); 
+            margin: 35px 0 15px; text-transform: uppercase; letter-spacing: 1px;
+            display: flex; align-items: center; gap: 10px;
+        }
+
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .form-group { display: flex; flex-direction: column; margin-bottom: 15px; }
+        label { font-size: 14px; font-weight: 600; margin-bottom: 8px; color: #475569; }
+        
+        input, select, textarea { 
+            padding: 12px 15px; border: 1.5px solid #e2e8f0; border-radius: 8px; 
+            font-size: 15px; transition: 0.3s; outline: none;
+        }
+        input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(26, 115, 232, 0.1); }
+
+        .upload-area {
+            border: 2px dashed #cbd5e1; padding: 30px; border-radius: 12px;
+            text-align: center; background: #f8fafc; cursor: pointer; transition: 0.3s;
+        }
+        .upload-area:hover { border-color: var(--primary); background: #f1f5f9; }
+
+        .btn-submit {
+            width: 100%; padding: 18px; background: var(--primary); color: white;
+            border: none; border-radius: 10px; font-size: 18px; font-weight: 700;
+            cursor: pointer; margin-top: 50px; transition: 0.3s;
+        }
+        .btn-submit:hover { background: #1557b0; transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+
+    <div class="reg-card">
+        <div class="header">
+            <h1>Candidate Registration</h1>
+            <p>Official Recruitment Application | KIET Group of Institutions</p>
+        </div>
+
+        <form id="recruitmentForm" onsubmit="handleFinalSubmit(event)">
+            <div class="section-header"><i class="fas fa-user-circle"></i> Personal Information</div>
+            <div class="grid">
+                <div class="form-group"><label>Full Name</label><input type="text" placeholder="e.g. Aditya Yadav" required></div>
+                <div class="form-group"><label>University Roll No.</label><input type="text" placeholder="2200290100..." required></div>
+                <div class="form-group"><label>Contact Number</label><input type="tel" placeholder="+91 XXXXX XXXXX" required></div>
+                <div class="form-group"><label>Branch</label>
+                    <select required>
+                        <option value="">Select Branch</option>
+                        <option>CSE</option><option>IT</option><option>CS (AI&ML)</option><option>ECE</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="section-header"><i class="fas fa-graduation-cap"></i> Academic Excellence</div>
+            <div class="grid">
+                <div class="form-group"><label>B.Tech CGPA (Current)</label><input type="number" step="0.01" placeholder="e.g. 8.90" required></div>
+                <div class="form-group"><label>Active Backlogs</label><input type="number" value="0" required></div>
+                <div class="form-group"><label>12th Percentage</label><input type="number" placeholder="e.g. 92" required></div>
+                <div class="form-group"><label>10th Percentage</label><input type="number" placeholder="e.g. 95" required></div>
+            </div>
+
+            <div class="section-header"><i class="fas fa-link"></i> Portfolio & Profiles</div>
+            <div class="grid">
+                <div class="form-group"><label>LinkedIn Profile</label><input type="url" placeholder="https://linkedin.com/in/..." required></div>
+                <div class="form-group"><label>GitHub / Portfolio</label><input type="url" placeholder="https://github.com/..." required></div>
+            </div>
+
+            <div class="section-header"><i class="fas fa-file-pdf"></i> Resume Submission</div>
+            <div class="upload-area" onclick="document.getElementById('resumeFile').click()">
+                <i class="fas fa-cloud-upload-alt fa-3x" style="color: #64748b; margin-bottom: 10px;"></i>
+                <p style="margin: 0; font-weight: 600;">Click to upload your Resume (PDF only)</p>
+                <small id="fileNameDisplay" style="color: var(--primary); display: block; margin-top: 10px;"></small>
+                <input type="file" id="resumeFile" style="display: none;" accept=".pdf" onchange="showFileName()" required>
+            </div>
+
+            <button type="submit" class="btn-submit">SUBMIT OFFICIAL APPLICATION</button>
+        </form>
+    </div>
+
+    <script>
+        function showFileName() {
+            const file = document.getElementById('resumeFile').files[0];
+            if(file) document.getElementById('fileNameDisplay').innerText = "Selected: " + file.name;
+        }
+
+        function handleFinalSubmit(e) {
+            e.preventDefault();
+            // Yahan hum real application submit hone ka drama karenge
+            alert("APPLICATION SUBMITTED SUCCESSFULLY!\n\nYour profile and resume have been securely synced with the company's recruitment portal. Keep an eye on your official KIET email for further updates.");
+            window.location.href = 'index.html'; // Wapas landing page par
+        }
+    </script>
+</body>
+</html>

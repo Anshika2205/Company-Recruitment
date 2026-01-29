@@ -2,44 +2,122 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Meta Careers</title>
+    <title>Meta Recruitment | TechVarsity Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
-        body { background: white; padding: 60px 10%; }
-        .top-bar { color: #0668E1; font-size: 14px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; }
-        h1 { font-size: 60px; margin-bottom: 20px; }
-        .main-content { border-top: 1px solid #eee; padding-top: 40px; display: flex; gap: 60px; }
-        .left { flex: 2; }
-        .right { flex: 1; background: #f0f2f5; padding: 40px; border-radius: 20px; }
-        .btn-meta { background: #0668E1; color: white; padding: 20px 40px; border: none; border-radius: 10px; font-weight: bold; width: 100%; cursor: pointer; font-size: 18px; }
+        :root { --meta-blue: #0668E1; --dark: #1c1e21; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: white; color: var(--dark); line-height: 1.6; }
+
+        /* Full Page Navigation */
+        .top-nav { padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; position: sticky; top: 0; background: white; z-index: 100; }
+        .back-btn { text-decoration: none; color: var(--meta-blue); font-weight: bold; }
+
+        /* Section 1: Glorification */
+        .hero-glory { padding: 120px 8%; background: linear-gradient(135deg, #f0f2f5 0%, #ffffff 100%); display: flex; align-items: center; gap: 60px; }
+        .hero-text h1 { font-size: 85px; font-weight: 900; letter-spacing: -3px; line-height: 1.1; }
+        .glory-stats { display: flex; gap: 50px; margin-top: 50px; }
+        .g-card { border-left: 5px solid var(--meta-blue); padding-left: 25px; }
+
+        /* Section 2: Arrival Alert */
+        .visit-alert { background: #e7f3ff; padding: 40px 8%; text-align: center; }
+        .alert-box { display: inline-block; background: var(--meta-blue); color: white; padding: 12px 30px; border-radius: 50px; font-weight: bold; margin-bottom: 15px; }
+
+        /* Section 3: Analysis */
+        .analysis-sec { padding: 100px 8%; }
+        .charts-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 50px; margin-top: 60px; }
+        .chart-container { background: #fff; padding: 45px; border-radius: 30px; border: 1px solid #eee; box-shadow: 0 15px 40px rgba(0,0,0,0.04); }
+
+        /* Section 4: Study Material */
+        .prep-sec { padding: 100px 8%; background: #f9fafb; }
+        .material-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .m-card { padding: 40px; background: white; border-radius: 20px; border-bottom: 5px solid var(--meta-blue); transition: 0.3s; }
+
+        /* Section 5: HUGE Alumni Wall */
+        .alumni-sec { padding: 100px 8%; background: var(--dark); color: white; }
+        .alumni-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; margin-top: 60px; }
+        .alum-card { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; text-align: center; transition: 0.3s; border: 1px solid rgba(255,255,255,0.1); }
+        .alum-card:hover { transform: translateY(-10px); border-color: var(--meta-blue); }
+        .alum-card img { width: 110px; height: 110px; border-radius: 50%; border: 3px solid var(--meta-blue); margin-bottom: 20px; }
     </style>
 </head>
 <body>
-    <div class="top-bar">Recruitment 2026</div>
-    <h1>Meta Platforms</h1>
-    <div class="main-content">
-        <div class="left">
-            <h2>The Opportunity</h2>
-            <p style="font-size: 18px; line-height: 1.6; margin: 20px 0;">Build the future of social connection. We are looking for engineers who are passionate about the Metaverse, AI, and global-scale systems.</p>
-            <h3 style="margin-top:40px;">Selection Weightage</h3>
-            <div style="background:#eee; height:12px; border-radius:10px; margin: 20px 0;"><div style="width:70%; height:100%; background:#0668E1; border-radius:10px;"></div></div>
-            <p>Coding & Problem Solving (70%)</p>
-            <div style="background:#eee; height:12px; border-radius:10px; margin: 20px 0;"><div style="width:30%; height:100%; background:#0668E1; border-radius:10px;"></div></div>
-            <p>System Architecture & Design (30%)</p>
+    <nav class="top-nav"><a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Hub</a><div class="logo">META CAREERS</div></nav>
+
+    <section class="hero-glory">
+        <div class="hero-text">
+            <h1>Move Fast. <br><span style="color:var(--meta-blue)">Build Together.</span></h1>
+            <p style="font-size: 24px; color: #555; margin-top: 20px;">Meta is looking for high-velocity engineers to architect the Metaverse and Next-Gen AI systems.</p>
+            <div class="glory-stats">
+                <div class="g-card"><h2>72.0 LPA</h2><p>Average Package</p></div>
+                <div class="g-card"><h2>5000+</h2><p>Global Patents</p></div>
+            </div>
         </div>
-        <div class="right">
-            <h3>Package Details</h3>
-            <p style="font-size: 30px; font-weight: bold; margin: 15px 0;">75.0 LPA</p>
-            <hr>
-            <h4 style="margin-top:20px;">Selection Process</h4>
-            <ul style="margin-left: 20px; margin-top: 10px; line-height: 2;">
-                <li>2 Technical Phone Screens</li>
-                <li>4 On-site Interview Panels</li>
-                <li>Product Management Round</li>
-            </ul>
-            <input type="file" style="margin-top: 30px; margin-bottom: 20px;">
-            <button class="btn-meta" onclick="alert('Applied to Meta!')">APPLY NOW</button>
-        </div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" style="width: 350px;">
+    </section>
+
+    <div class="visit-alert">
+        <div class="alert-box">VISIT DATE: NOV 12, 2026</div>
+        <h2>Target: 12 Product Engineers for Meta London/Menlo Park</h2>
     </div>
+
+    <section class="analysis-sec">
+        <h2 style="font-size: 45px; text-align: center;">Selection Analysis</h2>
+        <div class="charts-grid">
+            <div class="chart-container"><h3>Coding & Design Proficiency</h3><canvas id="metaRadar"></canvas></div>
+            <div class="chart-container"><h3>Interview Funnel</h3><canvas id="metaFunnel"></canvas></div>
+        </div>
+    </section>
+
+    <section class="prep-sec">
+        <h2>Preparation Hub (2026)</h2>
+        <div class="material-grid">
+            <div class="m-card"><i class="fas fa-microchip fa-2x" style="color:var(--meta-blue)"></i><h3>System Design</h3><p>Focus on Load Balancers, Sharding, and Caching.</p></div>
+            <div class="m-card"><i class="fas fa-terminal fa-2x" style="color:var(--meta-blue)"></i><h3>Algorithm Speed</h3><p>LeetCode Hard - Focus on Graph & DP (90 min limit).</p></div>
+            <div class="m-card"><i class="fas fa-users fa-2x" style="color:var(--meta-blue)"></i><h3>Culture Fit</h3><p>The "Move Fast" mindset & Behavioral rounds.</p></div>
+        </div>
+    </section>
+
+    <section class="alumni-sec">
+        <h2>The Hall of Fame: 20+ Alumni at Meta</h2>
+        <div class="alumni-grid">
+            <script>
+                for(let i=1; i<=8; i++) {
+                    document.write(`
+                        <div class="alum-card">
+                            <img src="https://xsgames.co/randomusers/avatar.php?g=pixel&${i+30}">
+                            <h4>Meta Alum ${i}</h4>
+                            <p style="color:var(--meta-blue); font-weight:bold;">SDE-2 @ Menlo Park</p>
+                            <a href="#" style="color:white; font-size:12px; margin-top:10px; display:block;"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                        </div>
+                    `);
+                }
+            </script>
+        </div>
+    </section>
+
+    <section class="apply-section-fixed" style="text-align: center; padding: 100px 0; background: #f8f9fa;">
+    <h2 style="font-size: 36px; margin-bottom: 20px;">Ready to join the force?</h2>
+    <p style="color: #666; margin-bottom: 40px;">Please complete the official recruitment form to be considered for this role.</p>
+    
+    <a href="registration.html" class="btn-google" style="padding: 20px 60px; background: #4285F4; color: white; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 20px; box-shadow: 0 10px 20px rgba(66,133,244,0.3);">
+        APPLY FOR THIS ROLE
+    </a>
+</section>
+
+    <script>
+        new Chart(document.getElementById('metaRadar'), {
+            type: 'radar',
+            data: {
+                labels: ['DSA', 'System Design', 'Low Level Design', 'React/UI', 'Scalability'],
+                datasets: [{ label: 'Requirement', data: [95, 90, 80, 70, 95], backgroundColor: 'rgba(6, 104, 225, 0.2)', borderColor: '#0668E1' }]
+            }
+        });
+        new Chart(document.getElementById('metaFunnel'), {
+            type: 'doughnut',
+            data: { labels: ['Applied', 'Shortlisted', 'Interviews', 'Placed'], datasets: [{ data: [500, 100, 25, 6], backgroundColor: ['#0668E1', '#1c1e21', '#8a8d91', '#444'] }] }
+        });
+    </script>
 </body>
 </html>

@@ -4,58 +4,98 @@
     <meta charset="UTF-8">
     <title>Microsoft Careers | TechVarsity</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
+        :root { --ms-blue: #00a4ef; --text: #2f2f2f; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background: white; color: #333; }
-        .hero-strip { background: #00a4ef; height: 10px; width: 100%; }
-        .container { padding: 60px 10%; }
-        .header-sec { display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px; }
-        .pkg-circle { background: #f2f2f2; padding: 30px; border-radius: 50%; text-align: center; border: 2px solid #00a4ef; }
-        .pkg-circle h2 { color: #00a4ef; font-size: 32px; }
-        .content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 50px; }
-        .info-card { background: #f9f9f9; padding: 40px; border-radius: 20px; border-left: 8px solid #00a4ef; }
-        .upload-section { background: #fff; border: 2px dashed #00a4ef; padding: 60px; text-align: center; border-radius: 20px; margin-top: 40px; }
-        .apply-btn { background: #00a4ef; color: white; border: none; padding: 20px 60px; font-size: 20px; font-weight: bold; cursor: pointer; border-radius: 50px; margin-top: 20px; }
+        body { background: white; color: var(--text); line-height: 1.6; }
+        .hero-glory { padding: 100px 8%; background: #f2f2f2; display: flex; align-items: center; gap: 50px; }
+        .hero-text h1 { font-size: 80px; font-weight: 700; }
+        .visit-alert { background: #e6f7ff; padding: 30px 8%; border-y: 1px solid var(--ms-blue); text-align: center; }
+        .alumni-sec { padding: 80px 8%; background: #f8f9fa; }
+        .alumni-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .alum-card { background: white; padding: 25px; border-radius: 10px; text-align: center; border: 1px solid #ddd; transition: 0.3s; }
+        .alum-card:hover { border-color: var(--ms-blue); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .alum-card img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid var(--ms-blue); margin-bottom: 15px; }
+        .btn-ms { background: var(--ms-blue); color: white; padding: 20px 60px; border: none; font-size: 22px; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
-    <div class="hero-strip"></div>
-    <div class="container">
-        <div class="header-sec">
-            <div>
-                <h1 style="font-size: 50px;">Microsoft</h1>
-                <p style="font-size: 20px; color: #666;">Empowering every person on the planet.</p>
-            </div>
-            <div class="pkg-circle">
-                <h4>Package</h4>
-                <h2>52 LPA</h2>
-            </div>
-        </div>
+    <nav style="padding: 20px 8%; border-bottom: 1px solid #eee; position: sticky; top: 0; background: white; display: flex; justify-content: space-between;">
+        <a href="index.html" style="text-decoration:none; color:var(--ms-blue); font-weight:bold;"><i class="fas fa-arrow-left"></i> Hub</a>
+        <div>Microsoft Careers</div>
+    </nav>
 
-        <div class="content-grid">
-            <div class="info-card">
-                <h2>Selection Process</h2>
-                <p style="margin: 20px 0; line-height: 1.8;">Microsoft follows a rigorous 4-step process: Online Technical Assessment, 2 Rounds of DSA Interviews, 1 System Design Round, and a Final "As-Appropriate" (AA) Interview.</p>
-                <h3>Technical Weightage</h3>
-                <p>Data Structures: 60% | Design: 30% | Culture: 10%</p>
-            </div>
-            <div>
-                <h2>Facilities</h2>
-                <ul style="list-style: none; line-height: 2.5; margin-top: 20px;">
-                    <li><i class="fas fa-check-circle" style="color: #00a4ef;"></i> World-class Campus</li>
-                    <li><i class="fas fa-check-circle" style="color: #00a4ef;"></i> Hybrid Work Option</li>
-                    <li><i class="fas fa-check-circle" style="color: #00a4ef;"></i> Employee Resource Groups</li>
-                </ul>
+    <section class="hero-glory">
+        <div class="hero-text">
+            <h1>Empowering <br><span style="color:var(--ms-blue)">Every Person.</span></h1>
+            <p style="font-size: 22px;">Join Microsoft to build the next generation of Cloud, AI, and Gaming experiences. Innovation is in our DNA.</p>
+            <div style="display:flex; gap:40px; margin-top:40px;">
+                <div style="border-left:4px solid var(--ms-blue); padding-left:20px;"><h2>51.0 LPA</h2><p>Max CTC</p></div>
+                <div style="border-left:4px solid var(--ms-blue); padding-left:20px;"><h2>Azure</h2><p>Lead Tech</p></div>
             </div>
         </div>
+        <img src="https://blogs.microsoft.com/wp-content/uploads/2012/08/8867.Microsoft_5F00_Logo_2D00_for_2D00_screen.jpg" style="width: 300px;">
+    </section>
 
-        <div class="upload-section">
-            <i class="fas fa-cloud-upload-alt fa-4x" style="color: #00a4ef; margin-bottom: 20px;"></i>
-            <h2>Ready to be a Softie?</h2>
-            <p>Upload your resume and our HR team will get back to you.</p>
-            <input type="file" style="margin-top: 20px;"><br>
-            <button class="apply-btn" onclick="alert('Microsoft Application Submitted!')">Submit Application</button>
-        </div>
+    <div class="visit-alert">
+        <div style="background:var(--ms-blue); color:white; display:inline-block; padding:10px 20px; border-radius:50px; font-weight:bold;">DRIVE DATE: OCT 20, 2026</div>
+        <h2 style="margin-top:15px;">Target: 30 New Azure Architects</h2>
     </div>
+
+    <section style="padding: 80px 8%;">
+        <h2 style="text-align: center; font-size: 40px; margin-bottom: 40px;">Selection Insights</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px;">
+            <div style="background: #fdfdfd; padding: 40px; border-radius: 20px; border:1px solid #eee;">
+                <h3>Microsoft Hiring Trends</h3>
+                <canvas id="msTrends"></canvas>
+            </div>
+            <div style="background: #fdfdfd; padding: 40px; border-radius: 20px; border:1px solid #eee;">
+                <h3>Preparation Focus Areas</h3>
+                <canvas id="msFocus"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <section class="alumni-sec">
+        <h2>Byte Busters Alumni at Microsoft</h2>
+        <p>Networking is key. Connect with these 20+ seniors who've already made it.</p>
+        <div class="alumni-grid">
+            <script>
+                for(let i=1; i<=6; i++) {
+                    document.write(`
+                        <div class="alum-card">
+                            <img src="https://xsgames.co/randomusers/avatar.php?g=pixel&${i+10}" alt="Alumni">
+                            <h4>Senior Alum ${i}</h4>
+                            <p style="color:var(--ms-blue); font-size: 13px;">Software Engineer @ Azure</p>
+                        </div>
+                    `);
+                }
+            </script>
+        </div>
+    </section>
+
+   <section class="apply-section-fixed" style="text-align: center; padding: 100px 0; background: #f8f9fa;">
+    <h2 style="font-size: 36px; margin-bottom: 20px;">Ready to join the force?</h2>
+    <p style="color: #666; margin-bottom: 40px;">Please complete the official recruitment form to be considered for this role.</p>
+    
+    <a href="registration.html" class="btn-google" style="padding: 20px 60px; background: #4285F4; color: white; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 20px; box-shadow: 0 10px 20px rgba(66,133,244,0.3);">
+        APPLY FOR THIS ROLE
+    </a>
+</section>
+
+    <script>
+        new Chart(document.getElementById('msTrends'), {
+            type: 'line',
+            data: { labels: ['2022', '2023', '2024', '2025', '2026'], datasets: [{ label: 'Selections', data: [8, 12, 15, 22, 30], borderColor: '#00a4ef', fill: false }] }
+        });
+        new Chart(document.getElementById('msFocus'), {
+            type: 'radar',
+            data: {
+                labels: ['Data Structures', 'Operating Systems', 'System Design', 'Behavioral', 'Azure Knowledge'],
+                datasets: [{ label: 'Importance Weightage', data: [95, 85, 70, 80, 60], backgroundColor: 'rgba(0, 164, 239, 0.2)', borderColor: '#00a4ef' }]
+            }
+        });
+    </script>
 </body>
 </html>

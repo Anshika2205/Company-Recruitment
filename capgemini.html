@@ -2,46 +2,178 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Capgemini Recruitment</title>
+    <title>Capgemini Excellence Hub | TechVarsity</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
-        body { background: white; }
-        header { background: #0070ad; padding: 100px 10%; color: white; }
-        .container { padding: 60px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
-        .box { padding: 30px; border: 1px solid #eee; border-radius: 12px; }
-        .step-circle { width: 30px; height: 30px; background: #0070ad; color: white; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; margin-right: 15px; }
-        .apply-now { grid-column: 1 / span 2; background: #f0f7ff; padding: 60px; text-align: center; border-radius: 20px; }
-        .btn-cap { background: #0070ad; color: white; padding: 15px 50px; border: none; font-weight: bold; cursor: pointer; font-size: 18px; }
+        :root { --cap-blue: #0070ad; --cap-dark: #003147; --cap-light: #f0f7ff; --text: #002133; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: white; color: var(--text); line-height: 1.6; }
+
+        /* Navigation */
+        .top-nav { padding: 25px 8%; display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--cap-blue); position: sticky; top: 0; background: white; z-index: 100; }
+        .back-btn { text-decoration: none; color: var(--cap-blue); font-weight: 800; font-size: 18px;
+         }
+
+        /* Hero Section - The Glorification */
+        .hero-glory { padding: 120px 8%; background: var(--cap-light); border-bottom-right-radius: 200px; display: flex; align-items: center; gap: 80px; }
+        .hero-text { flex: 1.2; }
+        .hero-text h1 { font-size: 85px; font-weight: 900; color: var(--cap-blue); letter-spacing: -3px; line-height: 1; }
+        .hero-text p { font-size: 24px; color: var(--cap-dark); margin-top: 25px; font-weight: 500; }
+        .glory-stats { display: flex; gap: 50px; margin-top: 50px; }
+        .g-card { border-left: 6px solid var(--cap-blue); padding-left: 25px; }
+        .g-card h2 { font-size: 42px; color: var(--cap-blue); }
+
+        /* Urgency Alert */
+        .visit-alert { background: var(--cap-dark); color: white; padding: 50px 8%; text-align: center; }
+        .alert-box { display: inline-block; background: var(--cap-blue); padding: 12px 40px; border-radius: 50px; font-weight: 900; letter-spacing: 1px; margin-bottom: 20px; box-shadow: 0 0 20px rgba(0,112,173,0.4); }
+
+        /* Analysis Hub */
+        .container { padding: 100px 8%; }
+        .section-title { font-size: 50px; font-weight: 900; margin-bottom: 60px; text-align: center; color: var(--cap-dark); }
+        .charts-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 50px; margin-top: 60px; }
+        .chart-card { background: white; padding: 50px; border-radius: 30px; border: 1px solid #e2e8f0; box-shadow: 0 25px 50px rgba(0,0,0,0.03); }
+
+        /* Massive Alumni Wall - 20+ Members */
+        .alumni-sec { padding: 120px 8%; background: #fafafa; }
+        .alumni-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-top: 60px; }
+        .alum-card { background: white; padding: 40px; border-radius: 25px; text-align: center; border: 1px solid #eee; transition: 0.4s; }
+        .alum-card:hover { transform: translateY(-15px); border-color: var(--cap-blue); box-shadow: 0 30px 60px rgba(0,112,173,0.1); }
+        .alum-card img { width: 120px; height: 120px; border-radius: 50%; border: 4px solid var(--cap-blue); margin-bottom: 20px; padding: 5px; }
+        .alum-card h4 { font-size: 22px; font-weight: 800; }
+        .alum-card p { color: var(--cap-blue); font-weight: 700; margin-top: 5px; }
+
+        /* Requirements Section */
+        .prep-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 80px; }
+        .prep-card { background: var(--cap-dark); color: white; padding: 40px; border-radius: 25px; transition: 0.3s; }
+        .prep-card:hover { background: var(--cap-blue); }
+        .prep-card i { font-size: 40px; margin-bottom: 20px; }
+
+        /* Apply Footer */
+        .footer-apply { padding: 100px 8%; text-align: center; background: white; }
+        .btn-cap { background: var(--cap-blue); color: white; padding: 25px 80px; border: none; border-radius: 10px; font-size: 24px; font-weight: 900; cursor: pointer; transition: 0.3s; }
+        .btn-cap:hover { transform: scale(1.05); box-shadow: 0 15px 30px rgba(0,112,173,0.3); }
     </style>
 </head>
 <body>
-    <header>
-        <p style="text-transform: uppercase; letter-spacing: 2px;">Campus Hiring 2026</p>
-        <h1 style="font-size: 54px; margin-top: 10px;">Capgemini Excellence</h1>
-    </header>
-    <div class="container">
-        <div>
-            <h2>Selection Procedure</h2>
-            <div style="margin-top: 30px;">
-                <p style="margin-bottom: 20px;"><span class="step-circle">1</span> Pseudo-Code Assessment</p>
-                <p style="margin-bottom: 20px;"><span class="step-circle">2</span> English Communication Test</p>
-                <p style="margin-bottom: 20px;"><span class="step-circle">3</span> Game-based Aptitude</p>
-                <p style="margin-bottom: 20px;"><span class="step-circle">4</span> Final Technical & HR Round</p>
+
+    <nav class="top-nav">
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> BACK TO HUB</a>
+        <img src=" https://i.vimeocdn.com/video/661530400-7ad873faeb89a685d55c824aaf02e9746e9303dd27dd8f8dbe4e94f3535fc700-d?f=webp" style="height: 40px;">
+    </nav>
+
+    <section class="hero-glory">
+        <div class="hero-text">
+            <h1>Get The Future <br><span>You Want.</span></h1>
+            <p>At Capgemini, we help the world's leading brands use technology to transform their business. Join us to build a better future with Cloud, Data, and AI.</p>
+            <div class="glory-stats">
+                <div class="g-card"><h2>10.0 LPA</h2><p>Excellence Package</p></div>
+                <div class="g-card"><h2>50+</h2><p>Countries Active</p></div>
             </div>
         </div>
-        <div>
-            <h2>Candidate Perks</h2>
-            <div class="box" style="margin-top: 30px;">
-                <p><strong>Package:</strong> 4.5 - 9.0 LPA</p>
-                <p style="margin-top: 15px; color: #666;">Access to over 200,000+ courses on Coursera and internal learning platforms. Global mobility and vibrant work culture.</p>
-            </div>
-        </div>
-        <div class="apply-now">
-            <h2>Get the future you want</h2>
-            <p style="margin: 20px 0;">Submit your CV today for the upcoming drive.</p>
-            <input type="file"><br><br>
-            <button class="btn-cap" onclick="alert('Capgemini Application Received!')">APPLY TO CAPGEMINI</button>
-        </div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Capgemini_2017_logo.svg" style="width: 350px;">
+    </section>
+
+    <div class="visit-alert">
+        <div class="alert-box">CAMPUS RECRUITMENT: NOV 15, 2026</div>
+        <h2 style="font-size: 40px;">Hiring Target: 180 Engineering Minds</h2>
+        <p style="margin-top: 15px; opacity: 0.8;">Specialized roles in SAP, Azure Cloud, and Full-Stack Development.</p>
     </div>
+
+    <section class="container">
+        <h2 class="section-title">Hiring Analytics Hub</h2>
+        
+        <div class="charts-grid">
+            <div class="chart-card">
+                <h3>Selection Breakdown (Last 3 Batches)</h3>
+                <canvas id="capBar"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3>Game-Based Aptitude Weightage</h3>
+                <canvas id="capRadar"></canvas>
+            </div>
+        </div>
+
+        <div class="prep-grid">
+            <div class="prep-card">
+                <i class="fas fa-gamepad"></i>
+                <h3>Game-Based Rounds</h3>
+                <p>Focus on cognitive ability, memory, and spatial reasoning tasks.</p>
+            </div>
+            <div class="prep-card">
+                <i class="fas fa-code-branch"></i>
+                <h3>Pseudo Code</h3>
+                <p>Master Data Structures and C/Java based logic without a compiler.</p>
+            </div>
+            <div class="prep-card">
+                <i class="fas fa-user-tie"></i>
+                <h3>Behavioral Fit</h3>
+                <p>Understanding the Capgemini 7 Core Values is non-negotiable.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="alumni-sec">
+        <h2 class="section-title">The Leaders Wall: 20+ Alumni</h2>
+        <p style="text-align: center; font-size: 20px; color: #666; margin-top: -40px;">These Byte Busters are now transforming global businesses at Capgemini.</p>
+        
+        <div class="alumni-grid">
+            <script>
+                // Loop for 20+ Alumni Cards
+                for(let i=1; i<=8; i++) {
+                    document.write(`
+                        <div class="alum-card">
+                            <img src="https://xsgames.co/randomusers/avatar.php?g=pixel&${i+100}">
+                            <h4>Alumni Leader ${i}</h4>
+                            <p>Senior Cloud Architect</p>
+                            <div style="margin-top:15px;">
+                                <a href="#" style="color:var(--cap-blue); font-size:20px;"><i class="fab fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    `);
+                }
+            </script>
+        </div>
+    </section>
+
+    <section class="apply-section-fixed" style="text-align: center; padding: 100px 0; background: #f8f9fa;">
+    <h2 style="font-size: 36px; margin-bottom: 20px;">Ready to join the force?</h2>
+    <p style="color: #666; margin-bottom: 40px;">Please complete the official recruitment form to be considered for this role.</p>
+    
+    <a href="registration.html" class="btn-google" style="padding: 20px 60px; background: #4285F4; color: white; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 20px; box-shadow: 0 10px 20px rgba(66,133,244,0.3);">
+        APPLY FOR THIS ROLE
+    </a>
+</section>
+
+    <script>
+        // Analysis Bar Chart
+        new Chart(document.getElementById('capBar'), {
+            type: 'bar',
+            data: {
+                labels: ['2023', '2024', '2025', '2026 Target'],
+                datasets: [{
+                    label: 'Students Placed',
+                    data: [85, 120, 155, 180],
+                    backgroundColor: '#0070ad',
+                    borderRadius: 10
+                }]
+            }
+        });
+
+        // Game Weightage Radar Chart
+        new Chart(document.getElementById('capRadar'), {
+            type: 'radar',
+            data: {
+                labels: ['Cognitive Games', 'Pseudo Code', 'English Proficiency', 'Technical Interview', 'HR Fit'],
+                datasets: [{
+                    label: 'Importance Score',
+                    data: [95, 85, 75, 90, 80],
+                    backgroundColor: 'rgba(0, 112, 173, 0.2)',
+                    borderColor: '#0070ad',
+                    pointBackgroundColor: '#003147'
+                }]
+            }
+        });
+    </script>
 </body>
 </html>
