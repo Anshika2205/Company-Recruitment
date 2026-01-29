@@ -1,0 +1,96 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zomato Recruitment | TechVarsity</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root { --z-red: #CB202D; --text: #1c1c1c; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: #fff; color: var(--text); }
+        .top-nav { padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; }
+        .hero-glory { padding: 80px 8%; background: #fdfdfd; display: flex; align-items: center; justify-content: space-between; gap: 50px; }
+        .hero-text h1 { font-size: 70px; font-weight: 800; color: var(--z-red); line-height: 1.1; }
+        .g-card { border-left: 5px solid var(--z-red); padding-left: 20px; margin-top: 30px; }
+        .visit-alert { background: #fff0f0; padding: 40px 8%; text-align: center; border-y: 2px dashed var(--z-red); }
+        .charts-sec { padding: 80px 8%; background: #fafafa; }
+        .charts-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; }
+        .chart-container { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); }
+        .prep-sec { padding: 80px 8%; }
+        .m-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .m-card { padding: 35px; border-radius: 20px; background: #fff; border: 1px solid #eee; transition: 0.3s; }
+        .m-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(203, 32, 45, 0.1); }
+        .alumni-sec { padding: 80px 8%; background: #1c1c1c; color: white; }
+        .alum-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .alum-card { background: rgba(255,255,255,0.05); padding: 25px; border-radius: 20px; text-align: center; }
+        .alum-card img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid var(--z-red); margin-bottom: 15px; }
+        .apply-btn { background: var(--z-red); color: white; padding: 22px 70px; border-radius: 50px; font-size: 22px; font-weight: bold; text-decoration: none; display: inline-block; margin-top: 50px; transition: 0.3s; }
+        .apply-btn:hover { box-shadow: 0 10px 20px rgba(203, 32, 45, 0.4); }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="index.html" style="color: var(--z-red); text-decoration: none; font-weight: bold;"><i class="fas fa-chevron-left"></i> Home</a>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Zomato_logo.png" style="width: 120px;">
+    </nav>
+
+    <section class="hero-glory">
+        <div class="hero-text">
+            <h1>Every Meal <br>is a <span>Code.</span></h1>
+            <p>Zomato is a technology company that connects people with great food. Build real-time systems that handle 1.2M+ orders per hour.</p>
+            <div class="g-card"><h2>28 LPA</h2><p>Avg. CTC for SDE</p></div>
+        </div>
+        <img src="https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png" style="width: 450px; border-radius: 30px;">
+    </section>
+
+    <div class="visit-alert">
+        <div style="background: var(--z-red); color: white; display: inline-block; padding: 10px 25px; border-radius: 50px; font-weight: bold; margin-bottom: 15px;">CAMPUS DRIVE: NOV 05, 2026</div>
+        <h2>Hiring: 20 Students for Backend & iOS Roles</h2>
+        <p>Eligibility: 7.5+ CGPA | Problem Solving Mastery | Projects in Node.js/Swift</p>
+    </div>
+
+    <section class="charts-sec">
+        <h2 style="text-align: center; margin-bottom: 40px; font-size: 35px;">Analytics Dashboard</h2>
+        <div class="charts-grid">
+            <div class="chart-container"><h3>Hiring Growth (2022-2026)</h3><canvas id="zomatoTrend"></canvas></div>
+            <div class="chart-container"><h3>Interview Focus Area</h3><canvas id="zomatoRadar"></canvas></div>
+        </div>
+    </section>
+
+    <section class="prep-sec">
+        <h2 style="margin-bottom: 40px;">Preparation Hub</h2>
+        <div class="m-grid">
+            <div class="m-card"><i class="fas fa-bolt" style="color: var(--z-red); font-size: 30px;"></i><h3>Concurrency</h3><p>Mastering Go routines, Node.js Event Loop, and Redis caching.</p></div>
+            <div class="m-card"><i class="fas fa-map-pin" style="color: var(--z-red); font-size: 30px;"></i><h3>Geospatial Data</h3><p>Understanding PostGIS and Quad-trees for location tracking.</p></div>
+            <div class="m-card"><i class="fas fa-mobile-alt" style="color: var(--z-red); font-size: 30px;"></i><h3>Scalability</h3><p>Handling spikes during lunch and dinner peaks globally.</p></div>
+        </div>
+    </section>
+
+    <section class="alumni-sec">
+        <h2>Seniors @ Zomato</h2>
+        <div class="alum-grid">
+            <div class="alum-card"><img src="https://via.placeholder.com/90"><h4>Setu Arya</h4><p>SDE-2 Backend</p></div>
+            <div class="alum-card"><img src="https://via.placeholder.com/90"><h4>Aditya Yadav</h4><p>iOS Developer</p></div>
+        </div>
+    </section>
+
+    <div style="text-align: center; padding-bottom: 100px;">
+        <a href="registration.html" class="apply-btn">APPLY NOW</a>
+    </div>
+
+    <script>
+        new Chart(document.getElementById('zomatoTrend'), {
+            type: 'line',
+            data: { labels: ['2022', '2023', '2024', '2025', '2026'], datasets: [{ label: 'Students Placed', data: [5, 12, 18, 25, 40], borderColor: '#CB202D', fill: true, backgroundColor: 'rgba(203, 32, 45, 0.1)' }] }
+        });
+        new Chart(document.getElementById('zomatoRadar'), {
+            type: 'radar',
+            data: { 
+                labels: ['DSA', 'System Design', 'Open Source', 'Soft Skills', 'Coding Speed'],
+                datasets: [{ label: 'Score Required', data: [95, 80, 85, 75, 98], backgroundColor: 'rgba(203, 32, 45, 0.2)', borderColor: '#CB202D' }]
+            }
+        });
+    </script>
+</body>
+</html>

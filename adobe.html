@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adobe Recruitment Hub | TechVarsity</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root { --adobe-red: #FA0F00; --text: #323232; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Adobe Clean', sans-serif; }
+        body { background: white; color: var(--text); line-height: 1.6; }
+        .top-nav { padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+        .hero-glory { padding: 100px 8%; background: #fff5f5; display: flex; align-items: center; gap: 60px; }
+        .hero-text h1 { font-size: 75px; font-weight: 900; color: var(--adobe-red); line-height: 1; }
+        .g-card { border-left: 5px solid var(--adobe-red); padding-left: 20px; margin-top: 35px; }
+        .visit-alert { background: var(--adobe-red); color: white; padding: 35px 8%; text-align: center; }
+        .analysis-sec { padding: 80px 8%; background: #f9f9f9; }
+        .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+        .chart-container { background: white; padding: 40px; border-radius: 15px; border: 1px solid #eee; }
+        .prep-sec { padding: 80px 8%; }
+        .m-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .m-card { padding: 30px; background: white; border: 1.5px solid #eee; border-radius: 12px; transition: 0.3s; }
+        .m-card:hover { border-color: var(--adobe-red); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .alumni-sec { padding: 80px 8%; background: #000; color: white; }
+        .alum-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .alum-card { background: #1a1a1a; padding: 25px; text-align: center; border-radius: 15px; }
+        .alum-card img { width: 85px; height: 85px; border-radius: 50%; border: 3px solid var(--adobe-red); margin-bottom: 15px; }
+        .btn-adobe { background: var(--adobe-red); color: white; padding: 20px 60px; border-radius: 50px; font-size: 22px; font-weight: bold; text-decoration: none; display: inline-block; margin-top: 50px; transition: 0.3s; }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="index.html" style="color: var(--adobe-red); font-weight: bold; text-decoration: none;"><i class="fas fa-chevron-left"></i> Hub</a>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Systems_logo_and_wordmark.svg" style="width: 130px;">
+    </nav>
+
+    <section class="hero-glory">
+        <div class="hero-text">
+            <h1>Create <br>the <span>Future.</span></h1>
+            <p>Adobe is changing the world through digital experiences. Build tools like Photoshop, Premiere Pro, and Adobe Analytics used by creators globally.</p>
+            <div class="glory-stats">
+                <div class="g-card"><h2>45 LPA</h2><p>Highest Package for SDE</p></div>
+                <div class="g-card"><h2>Top 10</h2><p>Global Software Leaders</p></div>
+            </div>
+        </div>
+        <img src="https://www.adobe.com/content/dam/cc/us/en/creativecloud/max2020/cc-max-clp-hero-image-mobile-600x600.jpg" style="width: 400px; border-radius: 40px; box-shadow: 20px 20px 0 var(--adobe-red);">
+    </section>
+
+    <div class="visit-alert">
+        <h2>CAMPUS VISIT: DEC 01, 2026</h2>
+        <p>Target Hiring: 15 Students (Research & Development Track)</p>
+        <p>Requirements: 8.5+ CGPA | Exceptional C++ & Math Skills</p>
+    </div>
+
+    <section class="analysis-sec">
+        <h2 style="text-align: center; margin-bottom: 40px;">Hiring Analytics</h2>
+        <div class="charts-grid">
+            <div class="chart-container"><h3>Selection Stats (Polar Area)</h3><canvas id="adobePolar"></canvas></div>
+            <div class="chart-container"><h3>Placed Alums Trends</h3><canvas id="adobeBar"></canvas></div>
+        </div>
+    </section>
+
+    <section class="prep-sec">
+        <h2>Preparation Hub</h2>
+        <div class="m-grid">
+            <div class="m-card"><i class="fas fa-palette" style="color: var(--adobe-red); font-size: 30px; margin-bottom: 15px;"></i><h3>Graphics & Math</h3><p>Focus on Linear Algebra, Calculus, and 2D/3D transformations.</p></div>
+            <div class="m-card"><i class="fas fa-code-branch" style="color: var(--adobe-red); font-size: 30px; margin-bottom: 15px;"></i><h3>C++ Deep Dive</h3><p>Pointers, Memory Management, and STL are highly tested.</p></div>
+            <div class="m-card"><i class="fas fa-desktop" style="color: var(--adobe-red); font-size: 30px; margin-bottom: 15px;"></i><h3>OOD</h3><p>Mastering Object-Oriented Design and SOLID principles.</p></div>
+        </div>
+    </section>
+
+    <section class="alumni-sec">
+        <h2>Seniors @ Adobe India</h2>
+        <div class="alum-grid">
+            <div class="alum-card"><img src="https://via.placeholder.com/85"><h4>Ankit Kumar</h4><p>SDE-1 @ Premiere Pro</p></div>
+            <div class="alum-card"><img src="https://via.placeholder.com/85"><h4>Ananya Srivastava</h4><p>Computer Scientist</p></div>
+        </div>
+    </section>
+
+    <div style="text-align: center; padding-bottom: 100px;">
+        <a href="registration.html" class="btn-adobe">APPLY FOR ROLE</a>
+    </div>
+
+    <script>
+        new Chart(document.getElementById('adobePolar'), {
+            type: 'polarArea',
+            data: { labels: ['C++', 'Math', 'OS', 'Projects'], datasets: [{ data: [90, 85, 75, 80], backgroundColor: ['#FA0F00', '#000', '#444', '#888'] }] }
+        });
+        new Chart(document.getElementById('adobeBar'), {
+            type: 'bar',
+            data: { labels: ['2023', '2024', '2025', '2026'], datasets: [{ label: 'Selected', data: [5, 9, 14, 22], backgroundColor: '#FA0F00' }] }
+        });
+    </script>
+</body>
+</html>

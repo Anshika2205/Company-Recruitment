@@ -67,7 +67,7 @@
         </div>
     </section>
 
-    <section id="companies" class="company-section">
+    <!-- <section id="companies" class="company-section">
         <h2 class="section-title">Strategic Tech Partners</h2>
          <div class="comp-grid">
     <a href="google.html" class="comp-item"><img src=" https://static.dezeen.com/uploads/2025/05/sq-google-g-logo-update_dezeen_2364_col_0.jpg"></a>
@@ -80,7 +80,74 @@
     <a href="capgemini.html" class="comp-item"><img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDH3D_sFxInIWvLdh8-BK-xaKw7YpUcwhDaA&s"></a>
 </div>
         </div>
-    </section>
+    </section> -->
+
+
+ <section id="companies" class="company-section" style="padding: 100px 8%; background: #fff; position: relative;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px;">
+        <h2 class="section-title" style="margin: 0;">Strategic Tech Partners</h2>
+        
+        <div class="dropdown-container" style="position: relative;">
+            <select id="companyDropdown" onchange="navigateToCompany()" style="padding: 12px 25px; border-radius: 10px; border: 2px solid #1a73e8; background: white; color: #1a73e8; font-weight: bold; cursor: pointer; outline: none; font-size: 16px; box-shadow: 0 5px 15px rgba(26,115,232,0.1);">
+                <option value="">Explore Companies ▼</option>
+                <optgroup label="Product Giants">
+                    <option value="google.html">Google</option>
+                    <option value="amazon.html">Amazon</option>
+                    <option value="microsoft.html">Microsoft</option>
+                    <option value="meta.html">Meta</option>
+                    <option value="netflix.html">Netflix</option>
+                    <option value="apple.html">Apple</option>
+                    <option value="adobe.html">Adobe</option>
+                    <option value="uber.html">Uber</option>
+                </optgroup>
+                <optgroup label="Global Consultancies">
+                    <option value="tcs.html">TCS</option>
+                    <option value="capgemini.html">Capgemini</option>
+                    <option value="infosys.html">Infosys</option>
+                    <option value="wipro.html">Wipro</option>
+                    <option value="accenture.html">Accenture</option>
+                    <option value="deloitte.html">Deloitte</option>
+                </optgroup>
+                <optgroup label="FinTech & Startups">
+                    <option value="paytm.html">Paytm</option>
+                    <option value="zomato.html">Zomato</option>
+                    <option value="swiggy.html">Swiggy</option>
+                    <option value="cred.html">CRED</option>
+                    <option value="phonepe.html">PhonePe</option>
+                </optgroup>
+            </select>
+        </div>
+    </div>
+
+    <div class="comp-grid">
+        <a href="google.html" class="comp-item"><img src="https://static.dezeen.com/uploads/2025/05/sq-google-g-logo-update_dezeen_2364_col_0.jpg"></a>
+        <a href="amazon.html" class="comp-item"><img src="https://thumbs.dreamstime.com/b/amazon-logo-amazon-logo-white-background-vector-format-avaliable-124289859.jpg"></a>
+        <a href="microsoft.html" class="comp-item"><img src="https://blogs.microsoft.com/wp-content/uploads/2012/08/8867.Microsoft_5F00_Logo_2D00_for_2D00_screen.jpg"></a>
+        <a href="meta.html" class="comp-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqN9acsgIQGM2FqL39jPpdnvqW9kRedjVpDw&s"></a>
+        <a href="netflix.html" class="comp-item"><img src="https://images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a07288746ddf3bd3943fbc76/BrandAssets_Logos_01-Wordmark.jpg?w=940"></a>
+        <a href="apple.html" class="comp-item"><img src="https://fabrikbrands.com/wp-content/uploads/Apple-Logo-History-1.png"></a>
+        <a href="tcs.html" class="comp-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgdN5uaq0RMWIAydcXeyqdkm4dtErZs3sw0w&s"></a>
+        <a href="capgemini.html" class="comp-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDH3D_sFxInIWvLdh8-BK-xaKw7YpUcwhDaA&s"></a>
+    </div>
+</section>
+
+<script>
+    function navigateToCompany() {
+        const dropdown = document.getElementById('companyDropdown');
+        const selectedPage = dropdown.value;
+        if (selectedPage) {
+            window.location.href = selectedPage;
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
     <section class="batch-history" id="archive">
     <h2 class="section-title">The Legacy Timeline</h2>
     <p style="text-align: center; color: #94a3b8; margin-top: -30px; margin-bottom: 50px;">Explore the journey of our prestigious alumni through the years.</p>
