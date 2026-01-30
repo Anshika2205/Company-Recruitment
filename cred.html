@@ -1,0 +1,189 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRED | Elite Recruitment Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root { --cred-blue: #3b82f6; --soft-bg: #f8fafc; --glass: rgba(255, 255, 255, 0.8); --text: #1e293b; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--soft-bg); color: var(--text); line-height: 1.6; }
+
+        /* Elegant Navigation */
+        .top-nav { padding: 25px 8%; display: flex; justify-content: space-between; align-items: center; background: var(--glass); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #e2e8f0; }
+        .back-btn { text-decoration: none; color: var(--cred-blue); font-weight: 700; font-size: 14px; }
+        
+        /* Section 1: Hero Glory */
+        .hero-glory { padding: 100px 8%; background: white; display: flex; align-items: center; gap: 60px; border-bottom: 1px solid #f1f5f9; }
+        .hero-text { flex: 1.2; }
+        .hero-text h1 { font-size: 65px; font-weight: 900; color: #000; letter-spacing: -2px; line-height: 1; }
+        .glory-stats { display: flex; gap: 40px; margin-top: 40px; }
+        .g-card { border-left: 4px solid #000; padding-left: 20px; }
+        .g-card h2 { font-size: 32px; font-weight: 800; }
+
+        /* Section 2: Visit Alert */
+        .visit-alert { background: #000; color: white; padding: 40px 8%; text-align: center; }
+        .alert-box { display: inline-block; background: var(--cred-blue); padding: 8px 25px; border-radius: 4px; font-weight: 800; margin-bottom: 15px; font-size: 12px; letter-spacing: 1px; }
+
+        /* Section 3: Analysis */
+        .analysis-sec { padding: 80px 8%; }
+        .charts-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 50px; }
+        .chart-container { background: white; padding: 40px; border-radius: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.05); }
+
+        /* Section 4: Preparation */
+        .prep-sec { padding: 80px 8%; background: #fff; }
+        .m-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .m-card { padding: 40px; border-radius: 25px; border: 1px solid #f1f5f9; transition: 0.4s; background: var(--soft-bg); }
+        .m-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1); border-color: var(--cred-blue); }
+
+        /* Section 5: Alumni (With Real-Style Photos) */
+        .alumni-sec { padding: 80px 8%; background: #f8fafc; }
+        .alumni-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; margin-top: 50px; }
+        .alum-card { background: white; padding: 30px; border-radius: 30px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.03); transition: 0.3s; }
+        .alum-card:hover { transform: scale(1.05); }
+        .alum-card img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 3px solid #f1f5f9; }
+        .alum-card h4 { font-size: 18px; margin-bottom: 5px; }
+        .alum-card p { font-size: 14px; color: #64748b; margin-bottom: 15px; }
+        .alum-link { color: var(--cred-blue); text-decoration: none; font-weight: 700; font-size: 13px; }
+
+        /* Final Action */
+        .apply-now { padding: 120px 8%; text-align: center; background: white; }
+        .btn-cred { background: #000; color: white; padding: 22px 80px; border-radius: 12px; font-size: 20px; font-weight: 800; text-decoration: none; display: inline-block; transition: 0.3s; }
+        .btn-cred:hover { background: var(--cred-blue); box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3); }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> HUB</a>
+        <div style="font-weight: 900; letter-spacing: 4px;">CRED</div>
+    </nav>
+
+    <section class="hero-glory">
+        <div class="hero-text">
+            <h1 id="userWelcome">Design. <br>Code. <span>Repeat.</span></h1>
+            <p>CRED is a members-only community. We are looking for engineers who have an eye for pixel-perfect design and a heart for scalable backend systems.</p>
+            <div class="glory-stats">
+                <div class="g-card"><h2>38 LPA</h2><p>Highest CTC</p></div>
+                <div class="g-card"><h2>Top 1%</h2><p>Engineering Bar</p></div>
+            </div>
+        </div>
+        <img src="https://upload.wikimedia.org/wikipedia/en/7/7c/CRED_%28fintech_company%29_logo.png" style="width: 200px; filter: contrast(1.2);">
+    </section>
+
+    <div class="visit-alert">
+        <div class="alert-box">ELITE DRIVE: DEC 15, 2026</div>
+        <h2 style="font-size: 32px;">Hiring: Frontend, Backend & Product Designers</h2>
+        <p style="opacity: 0.8; margin-top: 10px;">Location: Bengaluru (HSR Layout) | Perks: Apple Ecosystem Gear</p>
+    </div>
+
+    
+
+    <section class="analysis-sec">
+        <h2 style="text-align: center; font-size: 40px; font-weight: 900; margin-bottom: 40px;">Hiring Analytics</h2>
+        <div class="charts-grid">
+            <div class="chart-container">
+                <h3>Placement Velocity</h3>
+                <canvas id="credTrend"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>Required Skill-Mix</h3>
+                <canvas id="credRadar"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <section class="prep-sec">
+        <h2 style="font-weight: 900;">The Preparation Path</h2>
+        <div class="m-grid" style="margin-top: 50px;">
+            <div class="m-card">
+                <i class="fas fa-paint-brush" style="font-size: 30px; color: var(--cred-blue); margin-bottom: 20px;"></i>
+                <h3>High-Design UI</h3>
+                <p>Mastering Neumorphism, Glassmorphism, and advanced CSS/Framer Motion.</p>
+            </div>
+            <div class="m-card">
+                <i class="fas fa-microchip" style="font-size: 30px; color: var(--cred-blue); margin-bottom: 20px;"></i>
+                <h3>System Architecture</h3>
+                <p>Knowledge of Golang, Microservices, and high-concurrency Redis caching.</p>
+            </div>
+            <div class="m-card">
+                <i class="fas fa-shield-alt" style="font-size: 30px; color: var(--cred-blue); margin-bottom: 20px;"></i>
+                <h3>Fintech Security</h3>
+                <p>Deep dive into OAuth 2.0, PCI-DSS compliance, and Data Vaults.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="alumni-sec">
+        <h2 style="text-align: center; font-weight: 900; font-size: 35px;">Seniors @ CRED</h2>
+        <p style="text-align: center; color: #64748b;">Connect with KIET alumni who cracked the CRED bounty.</p>
+        
+        <div class="alumni-grid">
+            <div class="alum-card">
+                <img src="https://xsgames.co/randomusers/assets/avatars/male/74.jpg" alt="Alum">
+                <h4>Ankit Kumar</h4>
+                <p>Backend Developer-II</p>
+                <a href="#" class="alum-link">LinkedIn <i class="fab fa-linkedin"></i></a>
+            </div>
+            <div class="alum-card">
+                <img src="https://xsgames.co/randomusers/assets/avatars/female/24.jpg" alt="Alum">
+                <h4>Ananya Srivastava</h4>
+                <p>Product Designer</p>
+                <a href="#" class="alum-link">LinkedIn <i class="fab fa-linkedin"></i></a>
+            </div>
+            <div class="alum-card">
+                <img src="https://xsgames.co/randomusers/assets/avatars/male/45.jpg" alt="Alum">
+                <h4>Setu Arya</h4>
+                <p>Frontend Engineer</p>
+                <a href="#" class="alum-link">LinkedIn <i class="fab fa-linkedin"></i></a>
+            </div>
+            <div class="alum-card">
+                <img src="https://xsgames.co/randomusers/assets/avatars/male/12.jpg" alt="Alum">
+                <h4>Aditya Yadav</h4>
+                <p>Security Lead</p>
+                <a href="#" class="alum-link">LinkedIn <i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <div class="apply-now">
+        <h2>Become a Member of CRED Tech</h2>
+        <br><br>
+        <a href="registration.html" class="btn-cred">APPLY FOR BOUNTY</a>
+    </div>
+
+    <script>
+        // Graph 1: Selection Trends
+        new Chart(document.getElementById('credTrend'), {
+            type: 'line',
+            data: {
+                labels: ['2023', '2024', '2025', '2026'],
+                datasets: [{
+                    label: 'Students Placed',
+                    data: [2, 5, 14, 22],
+                    borderColor: '#3b82f6',
+                    borderWidth: 5,
+                    fill: false,
+                    tension: 0.4
+                }]
+            }
+        });
+
+        // Graph 2: Radar Chart
+        new Chart(document.getElementById('credRadar'), {
+            type: 'radar',
+            data: {
+                labels: ['UI/UX', 'DSA', 'System Design', 'Logic', 'Culture'],
+                datasets: [{
+                    label: 'Target Expertise',
+                    data: [100, 85, 90, 95, 100],
+                    backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                    borderColor: '#3b82f6'
+                }]
+            },
+            options: { scales: { r: { beginAtZero: true, max: 100 } } }
+        });
+    </script>
+</body>
+</html>

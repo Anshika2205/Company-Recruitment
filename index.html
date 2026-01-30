@@ -6,6 +6,7 @@
     <title>TechVarsity | Career Hub</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+     
 </head>
 <body>
 
@@ -21,6 +22,8 @@
         </a>
     </div>
 </nav>
+
+ 
 
     <header class="hero">
         <div class="hero-text">
@@ -141,12 +144,160 @@
     }
 </script>
 
+ <!-- internship-section -->
+
+ <section id="internships" class="internship-section" style="padding: 80px 8%; background: #ffffff;">
+    <div style="margin-bottom: 50px; display: flex; justify-content: space-between; align-items: flex-end;">
+        <div>
+            <h2 style="font-size: 32px; color: #1e293b; border-left: 6px solid #1a73e8; padding-left: 20px; font-weight: 800;">
+                Upcoming Internships
+            </h2>
+            <p style="color: #64748b; margin-top: 10px; font-size: 18px;">Handpicked opportunities for the KIET 2026 Batch.</p>
+        </div>
+        <div style="text-align: right;">
+            <span style="background: #fee2e2; color: #ef4444; padding: 8px 15px; border-radius: 50px; font-size: 12px; font-weight: 800; border: 1px solid #fecaca;">
+                <i class="fas fa-circle" style="font-size: 8px; margin-right: 5px; animation: blink 1s infinite;"></i> NEW OPENINGS
+            </span>
+        </div>
+    </div>
+
+    <div class="intern-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+        
+        <div class="intern-mini-card">
+            <div class="card-badge">Technical</div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Capgemini_201x_logo.svg" alt="Capgemini">
+            <h3>Capgemini</h3>
+            <p>Excellence Analyst Intern (2026)</p>
+            <div class="intern-tags">
+                <span>Pseudo Code</span>
+                <span>Java/C++</span>
+            </div>
+            <a href="intern-detail-capgemini.html" class="apply-link-btn">View Details & Eligibility</a>
+        </div>
+
+        <div class="intern-mini-card">
+            <div class="card-badge" style="background: #fff1f2; color: #e11d48;">Product</div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Zomato_logo.png" alt="Zomato">
+            <h3>Zomato</h3>
+            <p>Operations & Logistics Intern</p>
+            <div class="intern-tags">
+                <span>Operations</span>
+                <span>Excel</span>
+            </div>
+            <a href="intern-detail-zomato.html" class="apply-link-btn">View Details & Eligibility</a>
+        </div>
+
+        <div class="intern-mini-card">
+            <div class="card-badge" style="background: #f0f9ff; color: #0369a1;">IT Services</div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg" alt="Infosys">
+            <h3>Infosys</h3>
+            <p>Quality Assurance (InfyTQ)</p>
+            <div class="intern-tags">
+                <span>Python</span>
+                <span>Testing</span>
+            </div>
+            <a href="intern-detail-infosys.html" class="apply-link-btn">View Details & Eligibility</a>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
+
+    .intern-mini-card {
+        padding: 40px 30px;
+        border-radius: 24px;
+        background: #fff;
+        border: 1px solid #f1f5f9;
+        text-align: center;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .intern-mini-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+        border-color: #1a73e8;
+    }
+
+    .card-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 10px;
+        font-weight: 800;
+        padding: 4px 12px;
+        border-radius: 50px;
+        background: #f1f5f9;
+        color: #64748b;
+        text-transform: uppercase;
+    }
+
+    .intern-mini-card img {
+        height: 45px;
+        margin-bottom: 25px;
+        filter: grayscale(100%);
+        transition: 0.3s;
+    }
+
+    .intern-mini-card:hover img {
+        filter: grayscale(0%);
+        transform: scale(1.1);
+    }
+
+    .intern-mini-card h3 {
+        font-size: 22px;
+        margin-bottom: 8px;
+        color: #1e293b;
+        font-weight: 700;
+    }
+
+    .intern-mini-card p {
+        font-size: 14px;
+        color: #64748b;
+        margin-bottom: 20px;
+    }
+
+    .intern-tags {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 25px;
+    }
+
+    .intern-tags span {
+        font-size: 11px;
+        background: #f8fafc;
+        color: #475569;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-weight: 600;
+    }
+
+    .apply-link-btn {
+        display: block;
+        padding: 12px;
+        background: #f8fafc;
+        color: #1a73e8;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 14px;
+        border-radius: 12px;
+        transition: 0.3s;
+        border: 1px solid #e2e8f0;
+    }
+
+    .intern-mini-card:hover .apply-link-btn {
+        background: #1a73e8;
+        color: #fff;
+        border-color: #1a73e8;
+    }
+</style>
 
 
-
-
-
-
+   <!-- Batch History -->
 
     <section class="batch-history" id="archive">
     <h2 class="section-title">The Legacy Timeline</h2>

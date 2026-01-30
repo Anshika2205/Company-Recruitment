@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Paytm Career Hub | TechVarsity</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root { --paytm-blue: #00BAF2; --paytm-dark: #002E6E; --text: #2c3e50; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: white; color: var(--text); }
+        .top-nav { padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; background: white; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+        .hero-glory { padding: 100px 8%; background: #f0faff; display: flex; align-items: center; gap: 50px; }
+        .hero-text h1 { font-size: 70px; font-weight: 900; color: var(--paytm-dark); }
+        .g-card { border-left: 5px solid var(--paytm-blue); padding-left: 20px; margin-top: 30px; }
+        .visit-alert { background: var(--paytm-dark); color: white; padding: 40px 8%; text-align: center; }
+        .alert-box { background: var(--paytm-blue); padding: 10px 20px; border-radius: 4px; font-weight: bold; }
+        .analysis-sec { padding: 80px 8%; background: #fafafa; }
+        .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+        .chart-container { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .prep-sec { padding: 80px 8%; }
+        .m-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .m-card { padding: 30px; border: 1.5px solid #eee; border-radius: 15px; transition: 0.3s; }
+        .m-card:hover { border-color: var(--paytm-blue); transform: scale(1.05); }
+        .btn-paytm { background: var(--paytm-blue); color: white; padding: 20px 70px; border-radius: 50px; font-size: 20px; font-weight: bold; text-decoration: none; display: inline-block; margin-top: 50px; }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="index.html" style="color: var(--paytm-blue); text-decoration: none; font-weight: bold;"><i class="fas fa-arrow-left"></i> Home</a>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Paytm_Logo_%28standalone%29.svg" style="width: 120px;">
+    </nav>
+
+    <section class="hero-glory">
+        <div class="hero-text">
+            <h1>India's <br><span style="color:var(--paytm-blue)">Super App.</span></h1>
+            <p>From QR codes to Stock trading, Paytm is leading the financial revolution in India. Build systems that handle millions of transactions per second.</p>
+            <div class="glory-stats">
+                <div class="g-card"><h2>18 LPA</h2><p>Average Package</p></div>
+                <div class="g-card"><h2>450M+</h2><p>Registered Users</p></div>
+            </div>
+        </div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Paytm_Logo_%28standalone%29.svg" style="width: 250px;">
+    </section>
+
+    <div class="visit-alert">
+        <div class="alert-box">PAYTM DRIVE: NOV 20, 2026</div>
+        <h2>Hiring Target: 40 Students for SDE & DevOps Roles</h2>
+        <p>Eligibility: 7.5+ CGPA | Knowledge of Java/Spring Boot is Preferred</p>
+    </div>
+
+    <section class="analysis-sec">
+        <h2 style="text-align: center; margin-bottom: 50px;">Hiring Analytics</h2>
+        <div class="charts-grid">
+            <div class="chart-container"><h3>Placement Trends</h3><canvas id="paytmTrend"></canvas></div>
+            <div class="chart-container"><h3>Selection Stats</h3><canvas id="paytmDoughnut"></canvas></div>
+        </div>
+    </section>
+
+    <section class="prep-sec">
+        <h2>Preparation Hub</h2>
+        <div class="m-grid" style="margin-top: 40px;">
+            <div class="m-card"><i class="fas fa-server" style="color:var(--paytm-blue); font-size: 30px;"></i><h3>Backend Scalability</h3><p>Focus on Spring Boot, Microservices, and Message Queues (Kafka).</p></div>
+            <div class="m-card"><i class="fas fa-database" style="color:var(--paytm-blue); font-size: 30px;"></i><h3>Database Tuning</h3><p>Indexing, Sharding, and managing high-load SQL databases.</p></div>
+            <div class="m-card"><i class="fas fa-credit-card" style="color:var(--paytm-blue); font-size: 30px;"></i><h3>Payment Gateways</h3><p>Understanding of PCI-DSS compliance and transaction security.</p></div>
+        </div>
+    </section>
+
+    <div style="text-align: center; padding-bottom: 100px;">
+        <a href="registration.html" class="btn-paytm">SUBMIT APPLICATION</a>
+    </div>
+
+    <script>
+        new Chart(document.getElementById('paytmTrend'), {
+            type: 'line',
+            data: { labels: ['2022', '2023', '2024', '2025'], datasets: [{ label: 'Selected', data: [15, 25, 32, 45], borderColor: '#00BAF2', fill: true, backgroundColor: 'rgba(0, 186, 242, 0.1)' }] }
+        });
+        new Chart(document.getElementById('paytmDoughnut'), {
+            type: 'doughnut',
+            data: { labels: ['Aptitude', 'Technical', 'HR', 'Hired'], datasets: [{ data: [300, 100, 40, 20], backgroundColor: ['#002E6E', '#00BAF2', '#0082b5', '#b3e5fc'] }] }
+        });
+    </script>
+</body>
+</html>
