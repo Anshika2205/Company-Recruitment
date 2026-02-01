@@ -1,178 +1,5 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Batch 2010-2014 | Legacy Analytics & Alumni</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        :root { --bg: #ffffff; --text: #1e293b; --primary: #3b82f6; --accent: #f59e0b; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background: var(--bg); color: var(--text); line-height: 1.6; }
-        
-        .batch-hero { background: #0f172a; color: white; padding: 120px 10%; text-align: center; }
-        .batch-hero h1 { font-size: 65px; font-weight: 900; }
-        
-        .container { width: 90%; margin: auto; padding: 80px 0; }
 
-        /* Company-Wise Data Section */
-        .company-analysis { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 80px; }
-        .comp-data-card { border: 1px solid #e2e8f0; border-radius: 20px; padding: 30px; transition: 0.3s; background: #fff; }
-        .comp-data-card:hover { transform: scale(1.03); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .comp-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
-        .comp-header img { width: 50px; height: 50px; object-fit: contain; }
-        
-        .stat-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14px; }
-        .stat-val { font-weight: bold; color: var(--primary); }
-
-        /* BIG ALUMNI SECTION */
-        .alumni-directory { background: #f8fafc; padding: 80px 5%; border-radius: 50px; }
-        .directory-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
-        .alum-profile-card { background: white; border-radius: 20px; padding: 30px; text-align: center; border: 1px solid #e2e8f0; transition: 0.3s; }
-        .alum-profile-card:hover { border-color: var(--primary); }
-        .alum-img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid #3b82f6; }
-        .alum-name { font-size: 20px; font-weight: 800; }
-        .alum-tag { background: #dbeafe; color: #1e40af; padding: 4px 12px; border-radius: 50px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
-        
-        .social-links { margin-top: 15px; display: flex; justify-content: center; gap: 15px; }
-        .social-links a { color: #64748b; font-size: 20px; transition: 0.2s; }
-        .social-links a:hover { color: #0077b5; }
-
-        /* Charts */
-        .chart-section { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; margin-bottom: 80px; }
-    </style>
-</head>
-<body>
-
-    <section class="batch-hero">
-        <h1>Batch 2010 - 2014</h1>
-        <p>A data-driven look at the legends who started it all.</p>
-    </section>
-
-    <div class="container">
-        
-        <h2 style="font-size: 36px; margin-bottom: 40px;">Recruiter-Wise Analysis</h2>
-        
-        <div class="company-analysis">
-            <div class="comp-data-card">
-                <div class="comp-header">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google">
-                    <h3>Google</h3>
-                </div>
-                <div class="stat-row"><span>Total Placed:</span> <span class="stat-val">12 Students</span></div>
-                <div class="stat-row"><span>Highest Package:</span> <span class="stat-val">28.5 LPA</span></div>
-                <div class="stat-row"><span>Average Package:</span> <span class="stat-val">18.2 LPA</span></div>
-                <div class="stat-row"><span>Top Skill Required:</span> <span class="stat-val">Java / DSA</span></div>
-            </div>
-
-            <div class="comp-data-card">
-                <div class="comp-header">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
-                    <h3>Amazon</h3>
-                </div>
-                <div class="stat-row"><span>Total Placed:</span> <span class="stat-val">45 Students</span></div>
-                <div class="stat-row"><span>Highest Package:</span> <span class="stat-val">22.0 LPA</span></div>
-                <div class="stat-row"><span>Average Package:</span> <span class="stat-val">14.5 LPA</span></div>
-                <div class="stat-row"><span>Top Skill Required:</span> <span class="stat-val">Problem Solving</span></div>
-            </div>
-
-            <div class="comp-data-card">
-                <div class="comp-header">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft">
-                    <h3>Microsoft</h3>
-                </div>
-                <div class="stat-row"><span>Total Placed:</span> <span class="stat-val">08 Students</span></div>
-                <div class="stat-row"><span>Highest Package:</span> <span class="stat-val">26.0 LPA</span></div>
-                <div class="stat-row"><span>Average Package:</span> <span class="stat-val">20.1 LPA</span></div>
-                <div class="stat-row"><span>Top Skill Required:</span> <span class="stat-val">System Internals</span></div>
-            </div>
-        </div>
-
-        <div class="chart-section">
-            <div style="background: #f8fafc; padding: 40px; border-radius: 20px;">
-                <h3>Success Ratio per Department</h3>
-                <canvas id="deptChart"></canvas>
-            </div>
-            <div style="background: #f8fafc; padding: 40px; border-radius: 20px;">
-                <h3>Placement Types</h3>
-                <canvas id="typeChart"></canvas>
-            </div>
-        </div>
-
-        <section class="alumni-directory">
-            <div style="text-align: center; margin-bottom: 50px;">
-                <h2 style="font-size: 42px;">The Alumni Directory</h2>
-                <p>Connect with 450+ leaders from Batch 2014 across the globe.</p>
-            </div>
-
-            <div class="directory-grid">
-                <div class="alum-profile-card">
-                    <img src="https://via.placeholder.com/150" class="alum-img" alt="Alum">
-                    <div class="alum-name">Ankit Kumar</div>
-                    <span class="alum-tag">Senior SDE @ Google</span>
-                    <p style="font-size: 13px; color: #64748b; margin-top: 10px;">Expert in Cloud Infrastructure & Distributed Systems.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fas fa-envelope"></i></a>
-                    </div>
-                </div>
-
-                <div class="alum-profile-card">
-                    <img src="https://via.placeholder.com/150" class="alum-img" alt="Alum">
-                    <div class="alum-name">Ananya Srivastava</div>
-                    <span class="alum-tag">Product Lead @ Meta</span>
-                    <p style="font-size: 13px; color: #64748b; margin-top: 10px;">Specializes in Product Strategy & Growth Hacking.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fas fa-envelope"></i></a>
-                    </div>
-                </div>
-
-                <div class="alum-profile-card">
-                    <img src="https://via.placeholder.com/150" class="alum-img" alt="Alum">
-                    <div class="alum-name">Setu Arya</div>
-                    <span class="alum-tag">Tech Architect @ Adobe</span>
-                    <p style="font-size: 13px; color: #64748b; margin-top: 10px;">Focused on Creative Suite performance & AI integration.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-
-                </div>
-        </section>
-
-    </div>
-
-    <script>
-        // Chart 1: Dept Success
-        new Chart(document.getElementById('deptChart'), {
-            type: 'bar',
-            data: {
-                labels: ['CSE', 'IT', 'ECE', 'ME', 'EN'],
-                datasets: [{
-                    label: 'Offers Received',
-                    data: [180, 160, 95, 45, 40],
-                    backgroundColor: '#3b82f6'
-                }]
-            }
-        });
-
-        // Chart 2: Placement Types
-        new Chart(document.getElementById('typeChart'), {
-            type: 'doughnut',
-            data: {
-                labels: ['Product', 'Service', 'Startup', 'PSU'],
-                datasets: [{
-                    data: [35, 45, 15, 5],
-                    backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#ef4444']
-                }]
-            }
-        });
-    </script>
-</body>
-</html> -->
+</html>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -263,29 +90,29 @@
             </div>
 
             <div class="comp-card" style="border-left: 5px solid #003399;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services_Logo.svg">
+                <img src="https://1000logos.net/wp-content/uploads/2020/05/Wipro-logo.jpg">
                 <span class="pkg-tag">7.2 LPA</span>
                 <p><b>Placed:</b> 180 Students</p>
                 <p><b>Role:</b> Digital Engineer</p>
             </div>
             <div class="comp-card" style="border-left: 5px solid #0070ad;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Capgemini_2017_logo.svg">
+                <img src=" https://images.squarespace-cdn.com/content/v1/5df776f6866c14507f2df68a/1632816445291-FUAMBONMFQSHHQKL3JET/Tata+Logo.png">
                 <span class="pkg-tag">6.5 LPA</span>
                 <p><b>Placed:</b> 110 Students</p>
                 <p><b>Focus:</b> Pseudo Code, Game Aptitude</p>
             </div>
             <div class="comp-card">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Infosys_logo.svg">
+                <img src=" https://upload.wikimedia.org/wikipedia/commons/9/9d/Capgemini_201x_logo.svg">
                 <span class="pkg-tag">8.0 LPA</span>
                 <p><b>Placed:</b> 95 Students</p>
             </div>
             <div class="comp-card">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Corporate_logo.svg">
+                <img src=" https://crystalpng.com/wp-content/uploads/2025/09/infosys-logo.png">
                 <span class="pkg-tag">22.0 LPA</span>
                 <p><b>Placed:</b> 05 Students</p>
             </div>
             <div class="comp-card">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Oracle_logo.svg">
+                <img src=" https://1000logos.net/wp-content/uploads/2016/10/Adobe-Logo-1993.jpg">
                 <span class="pkg-tag">18.0 LPA</span>
                 <p><b>Placed:</b> 14 Students</p>
             </div>
@@ -295,20 +122,11 @@
                 <p><b>Placed:</b> 75 Students</p>
             </div>
             <div class="comp-card">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Salesforce.com_logo.svg">
+                <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJwq-mpvQeP1p05PK0hMr8Z0cRpH5-ZbhfKw&s">
                 <span class="pkg-tag">19.0 LPA</span>
                 <p><b>Placed:</b> 06 Students</p>
             </div>
-            <div class="comp-card">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Cisco_logo.svg">
-                <span class="pkg-tag">15.0 LPA</span>
-                <p><b>Placed:</b> 12 Students</p>
-            </div>
-            <div class="comp-card">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Intel_logo_%282020%2C_light_blue%29.svg">
-                <span class="pkg-tag">21.0 LPA</span>
-                <p><b>Placed:</b> 04 Students</p>
-            </div>
+             
             <div class="comp-card">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Dell_logo_2016.svg">
                 <span class="pkg-tag">12.5 LPA</span>
@@ -342,11 +160,7 @@
                     {n: "Ananya Srivastava", c: "Meta", r: "Lead PM"},
                     {n: "Setu Arya", c: "Adobe", r: "Tech Architect"},
                     {n: "Aditya Yadav", c: "Amazon", r: "SDE-3"},
-                    {n: "Rahul Verma", c: "Microsoft", r: "Senior Eng."},
-                    {n: "Sneha Singh", c: "Cisco", r: "Security Lead"},
-                    {n: "Priya Das", c: "Intel", r: "Chip Designer"},
-                    {n: "Rohan Mehra", c: "Salesforce", r: "CRM Expert"},
-                    {n: "Ishita Jain", c: "IBM", r: "AI Specialist"},
+                     
                      
                 ];
                 alums.forEach(a => {

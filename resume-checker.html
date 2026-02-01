@@ -1,0 +1,304 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Resume Scanner | TechVarsity</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --primary: #1a73e8; --dark: #0f172a; --bg: #f8fafc; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg); color: var(--dark); padding: 50px 8%; }
+
+        .container { max-width: 900px; margin: auto; background: white; padding: 50px; border-radius: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.05); text-align: center; }
+        
+        /* Upload Area Styling */
+        .upload-zone { 
+            border: 3px dashed #cbd5e1; padding: 80px 40px; border-radius: 20px; 
+            cursor: pointer; transition: 0.3s; background: #fafafa; margin-bottom: 30px;
+        }
+        .upload-zone:hover { border-color: var(--primary); background: #f0f7ff; }
+        .upload-zone i { font-size: 70px; color: var(--primary); margin-bottom: 20px; }
+        
+        /* Report Sections */
+        #loading { display: none; font-weight: bold; color: var(--primary); margin: 20px 0; }
+        #reportCard { display: none; text-align: left; animation: slideUp 0.6s ease-out; }
+
+        .score-box { background: #000; color: white; padding: 30px; border-radius: 20px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .score-num { font-size: 50px; font-weight: 900; color: #64ffda; }
+
+        .status-msg { padding: 20px; border-radius: 15px; margin-bottom: 25px; font-weight: 700; font-size: 18px; }
+        .mst { background: #dcfce7; color: #166534; border-left: 8px solid #22c55e; }
+        .normal { background: #fef9c3; color: #854d0e; border-left: 8px solid #f59e0b; }
+        .bad { background: #fee2e2; color: #991b1b; border-left: 8px solid #ef4444; }
+
+        .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .detail-item { padding: 20px; background: #fff; border: 1px solid #e2e8f0; border-radius: 15px; }
+        
+        .keyword { display: inline-block; padding: 5px 12px; border-radius: 6px; margin: 3px; font-size: 12px; font-weight: bold; }
+        .yes { background: #e8f5e9; color: #2e7d32; }
+        .no { background: #ffebee; color: #c62828; }
+
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 style="font-size: 36px; font-weight: 900; margin-bottom: 10px;">AI Resume Auditor</h1>
+        <p style="color: #64748b; margin-bottom: 40px;">Select your resume from your desktop to start the automated scan.</p>
+
+        <div class="upload-zone" onclick="document.getElementById('resumeFile').click()">
+            <i class="fas fa-file-export"></i>
+            <h2>Click to Upload Resume</h2>
+            <p>Supported format: PDF only</p>
+            <input type="file" id="resumeFile" accept=".pdf" style="display: none;" onchange="handleFileScan(event)">
+        </div>
+
+        <div id="loading"><i class="fas fa-cog fa-spin"></i> Reading file and analyzing content...</div>
+
+        <div id="reportCard">
+            <div class="score-box">
+                <div>
+                    <h3 style="opacity: 0.8;">ATS MATCH SCORE</h3>
+                    <p id="gradeText" style="font-weight: bold; letter-spacing: 1px;"></p>
+                </div>
+                <div class="score-num" id="percentage">0%</div>
+            </div>
+
+            <div id="summaryAlert" class="status-msg"></div>
+
+            <div class="details-grid">
+                <div class="detail-item">
+                    <h4 style="margin-bottom: 15px;"><i class="fas fa-key"></i> Industry Keywords</h4>
+                    <div id="keywordCloud"></div>
+                </div>
+                <div class="detail-item">
+                    <h4 style="margin-bottom: 15px;"><i class="fas fa-clipboard-list"></i> Critical Suggestions</h4>
+                    <ul id="suggestionList" style="padding-left: 15px; font-size: 14px; line-height: 1.8;"></ul>
+                </div>
+            </div>
+
+            <button onclick="location.reload()" style="width: 100%; margin-top: 30px; padding: 18px; border-radius: 12px; border: none; background: #eee; font-weight: bold; cursor: pointer;">SCAN ANOTHER FILE</button>
+        </div>
+    </div>
+
+    <script>
+        // PDF Worker Setup
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+
+        async function handleFileScan(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('reportCard').style.display = 'none';
+
+            const reader = new FileReader();
+            reader.onload = async function() {
+                const typedarray = new Uint8Array(this.result);
+                try {
+                    const pdf = await pdfjsLib.getDocument(typedarray).promise;
+                    let textContent = "";
+
+                    for (let i = 1; i <= pdf.numPages; i++) {
+                        const page = await pdf.getPage(i);
+                        const content = await page.getTextContent();
+                        textContent += content.items.map(item => item.str).join(" ");
+                    }
+                    processAnalysis(textContent.toLowerCase());
+                } catch (e) {
+                    alert("Error reading PDF. Make sure it's not password protected.");
+                    document.getElementById('loading').style.display = 'none';
+                }
+            };
+            reader.readAsArrayBuffer(file);
+        }
+
+        function processAnalysis(text) {
+            const keys = ['python', 'java', 'sql', 'dsa', 'react', 'javascript', 'oops', 'c++', 'aws', 'projects', 'internship', 'communication'];
+            let matched = keys.filter(k => text.includes(k));
+            
+            // Score Logic
+            let score = Math.round((matched.length / keys.length) * 70);
+            if (text.includes('@')) score += 15;
+            if (text.includes('linkedin.com')) score += 15;
+            score = Math.min(score, 100);
+
+            // UI Reveal
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('reportCard').style.display = 'block';
+            document.getElementById('percentage').innerText = score + "%";
+
+            const summary = document.getElementById('summaryAlert');
+            const grade = document.getElementById('gradeText');
+            const list = document.getElementById('suggestionList');
+
+            if (score >= 80) {
+                summary.className = "status-msg mst";
+                summary.innerText = "Mst! Aapka resume ekdum pro level hai. Top MNCs ke liye ready ho!";
+                grade.innerText = "EXCELLENT PROFILE";
+                list.innerHTML = "<li>Profile looks ATS-ready.</li><li>Great keyword density.</li><li>Contact details found correctly.</li>";
+            } else if (score >= 50) {
+                summary.className = "status-msg normal";
+                summary.innerText = "Theek-thaak hai (Normal). Par thoda polish karoge toh aur accha hoga.";
+                grade.innerText = "AVERAGE SCORE";
+                list.innerHTML = "<li>Add more technical keywords like SQL or DSA.</li><li>Make sure LinkedIn profile is clickable.</li>";
+            } else {
+                summary.className = "status-msg bad";
+                summary.innerText = "Bahut bura haal hai (Bad). Ise koi bhi AI tool turant reject kar dega!";
+                grade.innerText = "HIGH REJECTION RISK";
+                list.innerHTML = "<li>Email/Contact info missing or unreadable.</li><li>Resume is too short or lacks keywords.</li><li>Add Project and Skills section clearly.</li>";
+            }
+
+            document.getElementById('keywordCloud').innerHTML = keys.map(k => `
+                <span class="keyword ${matched.includes(k) ? 'yes' : 'no'}">${k.toUpperCase()}</span>
+            `).join('');
+        }
+    </script>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Resume Auditor & Mentor | TV.HUB</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --primary: #1a73e8; --dark: #0f172a; --bg: #f8fafc; --success: #22c55e; --warning: #f59e0b; --danger: #ef4444; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg); color: var(--dark); padding: 50px 5%; }
+
+        .container { max-width: 1000px; margin: auto; background: white; padding: 50px; border-radius: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.05); }
+        .upload-zone { border: 3px dashed #cbd5e1; padding: 60px; border-radius: 25px; text-align: center; cursor: pointer; transition: 0.3s; background: #fafafa; }
+        .upload-zone:hover { border-color: var(--primary); background: #f0f7ff; }
+        
+        #loading { display: none; text-align: center; margin: 30px 0; font-weight: 700; color: var(--primary); }
+        
+        /* Report Layout */
+        #reportCard { display: none; margin-top: 40px; animation: fadeIn 0.8s ease; }
+        .main-score { background: var(--dark); color: white; padding: 40px; border-radius: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .score-circle { font-size: 64px; font-weight: 900; color: #64ffda; }
+
+        .advice-section { margin-top: 30px; }
+        .advice-card { padding: 25px; border-radius: 15px; margin-bottom: 20px; border-left: 10px solid; line-height: 1.8; }
+        .mst-advice { background: #f0fff4; border-color: var(--success); color: #166534; }
+        .normal-advice { background: #fffcf0; border-color: var(--warning); color: #854d0e; }
+        .bad-advice { background: #fff5f5; border-color: var(--danger); color: #991b1b; }
+
+        .expert-tip { display: flex; gap: 15px; margin-top: 15px; background: white; padding: 15px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+        .expert-tip i { color: var(--primary); font-size: 20px; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h1 style="font-size: 42px; font-weight: 900;">AI Career Mentor</h1>
+            <p style="color: #64748b; font-size: 18px;">Upload your resume and get a detailed expert improvement report.</p>
+        </div>
+
+        <div class="upload-zone" onclick="document.getElementById('pdfInput').click()">
+            <i class="fas fa-file-upload" style="font-size: 60px; color: var(--primary); margin-bottom: 20px;"></i>
+            <h2>Drop your Resume (PDF)</h2>
+            <p>We'll analyze your skills, formatting, and industry alignment.</p>
+            <input type="file" id="pdfInput" accept=".pdf" style="display: none;" onchange="analyzeFile(event)">
+        </div>
+
+        <div id="loading"><i class="fas fa-brain fa-spin"></i> AI is performing deep-scan on your profile...</div>
+
+        <div id="reportCard">
+            <div class="main-score">
+                <div>
+                    <h2 id="gradeHeading">Calculating...</h2>
+                    <p style="opacity: 0.8;">Your ATS Match Probability</p>
+                </div>
+                <div class="score-circle" id="finalPercent">0%</div>
+            </div>
+
+            <div class="advice-section" id="adviceContainer">
+                </div>
+
+            <button onclick="location.reload()" style="width:100%; padding:20px; border:none; border-radius:15px; background:#f1f5f9; font-weight:bold; cursor:pointer; margin-top:20px;">SCAN ANOTHER RESUME</button>
+        </div>
+    </div>
+
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+
+        async function analyzeFile(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('reportCard').style.display = 'none';
+
+            const reader = new FileReader();
+            reader.onload = async function() {
+                const typedarray = new Uint8Array(this.result);
+                const pdf = await pdfjsLib.getDocument(typedarray).promise;
+                let text = "";
+                for (let i = 1; i <= pdf.numPages; i++) {
+                    const page = await pdf.getPage(i);
+                    const content = await page.getTextContent();
+                    text += content.items.map(item => item.str).join(" ");
+                }
+                showDetailedReport(text.toLowerCase());
+            };
+            reader.readAsArrayBuffer(file);
+        }
+
+        function showDetailedReport(content) {
+            const keywords = ['python', 'java', 'sql', 'dsa', 'react', 'oops', 'javascript', 'c++', 'aws', 'projects', 'internship'];
+            let matched = keywords.filter(k => content.includes(k));
+            let score = Math.round((matched.length / keywords.length) * 70);
+            if (content.includes('@')) score += 15;
+            if (content.includes('linkedin.com')) score += 15;
+            score = Math.min(score, 100);
+
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('reportCard').style.display = 'block';
+            document.getElementById('finalPercent').innerText = score + "%";
+
+            const container = document.getElementById('adviceContainer');
+            let html = "";
+
+            if (score >= 80) {
+                document.getElementById('gradeHeading').innerText = "MST - Elite Profile";
+                html = `
+                    <div class="advice-card mst-advice">
+                        <h3>⭐ Expert Summary: Mst Hai!</h3>
+                        <p>Aapka resume ekdum Industry Standards ke hisaab se perfect hai. Aapne contact details aur core technical keywords (Jaise: ${matched.slice(0,3).join(', ')}) ka sahi combination use kiya hai. Ye resume top product-based companies ke ATS filters ko easily clear kar dega.</p>
+                        <div class="expert-tip"><i class="fas fa-lightbulb"></i> <div><b>Next Step:</b> Ab bas resume mein apne projects ke "Impact" ko numbers mein likho (e.g., "Improved speed by 20%"). Baaki sab set hai, direct apply karo!</div></div>
+                    </div>`;
+            } else if (score >= 50) {
+                document.getElementById('gradeHeading').innerText = "NORMAL - Needs Polish";
+                html = `
+                    <div class="advice-card normal-advice">
+                        <h3>⚠️ Expert Summary: Normal/Theek Hai</h3>
+                        <p>Aapka resume readable toh hai, par isme "Tech Punch" ki kami hai. Kuch important technical skills miss ho rahi hain jo aapki profile ko weightage de sakti hain. Agar aap top roles target kar rahe ho, toh aapko apni specialization clearly highlight karni hogi.</p>
+                        <div class="expert-tip"><i class="fas fa-tools"></i> <div><b>Advice 1:</b> Aapke resume mein LinkedIn profile ya professional links miss ho sakte hain. Isse recruiter aapka digital presence check nahi kar pata.</div></div>
+                        <div class="expert-tip"><i class="fas fa-key"></i> <div><b>Advice 2:</b> Skills section mein specific keywords add karo jaise: SQL, OOPS, ya React. Isse score 80% tak chala jayega.</div></div>
+                    </div>`;
+            } else {
+                document.getElementById('gradeHeading').innerText = "BAD - High Risk";
+                html = `
+                    <div class="advice-card bad-advice">
+                        <h3>❌ Expert Summary: Bahut Bura Haal Hai</h3>
+                        <p>Aapka resume ATS Friendly bilkul nahi hai. Is format mein aapka resume recruiter ke pass pahunchne se pehle hi reject ho sakta hai. Aapne ya toh content bahut kam dala hai ya phir industry-standard headings use nahi ki hain.</p>
+                        <div class="expert-tip"><i class="fas fa-exclamation-circle"></i> <div><b>Urgent Action:</b> Turant ek standard format use karo (Like Harvard or Deedy). Resume mein "Projects" aur "Skills" section ko detail mein likho.</div></div>
+                        <div class="expert-tip"><i class="fas fa-search"></i> <div><b>Advice:</b> Kam se kam 2 technical projects add karo aur unme apni role clearly describe karo. Bina keywords ke bacha select hona mushkil hai.</div></div>
+                    </div>`;
+            }
+
+            container.innerHTML = html;
+        }
+    </script>
+</body>
+</html>
