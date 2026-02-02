@@ -1,1 +1,335 @@
- 
+<!--  
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Elite Career Research Hub | Batch 2026</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --primary: #2563eb; --dark: #020617; --card: #1e293b; --accent: #10b981; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--dark); color: white; display: flex; height: 100vh; overflow: hidden; }
+
+        /* Sidebar */
+        .sidebar { width: 320px; background: #000; border-right: 1px solid #334155; padding: 20px; }
+        .comp-link { 
+            padding: 15px; margin-bottom: 10px; border-radius: 12px; cursor: pointer; 
+            display: flex; align-items: center; gap: 12px; transition: 0.3s;
+        }
+        .comp-link.active { background: var(--primary); font-weight: 800; }
+
+        /* Main View */
+        .main { flex: 1; overflow-y: auto; padding: 40px; scroll-behavior: smooth; }
+        
+        /* Year Toggle */
+        .year-tabs { display: flex; gap: 20px; margin: 30px 0; border-bottom: 1px solid #334155; padding-bottom: 15px; }
+        .year-tab { cursor: pointer; padding: 10px 25px; border-radius: 50px; background: #1e293b; transition: 0.3s; }
+        .year-tab.active { background: var(--accent); color: black; font-weight: bold; }
+
+        /* DSA Grid */
+        .dsa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .dsa-card { background: var(--card); padding: 30px; border-radius: 20px; border: 1px solid #334155; }
+        
+        .ques-item { 
+            padding: 12px; background: #0f172a; border-radius: 10px; margin-bottom: 8px; 
+            font-size: 14px; border-left: 4px solid var(--accent); display: flex; justify-content: space-between;
+        }
+        .ques-item a { color: var(--accent); text-decoration: none; font-size: 12px; }
+
+        .pdf-download-btn { 
+            display: block; width: 100%; padding: 18px; background: #ef4444; color: white; 
+            text-align: center; border-radius: 12px; text-decoration: none; font-weight: 900; margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <h2 style="color:var(--accent); margin-bottom: 30px;">PLACEMENT AI</h2>
+        <div id="companyMenu"></div>
+    </aside>
+
+    <main class="main" id="displayArea">
+        </main>
+
+    <script>
+        const companyDB = {
+            tcs: {
+                name: "TCS (Ninja/Digital/Prime)",
+                years: {
+                    2024: ["String Reversal (No built-in)", "Find Second Largest in Array", "Matrix Rotation 90 deg"],
+                    2025: ["Equilibrium Point in Array", "Pseudo-code for Recursion", "Check Anagrams"],
+                    2026: ["Graph: BFS/DFS Traversal", "DP: 0/1 Knapsack Problem", "Advanced SQL Window Functions"]
+                },
+                dsa_ninja: ["Reverse Array", "Palindrome Check", "Bubble Sort", "Factorial Recursion", "Missing Number in Array"],
+                dsa_digital: ["Merge Sort", "Linked List Cycle Detection", "Binary Tree Level Order", "Lowest Common Ancestor"],
+                pdf: "https://www.geeksforgeeks.org/tcs-nqt-preparation-sheet/"
+            },
+            accenture: {
+                name: "Accenture (ASE/SADA)",
+                years: {
+                    2024: ["Logical Connectivity", "Flowchart Tracing", "MS Excel Macros"],
+                    2025: ["Abstract Reasoning", "Networking OSI Layers", "Cloud Computing Basics"],
+                    2026: ["Python: List Comprehensions", "SQL: Joins & Unions", "Bitwise XOR Problems"]
+                },
+                dsa_ninja: ["Bitwise Operations", "String Compression", "Stack using Queues"],
+                dsa_digital: ["Maximum Profit Stock", "Longest Substring without repeating", "Tree Height Calc"],
+                pdf: "https://www.interviewbit.com/accenture-interview-questions/"
+            }
+        };
+
+        let currentComp = 'tcs';
+        let currentYear = 2026;
+
+        function renderSidebar() {
+            const menu = document.getElementById('companyMenu');
+            Object.keys(companyDB).forEach(key => {
+                menu.innerHTML += `<div class="comp-link ${key===currentComp?'active':''}" onclick="loadComp('${key}')"><i class="fas fa-building"></i> ${key.toUpperCase()}</div>`;
+            });
+        }
+
+        function loadComp(key) {
+            currentComp = key;
+            renderContent();
+        }
+
+        function setYear(year) {
+            currentYear = year;
+            renderContent();
+        }
+
+        function renderContent() {
+            const data = companyDB[currentComp];
+            const html = `
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <h1>${data.name} Research Hub</h1>
+                    <a href="${data.pdf}" target="_blank" class="pdf-download-btn" style="width:auto; padding:10px 20px;">
+                        <i class="fas fa-file-pdf"></i> DOWNLOAD REAL PYQ SHEET
+                    </a>
+                </div>
+
+                <div class="year-tabs">
+                    <div class="year-tab ${currentYear==2024?'active':''}" onclick="setYear(2024)">Batch 2024</div>
+                    <div class="year-tab ${currentYear==2025?'active':''}" onclick="setYear(2025)">Batch 2025</div>
+                    <div class="year-tab ${currentYear==2026?'active':''}" onclick="setYear(2026)">Batch 2026 (Upcoming)</div>
+                </div>
+
+                <h3><i class="fas fa-history"></i> Real Questions asked in ${currentYear}:</h3>
+                <div style="margin: 20px 0;">
+                    ${data.years[currentYear].map(q => `<div class="ques-item">${q} <a href="https://www.google.com/search?q=${q}+solution" target="_blank">View Solution</a></div>`).join('')}
+                </div>
+
+                <div class="dsa-grid">
+                    <div class="dsa-card">
+                        <h3 style="color:#60a5fa; margin-bottom:15px;">Ninja Package DSA (3.5 - 4 LPA)</h3>
+                        <p style="font-size:12px; color:#94a3b8; margin-bottom:15px;">Target: 30-40 Easy Level Questions</p>
+                        ${data.dsa_ninja.map(d => `<div class="ques-item">${d}</div>`).join('')}
+                    </div>
+                    <div class="dsa-card" style="border-color: var(--accent);">
+                        <h3 style="color:var(--accent); margin-bottom:15px;">Digital/SADA Package DSA (7 - 9 LPA)</h3>
+                        <p style="font-size:12px; color:#94a3b8; margin-bottom:15px;">Target: 40+ Medium-Hard Questions</p>
+                        ${data.dsa_digital.map(d => `<div class="ques-item">${d}</div>`).join('')}
+                    </div>
+                </div>
+            `;
+            document.getElementById('displayArea').innerHTML = html;
+        }
+
+        window.onload = () => { renderSidebar(); renderContent(); };
+    </script>
+</body>
+</html> -->
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Placement Research Hub v4.0 | Batch 2026</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --primary: #2563eb; --dark: #020617; --card: #1e293b; --accent: #10b981; --warning: #f59e0b; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--dark); color: white; display: flex; height: 100vh; overflow: hidden; }
+
+        /* Sidebar: All 8 Companies */
+        .sidebar { width: 340px; background: #000; border-right: 1px solid #334155; padding: 20px; overflow-y: auto; }
+        .comp-link { 
+            padding: 16px; margin-bottom: 12px; border-radius: 12px; cursor: pointer; 
+            display: flex; align-items: center; gap: 15px; transition: 0.3s; opacity: 0.6;
+        }
+        .comp-link:hover, .comp-link.active { background: var(--primary); opacity: 1; font-weight: 800; border: 1px solid #60a5fa; }
+        .comp-link img { width: 30px; height: 30px; background: white; border-radius: 6px; padding: 2px; }
+
+        /* Main View */
+        .main { flex: 1; overflow-y: auto; padding: 50px; scroll-behavior: smooth; background: radial-gradient(circle at top right, #1e1b4b, #020617); }
+        
+        /* Package & Header */
+        .header-section { margin-bottom: 40px; }
+        .pkg-tag { background: #312e81; color: #818cf8; padding: 6px 15px; border-radius: 50px; font-size: 13px; font-weight: 800; margin-bottom: 15px; display: inline-block; }
+
+        /* Year Tabs */
+        .year-tabs { display: flex; gap: 15px; margin-bottom: 30px; }
+        .year-tab { cursor: pointer; padding: 12px 30px; border-radius: 50px; background: #1e293b; border: 1px solid #334155; transition: 0.3s; }
+        .year-tab.active { background: var(--accent); color: black; font-weight: 900; border-color: white; }
+
+        /* DSA Section */
+        .dsa-section { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+        .dsa-card { background: var(--card); padding: 30px; border-radius: 25px; border: 1px solid #334155; position: relative; }
+        .ques-box { background: #0f172a; padding: 15px; border-radius: 12px; margin-bottom: 10px; font-size: 14px; border-left: 5px solid var(--primary); display: flex; justify-content: space-between; align-items: center; }
+        .ques-box a { color: var(--accent); font-size: 11px; text-decoration: none; border: 1px solid var(--accent); padding: 2px 8px; border-radius: 4px; }
+
+        /* Action Buttons */
+        .pdf-btn { display: block; width: 100%; padding: 22px; background: #ef4444; color: white; text-align: center; border-radius: 15px; text-decoration: none; font-weight: 900; margin-top: 30px; box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3); }
+        .pdf-btn:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar" id="sidebar">
+        <h2 style="color:var(--accent); margin-bottom: 40px; text-align: center; letter-spacing: 2px;">PLACEMENT.AI</h2>
+        <div id="companyMenu"></div>
+    </aside>
+
+    <main class="main" id="displayArea">
+        </main>
+
+    <script>
+        const companyDB = {
+            tcs: {
+                name: "TCS (Ninja/Digital/Prime)", pkg: "₹3.36 - ₹9.0 LPA",
+                years: { 2024: ["String reversal without built-in", "Second largest element"], 2025: ["Equilibrium Point", "Subarray with 0 sum"], 2026: ["Graph: BFS/DFS", "DP: LIS"] },
+                ninja: ["Check Prime", "Palindrome", "Fibonacci", "GCD", "Array Rotation"],
+                digital: ["Merge Sort", "Lowest Common Ancestor", "Cycle in Linked List", "Kth Smallest Element"],
+                pdf: "https://www.geeksforgeeks.org/tcs-nqt-preparation-sheet/", logo: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services_Logo.svg"
+            },
+            accenture: {
+                name: "Accenture (ASE/SADA)", pkg: "₹4.5 - ₹6.5 LPA",
+                years: { 2024: ["Networking: OSI Layers", "Excel: VLOOKUP"], 2025: ["Cloud: SaaS vs PaaS", "Bitwise XOR sum"], 2026: ["Python: Decorators", "SQL: Recursive CTE"] },
+                ninja: ["Bubble Sort", "Linear Search", "Logical Deduction", "Critical Thinking"],
+                digital: ["HashMaps Usage", "Stock Buy/Sell", "Tree Inorder Traversal", "Binary Search on Answer"],
+                pdf: "https://www.interviewbit.com/accenture-interview-questions/", logo: "https://upload.wikimedia.org/wikipedia/commons/0/05/Accenture_logo.svg"
+            },
+            infosys: {
+                name: "Infosys (SP/DSE)", pkg: "₹3.6 - ₹9.5 LPA",
+                years: { 2024: ["Java: Collections Framework", "SQL: Joins"], 2025: ["Python: List Comprehension", "DBMS: Normalization"], 2026: ["Microservices Intro", "Advanced SQL Window Functions"] },
+                ninja: ["Two Sum Problem", "Reverse Linked List", "Queue using Stacks"],
+                digital: ["N-Queens Problem", "Sudoku Solver", "Longest Palindromic Substring", "Edit Distance"],
+                pdf: "https://www.geeksforgeeks.org/infosys-interview-preparation/", logo: "https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg"
+            },
+            wipro: {
+                name: "Wipro (Elite/Turbo)", pkg: "₹3.5 - ₹6.5 LPA",
+                years: { 2024: ["SDLC Phases", "Operating System Basics"], 2025: ["Automata Theory (Intro)", "C++ OOPs"], 2026: ["Data Security Basics", "Java Stream API"] },
+                ninja: ["Check Leap Year", "Factorial of Large Num", "Binary to Decimal"],
+                digital: ["Trie Data Structure", "Quick Sort", "K-means logic", "Graph Coloring"],
+                pdf: "https://www.prepinsta.com/wipro/placement-papers/", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Wipro_Primary_Logo_Color_RGB.svg"
+            },
+            capgemini: {
+                name: "Capgemini (Analyst)", pkg: "₹4.0 - ₹7.5 LPA",
+                years: { 2024: ["Pseudo Code Logic", "Versant Test"], 2025: ["Game Based Aptitude", "Behavioral Interview"], 2026: ["Technical MCQ (Networking/Cloud)", "English Versant 2.0"] },
+                ninja: ["Selection Sort", "Majority Element", "Anagram Check"],
+                digital: ["Priority Queues", "Sliding Window Maximum", "Dijkstra's Algo", "Topological Sort"],
+                pdf: "https://www.geeksforgeeks.org/capgemini-recruitment-process/", logo: "https://upload.wikimedia.org/wikipedia/commons/9/94/Capgemini_201x_logo.svg"
+            },
+            cognizant: {
+                name: "Cognizant (GenC/GenC Pro)", pkg: "₹4.0 - ₹6.7 LPA",
+                years: { 2024: ["AMCAT Assessment Pattern", "SQL: Group By"], 2025: ["Technical MCQ on OS", "SDLC Models"], 2026: ["Full Stack Intro", "React Basics for Tech Interview"] },
+                ninja: ["Remove Duplicates Array", "Frequency of elements", "Merge Sorted Arrays"],
+                digital: ["Reverse Nodes in K-Group", "Median of Sorted Arrays", "Matrix Chain Mult"],
+                pdf: "https://www.interviewbit.com/cognizant-interview-questions/", logo: "https://upload.wikimedia.org/wikipedia/commons/4/43/Cognizant_logo_2022.svg"
+            },
+            hcl: {
+                name: "HCL Tech", pkg: "₹3.6 - ₹5.0 LPA",
+                years: { 2024: ["Basic Aptitude (Speed/Time)", "C Skills"], 2025: ["Linux Commands", "DBMS Keys"], 2026: ["Agile Methodology", "API Testing Basics"] },
+                ninja: ["Count Set Bits", "Stack Implementation", "String Rotation"],
+                digital: ["Height of Binary Tree", "Lowest Common Ancestor", "DFS of Graph"],
+                pdf: "https://www.geeksforgeeks.org/hcl-technologies-recruitment-process/", logo: "https://upload.wikimedia.org/wikipedia/commons/d/df/HCL_Technologies_logo.svg"
+            },
+            dxc: {
+                name: "DXC Technology", pkg: "₹3.4 - ₹4.5 LPA",
+                years: { 2024: ["Verbal Reasoning", "Logical Series"], 2025: ["Technical MCQ: Java/C++", "Pseudo Code"], 2026: ["Cybersecurity Basics", "Information Security Principles"] },
+                ninja: ["Find Duplicate in Array", "Intersection of 2 Arrays", "Power of Two"],
+                digital: ["Level Order Traversal", "Inorder Successor BST", "Detect Loop in LL"],
+                pdf: "https://www.prepinsta.com/dxc-technology/placement-papers/", logo: "https://upload.wikimedia.org/wikipedia/commons/3/3d/DXC_Technology_logo.svg"
+            }
+        };
+
+        let currentComp = 'tcs';
+        let currentYear = 2026;
+
+        function renderSidebar() {
+            const menu = document.getElementById('companyMenu');
+            Object.keys(companyDB).forEach(key => {
+                menu.innerHTML += `
+                    <div class="comp-link ${key===currentComp?'active':''}" onclick="loadComp('${key}')">
+                        <img src="${companyDB[key].logo}"> ${key.toUpperCase()}
+                    </div>`;
+            });
+        }
+
+        function loadComp(key) {
+            currentComp = key;
+            document.querySelectorAll('.comp-link').forEach(l => l.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            renderContent();
+        }
+
+        function setYear(year) {
+            currentYear = year;
+            renderContent();
+        }
+
+        function renderContent() {
+            const data = companyDB[currentComp];
+            const html = `
+                <div class="header-section">
+                    <span class="pkg-tag"><i class="fas fa-coins"></i> ${data.pkg}</span>
+                    <h1 style="font-size: 55px; font-weight: 900; letter-spacing: -3px;">${data.name} Research Hub</h1>
+                </div>
+
+                <div class="year-tabs">
+                    <div class="year-tab ${currentYear==2024?'active':''}" onclick="setYear(2024)">Batch 2024</div>
+                    <div class="year-tab ${currentYear==2025?'active':''}" onclick="setYear(2025)">Batch 2025</div>
+                    <div class="year-tab ${currentYear==2026?'active':''}" onclick="setYear(2026)">Batch 2026 (Upcoming Trends)</div>
+                </div>
+
+                <div style="margin-bottom: 40px;">
+                    <h3><i class="fas fa-history" style="color:var(--accent)"></i> Questions asked in ${currentYear} Dives:</h3>
+                    <div style="margin-top: 15px;">
+                        ${data.years[currentYear].map(q => `
+                            <div class="ques-box">
+                                <span>${q}</span>
+                                <a href="https://www.google.com/search?q=${q}+${currentComp}+solution" target="_blank">View Answer</a>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div class="dsa-section">
+                    <div class="dsa-card">
+                        <h3 style="color:#60a5fa; margin-bottom:20px;">Ninja/Base Level (30 Ques)</h3>
+                        ${data.ninja.map(q => `<div class="ques-box">${q}</div>`).join('')}
+                    </div>
+                    <div class="dsa-card" style="border-color: var(--accent);">
+                        <h3 style="color:var(--accent); margin-bottom:20px;">Digital/Premium Level (40 Ques)</h3>
+                        ${data.digital.map(q => `<div class="ques-box">${q}</div>`).join('')}
+                    </div>
+                </div>
+
+                <a href="${data.pdf}" target="_blank" class="pdf-btn">
+                    <i class="fas fa-download"></i> DOWNLOAD AUTHENTIC 2026 PREP BUNDLE (PDF)
+                </a>
+            `;
+            document.getElementById('displayArea').innerHTML = html;
+        }
+
+        window.onload = () => { renderSidebar(); renderContent(); };
+    </script>
+</body>
+</html>
