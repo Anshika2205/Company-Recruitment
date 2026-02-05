@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Support Hub | KIET</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --blue: #1a73e8; --bg: #f8f9fa; --border: #e0e0e0; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; display: flex; }
+        
+        /* Layout */
+        .sidebar { width: 280px; background: white; border-right: 1px solid var(--border); height: 100vh; padding: 40px 20px; position: fixed; }
+        .main-content { margin-left: 280px; flex: 1; padding: 60px; }
+
+        /* Component Styling */
+        .card { background: white; border-radius: 12px; border: 1px solid var(--border); padding: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); margin-bottom: 40px; }
+        .input-group { margin-bottom: 20px; }
+        textarea { width: 100%; padding: 15px; border: 1px solid var(--border); border-radius: 8px; font-size: 15px; resize: none; box-sizing: border-box; }
+        
+        /* Professional File Upload Area */
+        .file-upload-wrapper { border: 2px dashed #cbd5e0; padding: 20px; text-align: center; border-radius: 10px; background: #fdfdfd; cursor: pointer; transition: 0.3s; }
+        .file-upload-wrapper:hover { border-color: var(--blue); background: #f1f7fe; }
+        
+        .btn-primary { background: var(--blue); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-weight: 700; cursor: pointer; width: 100%; transition: 0.3s; }
+        .btn-primary:hover { background: #1557b0; }
+
+        /* Ticket List */
+        .ticket-item { background: white; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 20px; overflow: hidden; }
+        .ticket-top { padding: 15px 25px; background: #fafafa; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+        .ticket-content { padding: 25px; }
+        .attachment-badge { display: inline-flex; align-items: center; gap: 8px; background: #e8f0fe; color: var(--blue); padding: 8px 15px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: bold; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2 style="color: var(--blue); margin-bottom: 30px;">Support Hub</h2>
+        <div id="userDisplay" style="font-weight: bold; margin-bottom: 40px;">Student Portal</div>
+        <button onclick="location.href='login.html'" style="color: #666; background: none; border: none; cursor: pointer;">← Logout</button>
+    </div>
+
+    <div class="main-content">
+        <div class="card">
+            <h2 style="margin-top:0;">Submit a Query</h2>
+            <div class="input-group">
+                <textarea id="studentMsg" rows="4" placeholder="Describe your issue or request (e.g., Please review my resume)"></textarea>
+            </div>
+            
+            <div class="input-group">
+                <label style="font-weight: bold; display: block; margin-bottom: 10px;">Upload Support File (Desktop)</label>
+                <div class="file-upload-wrapper" onclick="document.getElementById('studentFile').click()">
+                    <i class="fas fa-cloud-upload-alt" style="font-size: 30px; color: #94a3b8;"></i>
+                    <p id="fileNameDisplay" style="margin-top: 10px; color: #64748b;">Click to select PDF, Image or Video from Desktop</p>
+                    <input type="file" id="studentFile" style="display: none;" onchange="handleFile(this)">
+                </div>
+            </div>
+
+            <button class="btn-primary" onclick="pushTicket()">SEND TO FACULTY DESK</button>
+        </div>
+
+        <h3>Ticket Status & History</h3>
+        <div id="ticketContainer"></div>
+    </div>
+
+    <script>
+        const currentUser = localStorage.getItem('currentUser') || 'Student';
+        document.getElementById('userDisplay').innerText = "Active: " + currentUser;
+
+        let tempFileData = null;
+        function handleFile(input) {
+            const file = input.files[0];
+            document.getElementById('fileNameDisplay').innerText = "Selected: " + file.name;
+            const reader = new FileReader();
+            reader.onload = e => tempFileData = e.target.result;
+            reader.readAsDataURL(file);
+        }
+
+        function pushTicket() {
+            const msg = document.getElementById('studentMsg').value;
+            if(!msg) return alert("Please describe the issue");
+
+            let db = JSON.parse(localStorage.getItem('supportDB') || "[]");
+            db.push({
+                id: Date.now(),
+                sender: currentUser,
+                issue: msg,
+                studentFile: tempFileData,
+                adminReply: "",
+                adminFile: null,
+                status: "Pending"
+            });
+            localStorage.setItem('supportDB', JSON.stringify(db));
+            location.reload();
+        }
+
+        function loadTickets() {
+            const db = JSON.parse(localStorage.getItem('supportDB') || "[]");
+            const container = document.getElementById('ticketContainer');
+            db.filter(t => t.sender === currentUser).reverse().forEach(t => {
+                container.innerHTML += `
+                    <div class="ticket-item">
+                        <div class="ticket-top">
+                            <b>TICKET #${t.id}</b>
+                            <span style="color:${t.status=='Pending'?'#f59e0b':'#10b981'}; font-weight:bold;">● ${t.status}</span>
+                        </div>
+                        <div class="ticket-content">
+                            <p>${t.issue}</p>
+                            ${t.studentFile ? `<a href="${t.studentFile}" download class="attachment-badge"><i class="fas fa-paperclip"></i> View My Attachment</a>` : ''}
+                            
+                            ${t.adminReply ? `
+                                <div style="margin-top:20px; padding:20px; background:#f0f7ff; border-radius:10px; border-left:4px solid var(--blue);">
+                                    <b>Admin Response:</b>
+                                    <p>${t.adminReply}</p>
+                                    ${t.adminFile ? `<a href="${t.adminFile}" download class="attachment-badge" style="background:white;"><i class="fas fa-file-download"></i> Download Faculty Resource</a>` : ''}
+                                </div>
+                            ` : '<p style="margin-top:15px; font-size:13px; color:#999;">Awaiting Faculty Response...</p>'}
+                        </div>
+                    </div>
+                `;
+            });
+        }
+        loadTickets();
+    </script>
+</body>
+</html>

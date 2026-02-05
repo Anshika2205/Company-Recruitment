@@ -1,4 +1,4 @@
-
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -107,4 +107,46 @@
 
 
 
- 
+  -->
+
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | KIET Support Portal</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .login-card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); width: 400px; text-align: center; }
+        h2 { color: #1a73e8; margin-bottom: 30px; }
+        select, input, button { width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #ddd; box-sizing: border-box; }
+        .btn-login { background: #1a73e8; color: white; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .btn-login:hover { background: #1557b0; }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <h2>Portal Login</h2>
+        <select id="userRole">
+            <option value="student">Student Portal</option>
+            <option value="admin">Administrator (Faculty)</option>
+        </select>
+        <input type="text" id="userName" placeholder="Enter Name / Admin ID">
+        <button class="btn-login" onclick="login()">ENTER PORTAL</button>
+    </div>
+
+    <script>
+        function login() {
+            const role = document.getElementById('userRole').value;
+            const name = document.getElementById('userName').value;
+            if(!name) return alert("Please enter name!");
+            
+            localStorage.setItem('currentUser', name);
+            localStorage.setItem('role', role);
+            
+            if(role === 'admin') window.location.href = 'admin-desk.html';
+            else window.location.href = 'help-desk.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Faculty Admin Console</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; margin: 0; padding: 50px; }
+        .admin-card { background: white; border-radius: 15px; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); max-width: 1000px; margin: auto; }
+        .ticket-row { border: 1px solid #eee; padding: 25px; border-radius: 12px; margin-bottom: 25px; }
+        textarea { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; margin: 15px 0; }
+        .upload-btn { display: inline-block; padding: 10px 20px; background: #f1f3f4; border-radius: 5px; cursor: pointer; font-size: 13px; font-weight: bold; border: 1px solid #ccc; }
+        .btn-resolve { background: #34a853; color: white; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="admin-card">
+        <h1>Faculty Help-Desk Console</h1>
+        <p>Review student queries and attach resources directly from Desktop.</p>
+        <hr><br>
+        <div id="adminList"></div>
+    </div>
+
+    <script>
+        let adminFileData = null;
+
+        function handleAdminFile(input) {
+            const reader = new FileReader();
+            reader.onload = e => adminFileData = e.target.result;
+            reader.readAsDataURL(input.files[0]);
+        }
+
+        function renderAdmin() {
+            const db = JSON.parse(localStorage.getItem('supportDB') || "[]");
+            const list = document.getElementById('adminList');
+            list.innerHTML = '';
+
+            db.reverse().forEach(t => {
+                list.innerHTML += `
+                    <div class="ticket-row">
+                        <p><b>From Student:</b> ${t.sender} | <b>ID:</b> #${t.id}</p>
+                        <p style="background:#f9f9f9; padding:15px; border-radius:8px;">${t.issue}</p>
+                        ${t.studentFile ? `<a href="${t.studentFile}" download style="color:#1a73e8; font-weight:bold;">[View Student's Attachment]</a>` : ''}
+                        
+                        <textarea id="reply-${t.id}" rows="3" placeholder="Type solution or explanation...">${t.adminReply}</textarea>
+                        
+                        <div style="margin-bottom:15px;">
+                            <label class="upload-btn">
+                                <i class="fas fa-desktop"></i> Attach Solution (Video/PDF)
+                                <input type="file" style="display:none" onchange="handleAdminFile(this)">
+                            </label>
+                        </div>
+
+                        <button class="btn-resolve" onclick="resolveTicket(${t.id})">RESOLVE & SEND TO STUDENT</button>
+                    </div>
+                `;
+            });
+        }
+
+        function resolveTicket(id) {
+            const reply = document.getElementById(`reply-${id}`).value;
+            let db = JSON.parse(localStorage.getItem('supportDB') || "[]");
+            const idx = db.findIndex(t => t.id === id);
+            
+            db[idx].adminReply = reply;
+            db[idx].adminFile = adminFileData;
+            db[idx].status = "Solved";
+
+            localStorage.setItem('supportDB', JSON.stringify(db));
+            alert("Solution broadcasted to Student!");
+            adminFileData = null;
+            renderAdmin();
+        }
+
+        renderAdmin();
+    </script>
+</body>
+</html>
