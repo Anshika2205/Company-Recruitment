@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,35 +11,31 @@
         :root { --admin-blue: #1a73e8; --light-bg: #f8f9fa; --border: #dadce0; }
         body { font-family: 'Segoe UI', Tahoma, sans-serif; background: white; margin: 0; display: flex; }
 
-        /* Sidebar - Professional Google-Style */
+        /* Sidebar Styling */
         .sidebar { width: 300px; background: var(--light-bg); border-right: 1px solid var(--border); height: 100vh; position: fixed; padding: 40px 20px; box-shadow: 2px 0 10px rgba(0,0,0,0.02); }
         .sidebar h2 { color: var(--admin-blue); font-weight: 900; margin-bottom: 40px; text-align: center; }
         .nav-item { padding: 15px 25px; border-radius: 0 50px 50px 0; cursor: pointer; display: flex; align-items: center; gap: 15px; color: #3c4043; transition: 0.3s; margin-left: -20px; }
         .nav-item:hover, .nav-item.active { background: #e8f0fe; color: var(--admin-blue); font-weight: bold; }
 
-        /* Main Canvas */
+        /* Main Content Styling */
         .main-canvas { margin-left: 300px; flex: 1; padding: 60px; overflow-y: auto; height: 100vh; }
-        .admin-box { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 40px; margin-bottom: 50px; position: relative; transition: 0.3s; }
-        .admin-box:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .admin-box { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 40px; margin-bottom: 50px; position: relative; }
 
-        /* Control Buttons */
-        .btn-magic { background: var(--admin-blue); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
-        .btn-magic:hover { filter: brightness(1.1); }
-        .btn-delete { background: #fee2e2; color: #dc2626; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; }
+        /* Admin Buttons */
+        .btn-magic { background: var(--admin-blue); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px; }
+        .btn-delete { position: absolute; top: -10px; right: -10px; background: #fee2e2; color: #dc2626; border: 1px solid #dc2626; border-radius: 50%; width: 25px; height: 25px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold; z-index: 10; }
         
-        /* Edit Indicators */
+        /* Edit Mode Focus */
         [contenteditable="true"]:focus { outline: 2px solid var(--admin-blue); background: #fdfdfd; padding: 4px; border-radius: 4px; }
-        .section-badge { background: #e8f0fe; color: var(--admin-blue); padding: 5px 12px; border-radius: 50px; font-size: 11px; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; display: inline-block; }
     </style>
 </head>
 <body>
 
     <aside class="sidebar">
         <h2>TV.HUB ADMIN</h2>
-        <div class="nav-item active" onclick="jumpTo('partners')"><i class="fas fa-building"></i> Tech Partners</div>
+        <div class="nav-item active" onclick="jumpTo('companies')"><i class="fas fa-building"></i> Tech Partners</div>
         <div class="nav-item" onclick="jumpTo('internships')"><i class="fas fa-briefcase"></i> Internships</div>
         <div class="nav-item" onclick="jumpTo('leaderboard')"><i class="fas fa-trophy"></i> KIET Rankers</div>
-        <div class="nav-item" onclick="jumpTo('legacy')"><i class="fas fa-history"></i> Batch Legacy</div>
         <div class="nav-item" onclick="window.location.href='admin-desk.html'"><i class="fas fa-envelope-open-text" style="color: #ea4335;"></i> Student Queries</div>
         <br><hr><br>
         <button onclick="saveChanges()" class="btn-magic" style="width: 100%; justify-content: center; padding: 15px; border-radius: 50px;">SAVE ALL LIVE DATA</button>
@@ -46,101 +44,342 @@
     <main class="main-canvas">
         <header style="margin-bottom: 50px;">
             <h1>Faculty Control Portal</h1>
-            <p style="color: #5f6368;">Hello, <b>Dr. Vineet Sharma</b>. You have full edit access to the live portal.</p>
+            <p>Admin Access: <b>Dr. Vineet Sharma</b>. Real-time editing enabled.</p>
         </header>
 
-        <section id="partners" class="admin-box">
-            <span class="section-badge">Section Manager</span>
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-                <h3>Strategic Tech Partners</h3>
-                <button class="btn-magic" onclick="addItem('compGrid')"><i class="fas fa-plus"></i> Add Partner</button>
-            </div>
-            <div class="comp-grid" id="compGrid" style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 25px;">
-                <div style="position:relative; background:#f1f3f4; padding:15px; border-radius:10px;">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" width="80">
-                    <button class="btn-delete" onclick="this.parentElement.remove()" style="position:absolute; top:-5px; right:-5px;">×</button>
-                </div>
-                <div style="position:relative; background:#f1f3f4; padding:15px; border-radius:10px;">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" width="80">
-                    <button class="btn-delete" onclick="this.parentElement.remove()" style="position:absolute; top:-5px; right:-5px;">×</button>
-                </div>
-            </div>
-        </section>
+       <!-- companies -->
+        <div class="admin-box">
+            <button class="btn-magic" onclick="addNewPartner()"><i class="fas fa-plus"></i> Add New Partner</button>
 
+            <section id="companies" class="company-section" style="padding: 20px 0; background: #fff; position: relative;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px;">
+                    <h2 class="section-title" style="margin: 0;" contenteditable="true">Strategic Tech Partners</h2>
+                    
+                    <div class="dropdown-container" style="position: relative;">
+                        <select id="companyDropdown" onchange="navigateToCompany()" style="padding: 12px 25px; border-radius: 10px; border: 2px solid #1a73e8; background: white; color: #1a73e8; font-weight: bold; cursor: pointer; outline: none; font-size: 16px; box-shadow: 0 5px 15px rgba(26,115,232,0.1);">
+                             <option value="">Explore Companies ▼</option>
+                <optgroup label="Product Giants">
+                    <option value="google.html">Google</option>
+                    <option value="amazon.html">Amazon</option>
+                    <option value="microsoft.html">Microsoft</option>
+                    <option value="meta.html">Meta</option>
+                    <option value="netflix.html">Netflix</option>
+                    <option value="apple.html">Apple</option>
+                    <option value="adobe.html">Adobe</option>
+                    <option value="uber.html">Uber</option>
+                </optgroup>
+                <optgroup label="Global Consultancies">
+                    <option value="tcs.html">TCS</option>
+                    <option value="capgemini.html">Capgemini</option>
+                    <option value="infosys.html">Infosys</option>
+                    <option value="wipro.html">Wipro</option>
+                    <option value="accenture.html">Accenture</option>
+                    <option value="deloitte.html">Deloitte</option>
+                </optgroup>
+                <optgroup label="FinTech & Startups">
+                    <option value="paytm.html">Paytm</option>
+                    <option value="zomato.html">Zomato</option>
+                    <option value="swiggy.html">Swiggy</option>
+                    <option value="cred.html">CRED</option>
+                    <option value="phonepe.html">PhonePe</option>
+                </optgroup>
+                            </select>
+                    </div>
+                </div>
+
+                <div class="comp-grid" id="partnerGrid">
+                    <div class="comp-item" style="position:relative;">
+                        <button class="btn-delete" onclick="this.parentElement.remove()">×</button>
+                        <a href="google.html"><img src="https://static.dezeen.com/uploads/2025/05/sq-google-g-logo-update_dezeen_2364_col_0.jpg"></a>
+                    </div>
+                    
+                    <div class="comp-item" style="position:relative;">
+                        <button class="btn-delete" onclick="this.parentElement.remove()">×</button>
+                        <a href="amazon.html"><img src="https://thumbs.dreamstime.com/b/amazon-logo-amazon-logo-white-background-vector-format-avaliable-124289859.jpg"></a>
+                    </div>
+
+                    <div class="comp-item" style="position:relative;">
+                        <button class="btn-delete" onclick="this.parentElement.remove()">×</button>
+                        <a href="tcs.html"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgdN5uaq0RMWIAydcXeyqdkm4dtErZs3sw0w&s"></a>
+                    </div>
+                      <a href="meta.html" class="comp-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqN9acsgIQGM2FqL39jPpdnvqW9kRedjVpDw&s"></a>
+        <a href="netflix.html" class="comp-item"><img src="https://images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a07288746ddf3bd3943fbc76/BrandAssets_Logos_01-Wordmark.jpg?w=940"></a>
+        <a href="capgemini.html" class="comp-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDH3D_sFxInIWvLdh8-BK-xaKw7YpUcwhDaA&s"></a>
+                </div>
+            </section>
+        </div>
+
+
+
+
+        <!-- Internships -->
         <section id="internships" class="admin-box">
-            <span class="section-badge">Live Opportunity Tracking</span>
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-                <h3>Upcoming Internships (2026 Batch)</h3>
-                <button class="btn-magic" onclick="addItem('internGrid')"><i class="fas fa-plus"></i> Post New Drive</button>
+            <section id="internships" class="internship-section" style="padding: 80px 8%; background: #ffffff;">
+    <div style="margin-bottom: 50px; display: flex; justify-content: space-between; align-items: flex-end;">
+        <div>
+            <h2 style="font-size: 32px; color: #1e293b; border-left: 6px solid #1a73e8; padding-left: 20px; font-weight: 800;">
+                Upcoming Internships
+            </h2>
+            <p style="color: #64748b; margin-top: 10px; font-size: 18px;">Handpicked opportunities for the KIET 2026 Batch.</p>
+        </div>
+        <div style="text-align: right;">
+            <span style="background: #fee2e2; color: #ef4444; padding: 8px 15px; border-radius: 50px; font-size: 12px; font-weight: 800; border: 1px solid #fecaca;">
+                <i class="fas fa-circle" style="font-size: 8px; margin-right: 5px; animation: blink 1s infinite;"></i> NEW OPENINGS
+            </span>
+        </div>
+    </div>
+
+    <div class="intern-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+        
+         
+        <div class="intern-mini-card">
+            <div class="card-badge" style="background: #fff1f2; color: #e11d48;">Product</div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Zomato_logo.png" alt="Zomato">
+            <h3>Zomato</h3>
+            <p>Operations & Logistics Intern</p>
+            <div class="intern-tags">
+                <span>Operations</span>
+                <span>Excel</span>
             </div>
-            <div class="intern-grid" id="internGrid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 25px;">
-                <div style="border:1px solid #eee; padding:25px; border-radius:15px;">
-                    <h4 contenteditable="true" style="margin:0;">Zomato</h4>
-                    <p contenteditable="true" style="color:#666; font-size:14px;">Operations & Tech Intern</p>
-                    <div style="margin-top:15px; display:flex; gap:10px;">
-                        <a href="intern-detail-zomato.html" class="btn-magic" style="font-size:12px; background:#666;">EDIT JD PAGE</a>
-                        <button class="btn-delete" onclick="this.parentElement.parentElement.remove()">DELETE DRIVE</button>
-                    </div>
-                </div>
+            <a href="intern-detail-zomato.html" class="apply-link-btn">View Details & Eligibility</a>
+        </div>
+
+        <div class="intern-mini-card">
+            <div class="card-badge" style="background: #f0f9ff; color: #0369a1;">IT Services</div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg" alt="Infosys">
+            <h3>Infosys</h3>
+            <p>Quality Assurance (InfyTQ)</p>
+            <div class="intern-tags">
+                <span>Python</span>
+                <span>Testing</span>
             </div>
+            <a href="intern-detail-infosys.html" class="apply-link-btn">View Details & Eligibility</a>
+        </div>
+
+
+          <div class="intern-mini-card">
+    <div class="card-badge">Technical</div>
+    <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHB3-ZMUidYngurLAswE3HMfdB1ZyJnBDKSA&s" alt=" Wipro">
+    <h3>Wipro</h3>
+    <p>Excellence Analyst Intern (2026)</p>
+    <div class="intern-tags">
+        <span>Pseudo Code</span>
+        <span>Java/C++</span>
+    </div>
+    <a href="Wipro-Intern.html" class="apply-link-btn">View Details & Eligibility</a>
+       </div>
+
+
+
+    </div>
+</section>
+
+<style>
+    @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
+
+    .intern-mini-card {
+        padding: 40px 30px;
+        border-radius: 24px;
+        background: #fff;
+        border: 1px solid #f1f5f9;
+        text-align: center;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .intern-mini-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+        border-color: #1a73e8;
+    }
+
+    .card-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 10px;
+        font-weight: 800;
+        padding: 4px 12px;
+        border-radius: 50px;
+        background: #f1f5f9;
+        color: #64748b;
+        text-transform: uppercase;
+    }
+
+    .intern-mini-card img {
+        height: 45px;
+        margin-bottom: 25px;
+        filter: grayscale(100%);
+        transition: 0.3s;
+    }
+
+    .intern-mini-card:hover img {
+        filter: grayscale(0%);
+        transform: scale(1.1);
+    }
+
+    .intern-mini-card h3 {
+        font-size: 22px;
+        margin-bottom: 8px;
+        color: #1e293b;
+        font-weight: 700;
+    }
+
+    .intern-mini-card p {
+        font-size: 14px;
+        color: #64748b;
+        margin-bottom: 20px;
+    }
+
+    .intern-tags {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 25px;
+    }
+
+    .intern-tags span {
+        font-size: 11px;
+        background: #f8fafc;
+        color: #475569;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-weight: 600;
+    }
+
+    .apply-link-btn {
+        display: block;
+        padding: 12px;
+        background: #f8fafc;
+        color: #1a73e8;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 14px;
+        border-radius: 12px;
+        transition: 0.3s;
+        border: 1px solid #e2e8f0;
+    }
+
+    .intern-mini-card:hover .apply-link-btn {
+        background: #1a73e8;
+        color: #fff;
+        border-color: #1a73e8;
+    }
+</style>
         </section>
 
-        <section id="leaderboard" class="admin-box">
-            <span class="section-badge">Leaderboard Controller</span>
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-                <h3>🏆 KIET Rankers 2025-26</h3>
-                <button class="btn-magic" onclick="addItem('rankList')"><i class="fas fa-user-plus"></i> Add Ranker</button>
-            </div>
-            <div id="rankList" style="margin-top: 25px;">
-                <div style="display:flex; align-items:center; gap:20px; background:#fafafa; padding:20px; border-radius:12px; margin-bottom:15px; border:1px solid #eee;">
-                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Om" width="45">
-                    <div style="flex:1">
-                        <span contenteditable="true" style="font-weight:bold; font-size:16px;">Om Goel</span> | 
-                        <span contenteditable="true" style="color:var(--admin-blue);">₹15 LPA (Accenture)</span>
-                    </div>
-                    <a href="senior-profile-om.html" style="color:var(--admin-blue); font-size:13px; font-weight:bold;">[EDIT PROFILE]</a>
-                    <button class="btn-delete" onclick="this.parentElement.remove()">REMOVE</button>
-                </div>
-            </div>
-        </section>
+        <!-- Leaderboard -->
+           <section id="ranker-list" class="admin-box" style="padding: 80px 10%; background: #f8fafc; position: relative;">
+    
+    <div style="text-align: right; margin-bottom: 20px;">
+        <button class="btn-magic" onclick="addItem('rankerContainer')" style="background: #1a73e8; color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer;">
+            <i class="fas fa-plus"></i> Add New Ranker Row
+        </button>
+    </div>
 
-        <section id="legacy" class="admin-box">
-            <span class="section-badge">Historical Data Archive</span>
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-                <h3>Legacy Timeline & Archives</h3>
+    <div style="text-align: center; margin-bottom: 60px;">
+        <h2 style="font-size: 45px; font-weight: 900; color: #0f172a; letter-spacing: -1px;" contenteditable="true">🏆 KIET Rankers 2025-26</h2>
+        <p style="color: #64748b; font-size: 18px;" contenteditable="true">Ranked by Package & Performance (Highest to Medium)</p>
+    </div>
+
+    <div class="leaderboard-wrapper" id="rankerContainer" style="max-width: 1000px; margin: auto;">
+
+        <div class="rank-item" style="position: relative; display: flex; align-items: center; background: white; padding: 25px 40px; border-radius: 25px; margin-bottom: 20px; border: 1px solid #f1f5f9; box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: 0.3s;">
+            
+            <button class="btn-delete" onclick="this.parentElement.remove()" style="position: absolute; top: 10px; right: 10px; background: #fee2e2; color: #dc2626; border: none; border-radius: 50%; width: 25px; height: 25px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold; z-index: 10;">×</button>
+            
+            <div class="rank-num-circle" contenteditable="true" style="width: 45px; height: 45px; border-radius: 50%; border: 2px solid #f59e0b; color: #f59e0b; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 20px; margin-right: 30px;">1</div>
+            
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNKfj6RsyRZqO4nnWkPFrYMmgrzDmyG31pFQ&s" style="width: 65px; height: 65px; border-radius: 50%; margin-right: 25px; object-fit: cover;">
+            
+            <div style="flex: 1;">
+                <h3 contenteditable="true" style="font-size: 20px; color: #1e293b; margin: 0;">Om Goel</h3>
+                <p contenteditable="true" style="color: #94a3b8; font-size: 14px; margin-top: 5px;">CSE AI | Batch 2019</p>
             </div>
-            <div style="margin-top:20px; display:grid; grid-template-columns: repeat(2, 1fr); gap:20px;">
-                <div style="padding:15px; background:#f1f3f4; border-radius:10px; display:flex; justify-content:space-between; align-items:center;">
-                    <span><b>2010-2014</b> Archive</span>
-                    <a href="2010-2014.html" style="color:var(--admin-blue);"><i class="fas fa-external-link-alt"></i> Manage</a>
-                </div>
-                <div style="padding:15px; background:#f1f3f4; border-radius:10px; display:flex; justify-content:space-between; align-items:center;">
-                    <span><b>2014-2018</b> Archive</span>
-                    <a href="2014-2018.html" style="color:var(--admin-blue);"><i class="fas fa-external-link-alt"></i> Manage</a>
-                </div>
+            
+            <div style="text-align: center; margin: 0 50px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Accenture_logo.svg" style="height: 25px;">
+                <span contenteditable="true" style="display: block; font-size: 12px; color: #64748b; font-weight: bold; margin-top: 5px;">Accenture</span>
             </div>
-        </section>
+            
+            <div style="font-size: 26px; font-weight: 900; color: #1a73e8; width: 150px; text-align: right; margin-right: 20px;" contenteditable="true">₹67 LPA</div>
+            
+            <i class="fas fa-chevron-right" style="color: #cbd5e1; cursor: pointer; font-size: 20px;" onclick="location.href='senior-profile-om.html'"></i>
+        </div>
+
+        <div class="rank-item" style="position: relative; display: flex; align-items: center; background: white; padding: 25px 40px; border-radius: 25px; margin-bottom: 20px; border: 1px solid #f1f5f9; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+            <button class="btn-delete" onclick="this.parentElement.remove()" style="position: absolute; top: 10px; right: 10px; background: #fee2e2; color: #dc2626; border: none; border-radius: 50%; width: 25px; height: 25px; cursor: pointer;">×</button>
+            <div class="rank-num-circle" contenteditable="true" style="width: 45px; height: 45px; border-radius: 50%; border: 2px solid #94a3b8; color: #94a3b8; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 20px; margin-right: 30px;">2</div>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNKfj6RsyRZqO4nnWkPFrYMmgrzDmyG31pFQ&s" style="width: 65px; height: 65px; border-radius: 50%; margin-right: 25px; object-fit: cover;">
+            <div style="flex: 1;">
+                <h3 contenteditable="true" style="font-size: 20px; color: #1e293b; margin: 0;">Ria Sharma</h3>
+                <p contenteditable="true" style="color: #94a3b8; font-size: 14px; margin-top: 5px;">CSE | Batch 2025</p>
+            </div>
+            <div style="text-align: center; margin: 0 50px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" style="height: 25px;">
+                <span contenteditable="true" style="display: block; font-size: 12px; color: #64748b; font-weight: bold; margin-top: 5px;">Google (SDE)</span>
+            </div>
+            <div style="font-size: 26px; font-weight: 900; color: #1a73e8; width: 150px; text-align: right; margin-right: 20px;" contenteditable="true">₹59.0 LPA</div>
+            <i class="fas fa-chevron-right" style="color: #cbd5e1; cursor: pointer; font-size: 20px;" onclick="location.href='senior-profile-ria.html'"></i>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* Styling for hover effects to keep it professional */
+    .rank-item:hover { transform: scale(1.01); border-color: #1a73e8; box-shadow: 0 20px 40px rgba(26,115,232,0.05); }
+    [contenteditable="true"]:focus { outline: 2px solid #1a73e8; background: #fdfdfd; padding: 2px; border-radius: 4px; }
+</style>
+
+
+
+
+
+
+
 
     </main>
-
     <script>
+        // FUNCTION: Sidebar navigation link scroll logic
         function jumpTo(id) {
             document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
             document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
             event.currentTarget.classList.add('active');
         }
 
-        function addItem(containerId) {
-            const container = document.getElementById(containerId);
-            const clone = container.children[0].cloneNode(true);
-            container.appendChild(clone);
-            alert("New Slot Added! You can now edit the details directly.");
+        // FUNCTION: Naya Partner Logo add karne ke liye
+        function addNewPartner() {
+            const url = prompt("Enter Company Logo Image URL:");
+            const link = prompt("Enter HTML file name (e.g., adani.html):");
+            if(!url) return;
+            
+            const grid = document.getElementById('partnerGrid');
+            const newDiv = document.createElement('div');
+            newDiv.className = 'comp-item';
+            newDiv.style.position = 'relative';
+            newDiv.innerHTML = `
+                <button class="btn-delete" onclick="this.parentElement.remove()">×</button>
+                <a href="${link || '#'}"><img src="${url}"></a>
+            `;
+            grid.appendChild(newDiv);
+        }
+
+        // FUNCTION: Preview Page Navigation
+        function navigateToCompany() {
+            const dropdown = document.getElementById('companyDropdown');
+            const selectedPage = dropdown.value;
+            if (selectedPage) {
+                if(confirm("Exit Admin Mode and View Page?")) {
+                    window.location.href = selectedPage;
+                }
+            }
         }
 
         function saveChanges() {
-            // This mirrors the logic to sync with your localStorage system
-            alert("ADMIN SUCCESS: All live updates for Internships and Leaderboard have been synced and published.");
+            alert("ADMIN SUCCESS: All changes in Partners section have been published!");
         }
     </script>
 </body>
-</html>
+</html>  -->
