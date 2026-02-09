@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -196,4 +196,115 @@
         function saveChanges() { alert("ADMIN SUCCESS: All detailed records updated live!"); }
     </script>
 </body>
-</html>
+</html> -->
+
+
+
+ <div class="admin-box">
+    <button class="btn-magic" onclick="addNewPartner()"><i class="fas fa-plus"></i> Add New Partner</button>
+
+    <section id="companies" class="company-section" style="padding: 20px 0; background: #fff; position: relative;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px;">
+            <h2 class="section-title" style="margin: 0;" contenteditable="true">Strategic Tech Partners</h2>
+            
+            <div class="dropdown-container" style="position: relative;">
+                <select id="companyDropdown" onchange="navigateToCompany()" style="padding: 12px 25px; border-radius: 10px; border: 2px solid #1a73e8; background: white; color: #1a73e8; font-weight: bold; cursor: pointer; outline: none; font-size: 16px; box-shadow: 0 5px 15px rgba(26,115,232,0.1);">
+                     <option value="">Explore Companies ▼</option>
+                    <optgroup label="Product Giants">
+                        <option value="google.html">Google</option>
+                        <option value="amazon.html">Amazon</option>
+                        <option value="microsoft.html">Microsoft</option>
+                        <option value="meta.html">Meta</option>
+                        <option value="netflix.html">Netflix</option>
+                        <option value="apple.html">Apple</option>
+                        <option value="adobe.html">Adobe</option>
+                        <option value="uber.html">Uber</option>
+                    </optgroup>
+                    <optgroup label="Global Consultancies">
+                        <option value="tcs.html">TCS</option>
+                        <option value="capgemini.html">Capgemini</option>
+                        <option value="infosys.html">Infosys</option>
+                        <option value="wipro.html">Wipro</option>
+                        <option value="accenture.html">Accenture</option>
+                        <option value="deloitte.html">Deloitte</option>
+                    </optgroup>
+                    <optgroup label="FinTech & Startups">
+                        <option value="paytm.html">Paytm</option>
+                        <option value="zomato.html">Zomato</option>
+                        <option value="swiggy.html">Swiggy</option>
+                        <option value="cred.html">CRED</option>
+                        <option value="phonepe.html">PhonePe</option>
+                    </optgroup>
+                </select>
+            </div>
+        </div>
+
+        <div class="comp-grid" id="partnerGrid">
+            <div class="comp-item" style="position:relative;">
+                <button class="btn-delete" onclick="this.parentElement.remove()">×</button>
+                <a href="google.html"><img src="https://static.dezeen.com/uploads/2025/05/sq-google-g-logo-update_dezeen_2364_col_0.jpg"></a>
+            </div>
+            
+            <div class="comp-item" style="position:relative;">
+                <button class="btn-delete" onclick="this.parentElement.remove()">×</button>
+                <a href="amazon.html"><img src="https://thumbs.dreamstime.com/b/amazon-logo-amazon-logo-white-background-vector-format-avaliable-124289859.jpg"></a>
+            </div>
+
+            <div class="comp-item" style="position:relative;">
+                <button class="btn-delete" onclick="this.parentElement.remove()">×</button>
+                <a href="tcs.html"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgdN5uaq0RMWIAydcXeyqdkm4dtErZs3sw0w&s"></a>
+            </div>
+            <a href="meta.html" class="comp-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqN9acsgIQGM2FqL39jPpdnvqW9kRedjVpDw&s"></a>
+            <a href="netflix.html" class="comp-item"><img src="https://images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a07288746ddf3bd3943fbc76/BrandAssets_Logos_01-Wordmark.jpg?w=940"></a>
+            <a href="capgemini.html" class="comp-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDH3D_sFxInIWvLdh8-BK-xaKw7YpUcwhDaA&s"></a>
+        </div>
+    </section>
+</div>
+
+<div id="partnerModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:9999; justify-content:center; align-items:center;">
+    <div style="background:white; padding:25px; border-radius:8px; width:350px; font-family: sans-serif;">
+        <h3 style="margin-bottom:15px;">Enter Campus Details</h3>
+        <input type="text" id="compName" placeholder="Company Name" style="width:100%; margin-bottom:10px; padding:8px;">
+        <input type="date" id="compDate" style="width:100%; margin-bottom:10px; padding:8px;">
+        <input type="number" id="compIntake" placeholder="Students count" style="width:100%; margin-bottom:10px; padding:8px;">
+        <input type="text" id="compPkg" placeholder="Package (e.g. 10 LPA)" style="width:100%; margin-bottom:15px; padding:8px;">
+        
+        <button onclick="savePartner()" style="padding:10px 15px; background:#1a73e8; color:white; border:none; cursor:pointer;">Save</button>
+        <button onclick="document.getElementById('partnerModal').style.display='none'" style="padding:10px 15px; background:#ccc; border:none; cursor:pointer;">Cancel</button>
+    </div>
+</div>
+
+<script>
+function addNewPartner() {
+    document.getElementById('partnerModal').style.display = 'flex';
+}
+
+function savePartner() {
+    const name = document.getElementById('compName').value;
+    const date = document.getElementById('compDate').value;
+    const intake = document.getElementById('compIntake').value;
+    const pkg = document.getElementById('compPkg').value;
+
+    if(!name || !date || !intake || !pkg) return alert("Fill all details");
+
+    const grid = document.getElementById('partnerGrid');
+    const newItem = document.createElement('div');
+    newItem.className = 'comp-item';
+    newItem.style.position = 'relative';
+    newItem.style.border = '1px solid #ddd';
+    newItem.style.padding = '10px';
+    
+    newItem.innerHTML = `
+        <button class="btn-delete" onclick="this.parentElement.remove()">×</button>
+        <div style="text-align:center;">
+            <strong style="display:block; margin-bottom:5px;">${name}</strong>
+            <p style="font-size:12px; margin:0;">📅 ${date}</p>
+            <p style="font-size:12px; margin:0;">👨‍🎓 ${intake} Students</p>
+            <p style="font-size:12px; margin:0;">💰 ${pkg}</p>
+        </div>
+    `;
+
+    grid.appendChild(newItem);
+    document.getElementById('partnerModal').style.display = 'none';
+}
+</script>

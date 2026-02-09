@@ -1,152 +1,184 @@
-<!-- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login | KIET Career Hub</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | KIET Recruitment System</title>
     <style>
+        :root {
+            --primary: #1a73e8;
+            --secondary: #0d47a1;
+            --bg: #eef2f7;
+        }
+
         body { 
-            margin: 0; height: 100vh; display: flex; align-items: center; justify-content: center;
-            background: linear-gradient(rgba(15,23,42,0.9), rgba(15,23,42,0.9)), url('https://admissionwala.in/storage/productimages/KIET-Group-of-Institutions-Ghaziabad-Campus-View-1.jpg');
-            background-size: cover; font-family: 'Inter', sans-serif; overflow: hidden;
+            font-family: 'Poppins', 'Segoe UI', sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
         }
-        .login-box {
-            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px);
-            padding: 50px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.2);
-            width: 380px; text-align: center; color: white; box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            transition: 0.5s;
+
+        .login-card { 
+            background: rgba(255, 255, 255, 0.95); 
+            padding: 40px; 
+            border-radius: 24px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2); 
+            width: 100%;
+            max-width: 400px; 
+            text-align: center;
         }
-        input {
-            width: 100%; padding: 15px; margin: 10px 0; background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; color: white; outline: none; box-sizing: border-box;
+
+        h1 { 
+            font-size: 28px;
+            font-weight: 800;
+            color: #1a237e; 
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        button {
-            width: 100%; padding: 15px; background: #1a73e8; border: none; color: white;
-            border-radius: 10px; font-weight: bold; cursor: pointer; margin-top: 20px; font-size: 16px;
+
+        p.subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
         }
-        button:hover { background: #1557b0; }
-        .error { color: #ff4d4d; font-size: 13px; display: none; margin-top: 10px; font-weight: bold; }
 
-        /* Success Popup Style */
-        #successPopup {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center;
-            flex-direction: column; color: white; transition: 0.5s;
+        .input-group {
+            text-align: left;
+            margin-bottom: 15px;
         }
-        .success-card {
-            background: white; color: #1e293b; padding: 40px; border-radius: 20px; text-align: center;
-            animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 13px;
+            color: #444;
         }
-        @keyframes popIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-    </style>
-</head>
-<body>
 
-    <div class="login-box" id="mainBox">
-        <h2>KIET Student Login</h2>
-        <p style="opacity: 0.7; font-size: 14px;">Enter your official credentials</p>
-        <form id="loginForm">
-            <input type="email" id="email" placeholder="student_name@kiet.edu" required>
-            <input type="password" id="password" placeholder="Password (Min. 6 chars)" required>
-            <button type="submit">Verify & Enter Hub</button>
-            <p id="errorMsg" class="error"></p>
-        </form>
-    </div>
+        select, input { 
+            width: 100%; 
+            padding: 14px; 
+            border-radius: 10px; 
+            border: 2px solid #eee; 
+            box-sizing: border-box; 
+            font-size: 15px;
+            transition: 0.3s;
+        }
 
-    <div id="successPopup">
-        <div class="success-card">
-            <i class="fas fa-check-circle" style="font-size: 60px; color: #34A853; margin-bottom: 20px;"></i>
-            <h1 style="margin: 0;">Login Successful!</h1>
-            <p style="color: #64748b;">Redirecting to KIET Career Hub...</p>
-        </div>
-    </div>
+        input:focus {
+            border-color: var(--primary);
+            outline: none;
+            background: #fff;
+        }
 
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const errorElement = document.getElementById('errorMsg');
+        .btn-login { 
+            width: 100%;
+            background: var(--primary); 
+            color: white; 
+            border: none; 
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold; 
+            font-size: 16px;
+            cursor: pointer; 
+            transition: 0.3s; 
+            margin-top: 10px;
+        }
 
-            // 1. Email Validation
-            if (!email.toLowerCase().endsWith('@kiet.edu')) {
-                errorElement.innerText = "⚠️ Error: Use official @kiet.edu ID!";
-                errorElement.style.display = 'block';
-                return;
-            }
+        .btn-login:hover { 
+            background: var(--secondary); 
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 115, 232, 0.4);
+        }
 
-            // 2. Password Validation
-            if (password.length < 6) {
-                errorElement.innerText = "⚠️ Error: Password must be at least 6 characters!";
-                errorElement.style.display = 'block';
-                return;
-            }
-
-            // Sab sahi hai toh Success dikhao
-            errorElement.style.display = 'none';
-            document.getElementById('mainBox').style.opacity = '0';
-            
-            setTimeout(() => {
-                // Show Success Popup
-                document.getElementById('successPopup').style.display = 'flex';
-                
-                // Session data save karo
-                localStorage.setItem('isLoggedIn', 'true');
-                localStorage.setItem('userEmail', email);
-
-                // 2 seconds baad redirect karo
-                setTimeout(() => {
-                    window.location.href = 'index.html'; 
-                }, 2000);
-            }, 300);
-        });
-    </script>
-</body>
-</html>
-
-
-
-  -->
-
-
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login | KIET Support Portal</title>
-    <style>
-        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .login-card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); width: 400px; text-align: center; }
-        h2 { color: #1a73e8; margin-bottom: 30px; }
-        select, input, button { width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #ddd; box-sizing: border-box; }
-        .btn-login { background: #1a73e8; color: white; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        .btn-login:hover { background: #1557b0; }
+        .error-msg {
+            color: #d32f2f;
+            font-size: 12px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+            display: none;
+        }
     </style>
 </head>
 <body>
     <div class="login-card">
-        <h2>Portal Login</h2>
-        <select id="userRole">
-            <option value="student">Student Portal</option>
-            <option value="admin">Administrator (Faculty)</option>
-        </select>
-        <input type="text" id="userName" placeholder="Enter Name / Admin ID">
-        <button class="btn-login" onclick="login()">ENTER PORTAL</button>
+        <h1>KIET</h1>
+        <p class="subtitle">Recruitment System</p>
+        
+        <div class="input-group">
+            <label>Login As</label>
+            <select id="userRole">
+                <option value="user">Student / Candidate</option>
+                <option value="admin">Administrator</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label>KIET ID</label>
+            <input type="text" id="userName" placeholder="e.g. 2021KIET001">
+        </div>
+
+        <div class="input-group">
+            <label>Password</label>
+            <input type="password" id="userPass" placeholder="••••••••">
+        </div>
+        <p id="errorBox" class="error-msg">Invalid Credentials</p>
+
+        <button class="btn-login" onclick="handleLogin()">SECURE LOGIN</button>
     </div>
 
-    <script>
-        function login() {
-            const role = document.getElementById('userRole').value;
-            const name = document.getElementById('userName').value;
-            if(!name) return alert("Please enter name!");
-            
-            localStorage.setItem('currentUser', name);
-            localStorage.setItem('role', role);
-            
-            if(role === 'admin') window.location.href = 'admin-desk.html';
-            else window.location.href = 'help-desk.html';
+     <script>
+    function validatePassword(pw) {
+        // At least 4 chars, 1 number, 1 special character
+        const regex = /^(?=.*[0-9])(?=.*[!@#$%^&*]).{4,}$/;
+        return regex.test(pw);
+    }
+
+    function handleLogin() {
+        const role = document.getElementById('userRole').value;
+        const id = document.getElementById('userName').value;
+        const pass = document.getElementById('userPass').value;
+        const errorBox = document.getElementById('errorBox');
+
+        if(!id || !pass) {
+            alert("Please fill all fields!");
+            return;
         }
-    </script>
+
+        // Check if password meets your rules (4 chars, 1 no, 1 spec)
+        if(!validatePassword(pass)) {
+            alert("Invalid Format! Password needs 4+ chars, 1 number, and 1 special char.");
+            return;
+        }
+
+        // Yahan humne strict check hata diya hai taaki aapka login kaam kare
+        // Ab ye har us password ko accept karega jo rules follow karta hai
+        localStorage.setItem('currentUser', id);
+        localStorage.setItem('role', role);
+        
+        // Save password also if you want to remember it
+        localStorage.setItem('userPassword', pass);
+
+        if(role === 'admin') {
+            window.location.href = 'admin-portal.html';
+        } else {
+            window.location.href = 'index.html';
+        }
+    }
+     if (role === 'admin') {
+    // Relative path use karein, pura /Users/anshi/... likhne ki zarurat nahi hai
+    window.location.href = 'admin-portal.html'; 
+} else {
+    window.location.href = 'index.html';
+}
+
+
+
+
+</script>
 </body>
 </html>

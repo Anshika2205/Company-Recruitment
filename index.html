@@ -109,15 +109,16 @@
         </div>
     </div>
 
-    <div class="comp-grid">
-        <a href="google.html" class="comp-item"><img src="https://static.dezeen.com/uploads/2025/05/sq-google-g-logo-update_dezeen_2364_col_0.jpg"></a>
-        <a href="amazon.html" class="comp-item"><img src="https://thumbs.dreamstime.com/b/amazon-logo-amazon-logo-white-background-vector-format-avaliable-124289859.jpg"></a>
-        <a href="microsoft.html" class="comp-item"><img src="https://blogs.microsoft.com/wp-content/uploads/2012/08/8867.Microsoft_5F00_Logo_2D00_for_2D00_screen.jpg"></a>
-        <a href="meta.html" class="comp-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqN9acsgIQGM2FqL39jPpdnvqW9kRedjVpDw&s"></a>
-        <a href="netflix.html" class="comp-item"><img src="https://images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a07288746ddf3bd3943fbc76/BrandAssets_Logos_01-Wordmark.jpg?w=940"></a>
-        <a href="apple.html" class="comp-item"><img src="https://fabrikbrands.com/wp-content/uploads/Apple-Logo-History-1.png"></a>
-        <a href="tcs.html" class="comp-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgdN5uaq0RMWIAydcXeyqdkm4dtErZs3sw0w&s"></a>
-        <a href="capgemini.html" class="comp-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDH3D_sFxInIWvLdh8-BK-xaKw7YpUcwhDaA&s"></a>
+      <div class="comp-grid" id="partnerGrid">
+    <a href="google.html" class="comp-item"><img src="https://static.dezeen.com/uploads/2025/05/sq-google-g-logo-update_dezeen_2364_col_0.jpg"></a>
+    <a href="amazon.html" class="comp-item"><img src="https://thumbs.dreamstime.com/b/amazon-logo-amazon-logo-white-background-vector-format-avaliable-124289859.jpg"></a>
+    <a href="microsoft.html" class="comp-item"><img src="https://blogs.microsoft.com/wp-content/uploads/2012/08/8867.Microsoft_5F00_Logo_2D00_for_2D00_screen.jpg"></a>
+    <a href="meta.html" class="comp-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqN9acsgIQGM2FqL39jPpdnvqW9kRedjVpDw&s"></a>
+    <a href="netflix.html" class="comp-item"><img src="https://images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a07288746ddf3bd3943fbc76/BrandAssets_Logos_01-Wordmark.jpg?w=940"></a>
+    <a href="apple.html" class="comp-item"><img src="https://fabrikbrands.com/wp-content/uploads/Apple-Logo-History-1.png"></a>
+    <a href="tcs.html" class="comp-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgdN5uaq0RMWIAydcXeyqdkm4dtErZs3sw0w&s"></a>
+    <a href="capgemini.html" class="comp-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDH3D_sFxInIWvLdh8-BK-xaKw7YpUcwhDaA&s"></a>
+    
     </div>
 </section>
 
@@ -148,8 +149,7 @@
         </div>
     </div>
 
-    <div class="intern-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-        
+     <div class="intern-grid" id="internGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;"> 
          
         <div class="intern-mini-card">
             <div class="card-badge" style="background: #fff1f2; color: #e11d48;">Product</div>
@@ -481,15 +481,6 @@
     </div>
 </section>
 
-
-
-
-
-
-
-
-
-
  
 
    <!-- Batch History -->
@@ -611,8 +602,26 @@
     }
 </script>
 
+<!-- Companies -->
+     <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const grid = document.getElementById('partnerGrid');
+    if (!grid) return;
 
+    const partners = JSON.parse(localStorage.getItem('campusPartners')) || [];
 
+    partners.forEach(p => {
+        const anchor = document.createElement('a');
+        anchor.href = `details.html?name=${encodeURIComponent(p.name)}&logo=${encodeURIComponent(p.logo)}&date=${encodeURIComponent(p.date)}&students=${encodeURIComponent(p.students)}&pkg=${encodeURIComponent(p.pkg)}`;
+        anchor.className = 'comp-item'; 
+
+        // Important: Sirf image tag taaki Grid style maintain rahe
+        anchor.innerHTML = `<img src="${p.logo}" alt="${p.name}" style="max-width: 100%; max-height: 100%; object-fit: contain;">`;
+
+        grid.appendChild(anchor);
+    });
+});
+</script>
 
 
     <script src="script.js"></script>

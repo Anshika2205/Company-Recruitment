@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Company Visit Details</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f4f4; display: flex; justify-content: center; padding-top: 50px; }
+        .detail-card { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; width: 400px; }
+        img { width: 150px; height: 150px; object-fit: contain; margin-bottom: 20px; }
+        h1 { color: #1a73e8; text-transform: uppercase; margin-bottom: 20px; border-bottom: 2px solid #eee; pb: 10px; }
+        .info { text-align: left; line-height: 2; font-size: 18px; }
+        .btn-back { margin-top: 30px; display: inline-block; padding: 10px 20px; background: #1a73e8; color: white; text-decoration: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+    <div class="detail-card">
+        <img id="disp_logo" src="" alt="Logo">
+        <h1 id="disp_name">Company Name</h1>
+        
+        <div class="info">
+            <p>📅 <b>Visit Date:</b> <span id="disp_date"></span></p>
+            <p>👨‍🎓 <b>Students Intake:</b> <span id="disp_students"></span></p>
+            <p>💰 <b>Salary Package:</b> <span id="disp_pkg"></span></p>
+        </div>
+
+        <a href="javascript:history.back()" class="btn-back">← Back to Admin</a>
+    </div>
+
+    <script>
+        // Script to grab data from the URL
+        const params = new URLSearchParams(window.location.search);
+        document.getElementById('disp_name').innerText = params.get('name');
+        document.getElementById('disp_logo').src = params.get('logo');
+        document.getElementById('disp_date').innerText = params.get('date');
+        document.getElementById('disp_students').innerText = params.get('students');
+        document.getElementById('disp_pkg').innerText = params.get('pkg');
+    </script>
+</body>
+</html>
